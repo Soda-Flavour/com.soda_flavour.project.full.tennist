@@ -349,7 +349,20 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
                 },
               );
             }
-            return CircularProgressIndicator();
+            return Container(
+              child: new Center(
+                child: Container(
+                  color: Colors.black.withOpacity(.5),
+                  child: const Center(
+                    child: const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
           }),
     );
   }
