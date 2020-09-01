@@ -133,237 +133,237 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
         ),
       ),
       body: FutureBuilder<Tab3MainModel>(
-          future: Tap3MainProvider().getData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData || snapshot.hasError) {
-              bool isLoggedIn = (snapshot.data != null) ? true : false;
-              String nick = (snapshot.data != null)
-                  ? snapshot.data.result.data[0].nick
-                  : '로그인이 필요합니다.';
-              String ntrp = (snapshot.data != null)
-                  ? snapshot.data.result.data[0].ntrp
-                  : '-';
+        future: Tap3MainProvider().getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData || snapshot.hasError) {
+            bool isLoggedIn = (snapshot.data != null) ? true : false;
+            String nick = (snapshot.data != null)
+                ? snapshot.data.result.data[0].nick
+                : '로그인이 필요합니다.';
+            String ntrp = (snapshot.data != null)
+                ? snapshot.data.result.data[0].ntrp
+                : '-';
 
-              String play_style = (snapshot.data != null)
-                  ? snapshot.data.result.data[0].playStyle
-                  : '-';
+            String play_style = (snapshot.data != null)
+                ? snapshot.data.result.data[0].playStyle
+                : '-';
 
-              print("데이터가 있습니다.");
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) {
-                  // final item = snapshot.data[index];
+            print("데이터가 있습니다.");
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                // final item = snapshot.data[index];
 
-                  if (index == 0) {
-                    return buildProfile(nick, ntrp);
-                  }
+                if (index == 0) {
+                  return buildProfile(nick, ntrp);
+                }
 
-                  if (index == 1) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      child: Container(
-                        color: const Color(0xff004e80),
-                        width: double.infinity,
-                        height: 80.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    width: 60,
-                                    child: Text(
-                                      'NTRP',
-                                      style: TextStyle(
-                                        letterSpacing: .1,
-                                        color: Colors.white,
-                                        fontSize: 18.0,
-                                      ),
+                if (index == 1) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 30.0),
+                    child: Container(
+                      color: const Color(0xff004e80),
+                      width: double.infinity,
+                      height: 80.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 40.0),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 60,
+                                  child: Text(
+                                    'NTRP',
+                                    style: TextStyle(
+                                      letterSpacing: .1,
+                                      color: Colors.white,
+                                      fontSize: 18.0,
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 30.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: Text(
-                                          ('$ntrp'),
-                                          style: TextStyle(
-                                            letterSpacing: .1,
-                                            color: const Color(0xffd6d5d5),
-                                            fontSize: 16.0,
-                                          ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 30.0,
+                                    ),
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Text(
+                                        ('$ntrp'),
+                                        style: TextStyle(
+                                          letterSpacing: .1,
+                                          color: const Color(0xffd6d5d5),
+                                          fontSize: 16.0,
                                         ),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(40.0, 6.0, 0, 0),
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    width: 60,
-                                    child: Text(
-                                      'STYLE',
-                                      style: TextStyle(
-                                        letterSpacing: 0.1,
-                                        color: Colors.white,
-                                        fontSize: 18.0,
-                                      ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(40.0, 6.0, 0, 0),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 60,
+                                  child: Text(
+                                    'STYLE',
+                                    style: TextStyle(
+                                      letterSpacing: 0.1,
+                                      color: Colors.white,
+                                      fontSize: 18.0,
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 30.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: Text(
-                                          '$play_style',
-                                          style: TextStyle(
-                                            letterSpacing: .1,
-                                            color: const Color(0xffd6d5d5),
-                                            fontSize: 16.0,
-                                          ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 30.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Text(
+                                        '$play_style',
+                                        style: TextStyle(
+                                          letterSpacing: .1,
+                                          color: const Color(0xffd6d5d5),
+                                          fontSize: 16.0,
                                         ),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }
-
-                  if (index == 2) {
-                    return GestureDetector(
-                      onTap: () {
-                        if (isLoggedIn) {
-                          Navigator.of(context)
-                              .pushNamed(ProfileListScreen.routeName);
-                        } else {
-                          DialogPopUpWidget().needLoginDialogBox(context);
-                        }
-                        print("Container was tapped");
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            width: double.infinity,
-                            height: 30,
-                          ),
-                          Container(
-                            height: 55,
-                            color: Colors.white,
-                            child: ListTile(
-                              title: Text(
-                                '프로필 관리',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
                                 ),
-                              ),
-                              trailing: Icon(Icons.keyboard_arrow_right),
-                            ),
-                          ),
-                          Divider(
-                            height: .1,
-                            color: Colors.black38,
-                          )
-                        ],
-                      ),
-                    );
-                  }
-                  if (index == 3) {
-                    return GestureDetector(
-                      onTap: () {
-                        if (isLoggedIn) {
-                          Navigator.of(context)
-                              .pushNamed(UserRacketListScreen.routeName);
-                        } else {
-                          DialogPopUpWidget().needLoginDialogBox(context);
-                        }
-                        print("Container was tapped");
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: 55,
-                            color: Colors.white,
-                            child: ListTile(
-                              title: Text(
-                                '라켓 관리',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              trailing: Icon(Icons.keyboard_arrow_right),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    );
-                  }
+                    ),
+                  );
+                }
 
-                  if (index == 4) {
-                    return Column(
+                if (index == 2) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (isLoggedIn) {
+                        Navigator.of(context)
+                            .pushNamed(ProfileListScreen.routeName);
+                      } else {
+                        DialogPopUpWidget().needLoginDialogBox(context);
+                      }
+                      print("Container was tapped");
+                    },
+                    child: Column(
                       children: <Widget>[
                         SizedBox(
                           width: double.infinity,
-                          height: 20,
+                          height: 30,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(SettingListScreen.routeName);
-                            print("Container was tapped");
-                          },
-                          child: Container(
-                            height: 55,
-                            alignment: Alignment.center,
-                            color: Colors.white,
-                            child: ListTile(
-                              title: Text(
-                                '설정',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        Container(
+                          height: 55,
+                          color: Colors.white,
+                          child: ListTile(
+                            title: Text(
+                              '프로필 관리',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
                               ),
-                              trailing: Icon(Icons.keyboard_arrow_right),
                             ),
+                            trailing: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ),
+                        Divider(
+                          height: .1,
+                          color: Colors.black38,
+                        )
+                      ],
+                    ),
+                  );
+                }
+                if (index == 3) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (isLoggedIn) {
+                        Navigator.of(context)
+                            .pushNamed(UserRacketListScreen.routeName);
+                      } else {
+                        DialogPopUpWidget().needLoginDialogBox(context);
+                      }
+                      print("Container was tapped");
+                    },
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          height: 55,
+                          color: Colors.white,
+                          child: ListTile(
+                            title: Text(
+                              '라켓 관리',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            trailing: Icon(Icons.keyboard_arrow_right),
                           ),
                         ),
                       ],
-                    );
-                  }
-                },
-              );
-            }
-            return Container(
-              child: new Center(
-                child: Container(
-                  color: Colors.black.withOpacity(.5),
-                  child: const Center(
-                    child: const CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.white,
+                    ),
+                  );
+                }
+
+                if (index == 4) {
+                  return Column(
+                    children: <Widget>[
+                      SizedBox(
+                        width: double.infinity,
+                        height: 20,
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(SettingListScreen.routeName);
+                          print("Container was tapped");
+                        },
+                        child: Container(
+                          height: 55,
+                          alignment: Alignment.center,
+                          color: Colors.white,
+                          child: ListTile(
+                            title: Text(
+                              '설정',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            trailing: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
+            );
+          }
+          return Container(
+            child: new Center(
+              child: Container(
+                color: Colors.black.withOpacity(.5),
+                child: const Center(
+                  child: const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.white,
                     ),
                   ),
                 ),
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 }
