@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 //   res.json(users);
 // });
 
-router.get('/:id', authMiddlewares.isLoggedIn, async (req, res, next) => {
+router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
   console.log('여기?');
   const { id } = req.user;
   try {
@@ -45,45 +45,45 @@ router.get('/:id', authMiddlewares.isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
-  console.log(req.user);
-  const { id } = req.params;
-  try {
-    await schema.validate({ id }, { abortEarly: false });
-    if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
+// router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
+//   console.log(req.user);
+//   const { id } = req.params;
+//   try {
+//     await schema.validate({ id }, { abortEarly: false });
+//     if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
 
-    // const users = await User.getMyPage(id);
+//     // const users = await User.getMyPage(id);
 
-    let data = await connection
-      .select(
-        'tu.nick',
-        'tup.weight_kg',
-        'tup.height_cm',
-        'tup.handed',
-        'age',
-        'sex',
-        'ntrp',
-        {
-          play_style: 'tps.name_kor',
-        }
-      )
-      .from({ tu: 't_user' })
-      .innerJoin({ tup: 't_user_physical' }, 'tu.id', '=', 'tup.t_user_id')
-      .leftJoin({ tps: 't_play_style' }, 'tup.t_play_style_id', '=', 'tps.id')
-      .where('tu.id', id);
-    res.json({
-      result: { status: 200, message: 'succeed!!', data: data },
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+//     let data = await connection
+//       .select(
+//         'tu.nick',
+//         'tup.weight_kg',
+//         'tup.height_cm',
+//         'tup.handed',
+//         'age',
+//         'sex',
+//         'ntrp',
+//         {
+//           play_style: 'tps.name_kor',
+//         }
+//       )
+//       .from({ tu: 't_user' })
+//       .innerJoin({ tup: 't_user_physical' }, 'tu.id', '=', 'tup.t_user_id')
+//       .leftJoin({ tps: 't_play_style' }, 'tup.t_play_style_id', '=', 'tps.id')
+//       .where('tu.id', id);
+//     res.json({
+//       result: { status: 200, message: 'succeed!!', data: data },
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 router.get(
-  '/basic_info/:id',
+  '/basic_info',
   authMiddlewares.isLoggedIn,
   async (req, res, next) => {
-    const { id } = req.params;
+    const { id } = req.user;
     try {
       await schema.validate({ id }, { abortEarly: false });
       if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
@@ -95,6 +95,8 @@ router.get(
         .from({ tu: 't_user' })
         .innerJoin({ tup: 't_user_physical' }, 'tu.id', '=', 'tup.t_user_id')
         .where('tu.id', id);
+
+      console.log(data);
       res.json({
         result: { status: 200, message: 'succeed!!', data: data },
       });
@@ -108,6 +110,7 @@ router.post(
   '/basic_info',
   authMiddlewares.isLoggedIn,
   async (req, res, next) => {
+    req.body.age = parseInt(req.body.age, 10);
     const { nick, age, sex } = req.body;
     const trx = await User.startTransaction();
     try {
@@ -159,7 +162,7 @@ router.post(
       console.log(error);
       await trx.rollback();
       if (error.errorCode == undefined) {
-        error = await apiError('E3000');
+        error = await apiError('E3015');
       }
       next(error);
     }
