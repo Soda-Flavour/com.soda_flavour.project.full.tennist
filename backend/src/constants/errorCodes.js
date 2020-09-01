@@ -31,6 +31,10 @@ module.exports = {
     errorCode: 'E3014',
     errorMessage: '비밀번호와 비밀번호 확인이 일치하지 않습니다.',
   },
+  E3015: {
+    errorCode: 'E3015',
+    errorMessage: '업데이트 도중 문제가 발생했습니다.',
+  },
   E3020: {
     errorCode: 'E3020',
     errorMessage: '사용중인 이메일입니다.',
