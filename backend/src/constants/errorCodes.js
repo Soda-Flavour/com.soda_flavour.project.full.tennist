@@ -99,6 +99,14 @@ module.exports = {
     errorCode: 'E3217',
     errorMessage: '성별은 male, female 만 가능합니다.',
   },
+  E3218: {
+    errorCode: 'E3218',
+    errorMessage: 'ntrp는 숫자만 가능합니다.',
+  },
+  E3219: {
+    errorCode: 'E3219',
+    errorMessage: '플레이 스타일 정보를 가져오지 못했습니다.',
+  },
   E3300: {
     errorCode: 'E3300',
     errorMessage: '라켓회사 리스트를 가져오지 못했습니다.',

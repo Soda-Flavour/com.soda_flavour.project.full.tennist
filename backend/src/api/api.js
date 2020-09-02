@@ -4,6 +4,7 @@ const project = require('../constants/project');
 const gut_company = require('./gut_company/gut_company.routes');
 const user = require('./users/user.routes');
 const user_physical = require('./user_physical/user_physical.routes');
+const user_playstyle = require('./user_playstyle/user_playstyle.routes');
 const auth = require('./auth/auth.routes');
 const racket_company = require('./racket_company/racket_company.routes');
 const racket_version = require('./racket_version/racket_version.routes');
@@ -21,6 +22,7 @@ router.get('/', (req, res) => {
 });
 router.use('/gut_company', gut_company);
 router.use('/user_physical', user_physical);
+router.use('/user_playstyle', user_playstyle);
 router.use('/user', user);
 router.use('/auth', auth);
 router.use('/racket_company', racket_company);
