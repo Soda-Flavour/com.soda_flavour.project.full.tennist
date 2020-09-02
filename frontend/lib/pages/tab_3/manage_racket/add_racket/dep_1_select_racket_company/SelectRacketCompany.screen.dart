@@ -59,11 +59,11 @@ class _SelectRacketCompanyScreenState extends State<SelectRacketCompanyScreen>
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
-              itemCount: snapshot.data.result.data.length,
+              itemCount: snapshot.data.result.data.list.length,
               itemBuilder: (context, index) {
                 // ProjectModel project = projectSnap.data[index];
                 return BasicListRow(
-                  rowText: snapshot.data.result.data[index].nameKor,
+                  rowText: snapshot.data.result.data.list[index].nameKor,
                   onTap: () {
                     Navigator.of(context)
                         .pushNamed(SelectRacketVersionScreen.routeName);
