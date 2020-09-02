@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.model.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.provider.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
 import 'package:tennist_flutter/src/widget/BasicListRow.dart';
 
@@ -52,23 +54,40 @@ class _SelectRacketCompanyScreenState extends State<SelectRacketCompanyScreen>
           ),
         ),
       ),
-      body: loading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
-              shrinkWrap: true,
-              itemCount: company.length,
-              itemBuilder: (BuildContext context, int index) {
+      body: FutureBuilder<SelectRacketCompanyModel>(
+        future: SelectRacketCompanyProvider().getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data.result.data.length,
+              itemBuilder: (context, index) {
+                // ProjectModel project = projectSnap.data[index];
                 return BasicListRow(
-                  rowText: company[index],
+                  rowText: snapshot.data.result.data[index].nameKor,
                   onTap: () {
                     Navigator.of(context)
                         .pushNamed(SelectRacketVersionScreen.routeName);
                   },
                 );
               },
+            );
+          }
+          return Container(
+            child: new Center(
+              child: Container(
+                color: Colors.black.withOpacity(.5),
+                child: const Center(
+                  child: const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ),
+          );
+        },
+      ),
     );
   }
 }
