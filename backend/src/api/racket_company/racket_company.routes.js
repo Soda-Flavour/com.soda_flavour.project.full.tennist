@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
       result: {
         status: 200,
         message: 'send data..',
-        data: racketCompany,
+        data: { list: racketCompany },
       },
     });
   } catch (error) {
