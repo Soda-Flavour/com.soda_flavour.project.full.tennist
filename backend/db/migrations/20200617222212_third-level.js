@@ -20,6 +20,7 @@ exports.up = async (knex) => {
       table.increments('id').notNullable();
       references(table, tableNames.user);
       references(table, tableNames.racket);
+      table.string('racket_nickname', 100);
       table.integer('seq').unsigned();
       table.integer('grip_size').unsigned();
       addDefaultColumns(table);

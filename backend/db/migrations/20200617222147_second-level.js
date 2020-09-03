@@ -50,7 +50,6 @@ exports.up = async (knex) => {
       references(table, tableNames.racketHeadSize, false);
       references(table, tableNames.racketPattern, false);
       references(table, tableNames.racketLength, false);
-      references(table, tableNames.racketbalance, false);
       addDefaultColumns(table);
 
       console.log(`${tableNames.racket} 테이블 생성 성공`);
