@@ -10,10 +10,8 @@ let tableNames = {
   racketHeadSize: DB_PREFIX + 'racket_head_size',
   racketPattern: DB_PREFIX + 'racket_pattern',
   racketLength: DB_PREFIX + 'racket_length',
-  racketbalance: DB_PREFIX + 'racket_balance',
   gutCompany: DB_PREFIX + 'gut_company',
   gutGauge: DB_PREFIX + 'gut_gauge',
-  gutTension: DB_PREFIX + 'gut_tension',
   replacementGrip: DB_PREFIX + 'replacement_grip',
 
   userPhysical: DB_PREFIX + 'user_physical',
