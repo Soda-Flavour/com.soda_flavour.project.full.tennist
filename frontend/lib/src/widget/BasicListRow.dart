@@ -24,6 +24,8 @@ class BasicListRow extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     rowText,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                     ),
