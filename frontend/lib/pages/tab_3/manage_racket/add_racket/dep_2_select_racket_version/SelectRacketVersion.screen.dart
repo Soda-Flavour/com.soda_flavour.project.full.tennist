@@ -3,34 +3,30 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_3_select_racket/SelectRacket.screen.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.model.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.provider.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.screen.dart';
+
+import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 import 'package:tennist_flutter/src/widget/BasicListRow.dart';
 
-class SelectRacketVersionScreen extends StatefulWidget {
+class SelectRacketVersionScreen extends StatelessWidget {
   static const String routeName = '/SelectRacketVersion';
-
-  @override
-  _SelectRacketVersionScreenState createState() =>
-      _SelectRacketVersionScreenState();
-}
-
-class _SelectRacketVersionScreenState extends State<SelectRacketVersionScreen>
-    with AutomaticKeepAliveClientMixin {
   bool loading = false;
-  final List<String> racket_version = <String>[
-    '그라핀 360+ 그래비티',
-    '그라핀 360+ 스피드',
-    '인스팅트'
-  ];
-
-  final List<int> colorCodes = <int>[600, 500, 100];
-
-  @override
-  bool get wantKeepAlive => true;
+  bool isFirstLoading = true;
+  Future serverData;
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+    print("동적불고가!!");
+
+    final ScreenPassData args = ModalRoute.of(context).settings.arguments;
+
+    if (isFirstLoading) {
+      serverData = SelectRacketVersionProvider().getData(args.data['id']);
+      isFirstLoading = false;
+    }
+    print(args.data['id']);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
@@ -59,23 +55,61 @@ class _SelectRacketVersionScreenState extends State<SelectRacketVersionScreen>
           ),
         ),
       ),
-      body: loading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
-              shrinkWrap: true,
-              itemCount: racket_version.length,
-              itemBuilder: (BuildContext context, int index) {
-                return BasicListRow(
-                  rowText: racket_version[index],
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(SelectRacketScreen.routeName);
-                  },
-                );
-              },
+      body: FutureBuilder<SelectRacketVersionModel>(
+        future: serverData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data.result.data.list.length < 1) {
+              return Container(
+                child: new Center(
+                  child: Container(
+                    child: const Center(
+                      child: Text(
+                        "라켓 버전이 없습니다.",
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data.result.data.list.length,
+                itemBuilder: (context, index) {
+                  // ProjectModel project = projectSnap.data[index];
+                  return BasicListRow(
+                    rowText: snapshot.data.result.data.list[index].nameKor,
+                    onTap: () {
+                      Map<String, dynamic> passData = {
+                        "id": snapshot.data.result.data.list[index].id,
+                        "versionName":
+                            snapshot.data.result.data.list[index].nameKor,
+                      };
+                      Navigator.of(context).pushNamed(
+                        SelectRacketModelScreen.routeName,
+                        arguments: ScreenPassData(passData),
+                      );
+                    },
+                  );
+                },
+              );
+            }
+          }
+          return Container(
+            child: new Center(
+              child: Container(
+                color: Colors.black.withOpacity(.5),
+                child: const Center(
+                  child: const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ),
+          );
+        },
+      ),
     );
   }
 }
