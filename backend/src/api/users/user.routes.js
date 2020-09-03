@@ -7,8 +7,14 @@ const connection = require('../../db');
 const authMiddlewares = require('../auth/auth.middlewares');
 const { updateBasicInfoschema } = require('./user.validSchema');
 
+const user_racket = require('./user_racket/user_racket.routes');
+const user_racket_history = require('./user_racket_history/user_racket_history.routes');
+
 const { orWhereNotExists } = require('../../db');
 const router = express.Router();
+router.use('/racket', user_racket);
+router.use('/racket_history', user_racket_history);
+
 router.use(authMiddlewares.checkUserHasToken);
 
 const schema = yup.object().shape({
@@ -23,7 +29,6 @@ const schema = yup.object().shape({
 // });
 
 router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
-  console.log('여기?');
   const { id } = req.user;
   try {
     await schema.validate({ id }, { abortEarly: false });
