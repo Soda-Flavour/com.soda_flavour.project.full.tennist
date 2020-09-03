@@ -119,4 +119,40 @@ module.exports = {
     errorCode: 'E3410',
     errorMessage: '해당되는 라켓 버전 리스트가 없습니다.',
   },
+  E3500: {
+    errorCode: 'E3500',
+    errorMessage: ' 라켓모델 리스트를 가져오지 못했습니다.',
+  },
+  E3510: {
+    errorCode: 'E3510',
+    errorMessage: '해당 라켓을 생성하지 못햇습니다.',
+  },
+  E3511: {
+    errorCode: 'E3511',
+    errorMessage: '해당되는 라켓 모델 리스트가 없습니다.',
+  },
+  E3512: {
+    errorCode: 'E3512',
+    errorMessage: '필수값이 누락되었습니다.',
+  },
+  E3513: {
+    errorCode: 'E3513',
+    errorMessage: '필수값이 누락되었습니다.',
+  },
+  E3514: {
+    errorCode: 'E3514',
+    errorMessage: '필수값이 누락되었습니다.',
+  },
+  E3520: {
+    errorCode: 'E3520',
+    errorMessage: '같은 라켓 별칭이 존재합니다.',
+  },
+  E3600: {
+    errorCode: 'E3600',
+    errorMessage: '유저 라켓 리스트를 가져오지 못했습니다.',
+  },
+  E3610: {
+    errorCode: 'E3610',
+    errorMessage: '필수값이 누락되었습니다.',
+  },
 };
