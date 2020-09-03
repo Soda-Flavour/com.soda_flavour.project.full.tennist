@@ -4,29 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.model.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.provider.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
+import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 import 'package:tennist_flutter/src/widget/BasicListRow.dart';
 
-class SelectRacketCompanyScreen extends StatefulWidget {
+class SelectRacketCompanyScreen extends StatelessWidget {
   static const String routeName = '/SelectRacketComapny';
 
-  @override
-  _SelectRacketCompanyScreenState createState() =>
-      _SelectRacketCompanyScreenState();
-}
-
-class _SelectRacketCompanyScreenState extends State<SelectRacketCompanyScreen>
-    with AutomaticKeepAliveClientMixin {
   bool loading = false;
-  final List<String> company = <String>['윌슨', '헤드', '바볼랏'];
-
-  final List<int> colorCodes = <int>[600, 500, 100];
-
-  @override
-  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
@@ -65,8 +52,16 @@ class _SelectRacketCompanyScreenState extends State<SelectRacketCompanyScreen>
                 return BasicListRow(
                   rowText: snapshot.data.result.data.list[index].nameKor,
                   onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(SelectRacketVersionScreen.routeName);
+                    Map<String, dynamic> passData = {
+                      "id": snapshot.data.result.data.list[index].id,
+                      "versionName":
+                          snapshot.data.result.data.list[index].nameKor,
+                    };
+
+                    Navigator.of(context).pushNamed(
+                      SelectRacketVersionScreen.routeName,
+                      arguments: ScreenPassData(passData),
+                    );
                   },
                 );
               },
