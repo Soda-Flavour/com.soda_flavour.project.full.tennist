@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.provider.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/racket_history/UserRacketHistory.screen.dart';
-
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/detail_history/UserRacketHistory.screen.dart';
 import 'package:tennist_flutter/src/widget/BasicListRow.dart';
 
 class UserRacketListScreen extends StatefulWidget {
@@ -65,43 +62,36 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
           ),
         ),
       ),
-      body: FutureBuilder<UserRacketListModel>(
-        future: UserRacketListProvider().getData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data.result.data.list.length,
-              itemBuilder: (context, index) {
-                // ProjectModel project = projectSnap.data[index];
-                return BasicListRow(
-                  rowText:
-                      "${snapshot.data.result.data.list[index].racketNickname}\n ${snapshot.data.result.data.list[index].nameKor} ${snapshot.data.result.data.list[index].model}",
-                  onTap: () {
-                    Map<String, dynamic> passData = {
-                      "id": snapshot.data.result.data.list[index].id,
-                    };
+      body: ListView.builder(
+        shrinkWrap: true,
+        itemCount: 3,
+        itemBuilder: (BuildContext context, int index) {
+          // final item = snapshot.data[index];
 
-                    Navigator.of(context).pushNamed(
-                        UserRacketHistoryScreen.routeName,
-                        arguments: passData);
-                  },
-                );
-              },
-            );
-          }
-          return Container(
-            child: new Center(
-              child: Container(
-                color: Colors.black.withOpacity(.5),
-                child: const Center(
-                  child: const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+          return BasicListRow(
+            rowText: entries[index],
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(UserRacketHistoryScreen.routeName);
+              // showDialog(
+              //   context: context,
+              //   barrierDismissible: false, // user must tap button!
+              //   builder: (BuildContext context) {
+              //     return CupertinoAlertDialog(
+              //       title: Text("준비중"),
+              //       content: Text("준비하고 있어요..!!!"),
+              //       actions: [
+              //         CupertinoDialogAction(
+              //           child: Text("확인"),
+              //           onPressed: () {
+              //             Navigator.of(context).pop();
+              //           },
+              //         ),
+              //       ],
+              //     );
+              //   },
+              // );
+            },
           );
         },
       ),
