@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/detail_history/AddUserRacketHistory.screen.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/add_history/AddUserRacketHistory.screen.dart';
 
 class UserRacketHistoryScreen extends StatefulWidget {
   static const String routeName = '/UserRacketHistory';
