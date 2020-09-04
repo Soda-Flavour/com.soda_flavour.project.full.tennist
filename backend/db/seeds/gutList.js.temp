@@ -1,0 +1,678 @@
+
+
+
+const Knex = require('knex');
+const tableNames = require('../../src/constants/tableNames');
+/**
+ * @param {Knex} knex
+ */
+exports.seed = async (knex) => {
+  await knex(tableNames.gutCompany).del();
+  const forehandStyleChart = [
+    {
+      name: 'Alien',
+      name_kor: 'Alien',
+    },
+    {
+      name: 'Ashaway',
+      name_kor: 'Ashaway',
+    },
+    {
+      name: '3',
+      name_kor: '3',
+    },
+    {
+      name: '4',
+      name_kor: '4',
+    },
+    {
+      name: '5',
+      name_kor: '5',
+    },
+    {
+      name: '6 AR',
+      name_kor: '6 AR',
+    },
+    {
+      name: '7',
+      name_kor: '7',
+    },
+    {
+      name: '8',
+      name_kor: '8',
+    },
+    {
+      name: '9',
+      name_kor: '9',
+    },
+    {
+      name: '10',
+      name_kor: '10',
+    },
+    {
+      name: '11',
+      name_kor: '11',
+    },
+    {
+      name: '12',
+      name_kor: '12',
+    },
+    {
+      name: '13',
+      name_kor: '13',
+    },
+    {
+      name: '14',
+      name_kor: '14',
+    },
+    {
+      name: '15',
+      name_kor: '15',
+    },
+    {
+      name: '16',
+      name_kor: '16',
+    },
+    {
+      name: '17',
+      name_kor: '17',
+    },
+    {
+      name: '18',
+      name_kor: '18',
+    },
+    {
+      name: '19',
+      name_kor: '19',
+    },
+    {
+      name: '20',
+      name_kor: '20',
+    },
+    {
+      name: '21',
+      name_kor: '21',
+    },
+    {
+      name: '22',
+      name_kor: '22',
+    },
+    {
+      name: '23',
+      name_kor: '23',
+    },
+    {
+      name: '24',
+      name_kor: '24',
+    },
+    {
+      name: '25',
+      name_kor: '25',
+    },
+    {
+      name: '26',
+      name_kor: '26',
+    },
+    {
+      name: '27',
+      name_kor: '27',
+    },
+    {
+      name: '28',
+      name_kor: '28',
+    },
+  ];
+  await knex(tableNames.forehandStyle).insert(forehandStyleChart);
+  console.log('forehandStyle created.');
+};
+
+
+
+
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (1, "Black Diamond 16", "Black Diamond 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (1, "Gut 2000 16", "Gut 2000 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "Dynamite 17", "Dynamite 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "Dynamite Soft 18", "Dynamite Soft 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "Liberty 16", "Liberty 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "MonoGut 16L", "MonoGut 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "MonoGut 17", "MonoGut 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "MonoGut ZX 16", "MonoGut ZX 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (2, "Synthetic Gut 16", "Synthetic Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Addiction 16", "Addiction 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Addiction 17", "Addiction 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "M7 16 (1.30)", "M7 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Origin 16 (1.30)", "Origin 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Origin 17", "Origin 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Pro Hurricane 16", "Pro Hurricane 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Pro Hurricane 17", "Pro Hurricane 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Pro Hurricane 18", "Pro Hurricane 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Pro Hurricane Tour 16", "Pro Hurricane Tour 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Pro Hurricane Tour 17", "Pro Hurricane Tour 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast 15L (1.35)", "RPM Blast 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast 16", "RPM Blast 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast 17/1.25", "RPM Blast 17/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast 18 (1.20)", "RPM Blast 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast Rough 15L", "RPM Blast Rough 15L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast Rough 16", "RPM Blast Rough 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Blast Rough 17", "RPM Blast Rough 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Team 16 Black", "RPM Team 16 Black");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "RPM Team 17 (1.25)", "RPM Team 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "SG SpiralTek 16", "SG SpiralTek 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "SpiralTek 17", "SpiralTek 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Synthetic Gut 16 (1.30)", "Synthetic Gut 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Synthetic Gut 17 (1.25)", "Synthetic Gut 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Tonic + Natural Gut 16", "Tonic + Natural Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "VS Natural Team Gut 17 (1.25)", "VS Natural Team Gut 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "VS Natural ThermoGut 16 Touch", "VS Natural ThermoGut 16 Touch");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "VS Touch 15L (1.35)", "VS Touch 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Xcel 16", "Xcel 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Xcel French Open Black 16", "Xcel French Open Black 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Xcel French Open Black 17", "Xcel French Open Black 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (3, "Xcel Premium 17", "Xcel Premium 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (4, "Becker Bomber 16", "Becker Bomber 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (4, "Becker Bomber 17", "Becker Bomber 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (4, "Becker Bomber NYC 16 (1.28)", "Becker Bomber NYC 16 (1.28)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (4, "Becker Bomber NYC 17 (1.23)", "Becker Bomber NYC 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (4, "Becker Pulse 16 (1.32)", "Becker Pulse 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Elite XT 16", "Elite XT 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Elite XT 17", "Elite XT 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Impulse 16 (1.32)", "Impulse 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Impulse 17 (1.25)", "Impulse 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Power 15L (1.35)", "Solstice Power 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Power 16 (1.30)", "Solstice Power 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Power 16L (1.25)", "Solstice Power 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Power 17 (1.20)", "Solstice Power 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Pro 15L (1.35)", "Solstice Pro 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Pro 16L (1.25)", "Solstice Pro 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (5, "Solstice Pro 16L (1.25)", "Solstice Pro 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "666 (1.30)", "666 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "AR Diablo (1.24)", "AR Diablo (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "AR Diablo (1.31)", "AR Diablo (1.31)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "AR Raptor 1.27", "AR Raptor 1.27");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "AR Twice Dragon(1.30)", "AR Twice Dragon(1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "AR Twice Shark (1.25)", "AR Twice Shark (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (6, "AR WTS 25 (1.25)", "AR WTS 25 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Black Widow 16", "Black Widow 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Black Widow 17", "Black Widow 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Black Widow 18 (1.21)", "Black Widow 18 (1.21)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Explosive 16", "Explosive 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Explosive 17 (1.26)", "Explosive 17 (1.26)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Explosive 18 (1.20)", "Explosive 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Hexy Fiber 16", "Hexy Fiber 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Hexy Fiber 17", "Hexy Fiber 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Ice 16 (1.30)", "Ice 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Ice 17 (1.25)", "Ice 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Pearl 16 (1.30)", "Pearl 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Pearl 17 (1.25)", "Pearl 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "S-Gut 16 (1.32)", "S-Gut 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "S-Gut 17", "S-Gut 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "S-Gut 18 (1.19)", "S-Gut 18 (1.19)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Silk 16 (1.30)", "Silk 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (7, "Silk 17", "Silk 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "FXT 16 (1.30)", "FXT 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "FXT 17 (1.24)", "FXT 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Glide Cross String 16", "Glide Cross String 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "IO 17 (1.23)", "IO 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "IO 18 (1.18)", "IO 18 (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "IO Soft 15L (1.40)", "IO Soft 15L (1.40)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "IO Soft 16 (1.28)", "IO Soft 16 (1.28)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "IO Soft 17 (1.23)", "IO Soft 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Jet 16L (1.28)", "Jet 16L (1.28)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Live Wire 16", "Live Wire 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Live Wire 17 (1.27)", "Live Wire 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Live Wire XP 16", "Live Wire XP 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Live Wire XP 17 (1.27)", "Live Wire XP 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Marathon DPC 15 (1.40)", "Marathon DPC 15 (1.40)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Marathon DPC 16 (1.32)", "Marathon DPC 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Moto 16", "Moto 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Moto 17 (1.24)", "Moto 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Moto Soft 16 (1.29)", "Moto Soft 16 (1.29)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Moto Soft 17 (1.24)", "Moto Soft 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Ocho 16 (1.30)", "Ocho 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Ocho 17 (1.25)", "Ocho 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Ocho TNT 16 (1.30)", "Ocho TNT 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Ocho TNT 17 (1.25)", "Ocho TNT 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Ocho XP 16 (1.32)", "Ocho XP 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Ocho XP 17 (1.27)", "Ocho XP 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Poly Z 16", "Poly Z 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Prodigy 16", "Prodigy 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Professional 16", "Professional 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Professional 17", "Professional 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Professional 18 (1.22)", "Professional 18 (1.22)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Professional Spin 16", "Professional Spin 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Revelation 16", "Revelation 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Revelation 17 (1.27)", "Revelation 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "RZR Rx 16", "RZR Rx 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "RZR Rx 17", "RZR Rx 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Solace 16 (1.32)", "Solace 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Solace 17 (1.27)", "Solace 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Synthetic Gut 16", "Synthetic Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Synthetic Gut 17 (1.25)", "Synthetic Gut 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Synthetic Gut 17 W/wearguard (1.22)", "Synthetic Gut 17 W/wearguard (1.22)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Synthetic Gut 18 (1.18)", "Synthetic Gut 18 (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Synthtic Gut 15L W/wearguard (1.38)", "Synthtic Gut 15L W/wearguard (1.38)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 15L (1.40)", "TNT2 15L (1.40)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 16", "TNT2 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 17 (1.27)", "TNT2 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 18 (1.17)", "TNT2 18 (1.17)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Pro Plus 17L (1.24)", "TNT2 Pro Plus 17L (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Rx 16", "TNT2 Rx 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Rx 17 (1.25)", "TNT2 Rx 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Touch 16", "TNT2 Touch 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Touch 17 (1.27)", "TNT2 Touch 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Tour 16 (1.32)", "TNT2 Tour 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "TNT2 Tour 17 (1.27)", "TNT2 Tour 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "WearGuard Synthetic Gut 16", "WearGuard Synthetic Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Zo Dart 17 (1.25)", "Zo Dart 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Zo Twist 16", "Zo Twist 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Zo Verve 16 (1.32)", "Zo Verve 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (8, "Zo Verve 17", "Zo Verve 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "A.K. Control 16", "A.K. Control 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "AK Control 17 (1.24)", "AK Control 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "AK Pro 16", "AK Pro 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "AK Pro 17", "AK Pro 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "AK Pro CX 16 (1.30)", "AK Pro CX 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "AK Pro CX 17 (1.24)", "AK Pro CX 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "AK Pro Spin 15L (1.38)", "AK Pro Spin 15L (1.38)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "G-Tour 16 (1.30)", "G-Tour 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Lumina Spin 16L (1.26)", "Lumina Spin 16L (1.26)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Multi CX 16 (1.30)", "Multi CX 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Multi CX 17 (1.24)", "Multi CX 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Nanocubic 16", "Nanocubic 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Nanosilver 17", "Nanosilver 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "OG Sheep Micro 17", "OG Sheep Micro 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "OG Sheep Micro 18", "OG Sheep Micro 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "OG Sheep Micro Super 16L", "OG Sheep Micro Super 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "OG-Sheep Micro 16", "OG-Sheep Micro 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Poly Professional 16 (1.29)", "Poly Professional 16 (1.29)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Poly Professional 17 (1.24)", "Poly Professional 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Polylon 17 (1.24)", "Polylon 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Polylon PolyBreak 17 (1.24)", "Polylon PolyBreak 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Polylon PolyBreak 18 (1.20)", "Polylon PolyBreak 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Polylon Premium 16 (1.32)", "Polylon Premium 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Polylon Premium 16L (1.27)", "Polylon Premium 16L (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Sidewinder 16 (1.31)", "Sidewinder 16 (1.31)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Sidewinder 17", "Sidewinder 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "Tecflex 16 (1.30)", "Tecflex 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (9, "TecGut Remplir 16", "TecGut Remplir 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "C3 Rocket 16", "C3 Rocket 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "FXP Power 16", "FXP Power 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "FXP Power 17", "FXP Power 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "FXP Tour 16", "FXP Tour 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Hawk 16 (1.30)", "Hawk 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Hawk 17 (1.25)", "Hawk 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Hawk 18 (1.20)", "Hawk 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Hawk Rough 17", "Hawk Rough 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Hawk Touch 18 (1.20)", "Hawk Touch 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Hawk Touch 19 (1.15)", "Hawk Touch 19 (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Lynx 16 (1.30)", "Lynx 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Lynx 17 (1.25)", "Lynx 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Lynx 18 (1.20)", "Lynx 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Lynx Tour 16 (1.30)", "Lynx Tour 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Lynx Tour 17 (1.25)", "Lynx Tour 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Reflex MLT 16 (1.30)", "Reflex MLT 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Reflex MLT 17 (1.25)", "Reflex MLT 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "RIP Control 16", "RIP Control 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Rip Control 17 (1.25)", "Rip Control 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Sonic Pro 16", "Sonic Pro 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Sonic Pro 17", "Sonic Pro 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Sonic Pro Edge 16", "Sonic Pro Edge 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Synthetic Gut PPS 16", "Synthetic Gut PPS 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Synthetic Gut PPS 17 (1.25)", "Synthetic Gut PPS 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (10, "Velocity MLT 17 (1.25)", "Velocity MLT 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Axon Mono 16L", "Axon Mono 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Axon Multi 16L", "Axon Multi 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Black Fire 17", "Black Fire 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Control 16", "Control 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Control Classic 16", "Control Classic 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Cream 17 (1.28)", "Cream 17 (1.28)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Energetic 17", "Energetic 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Energetic Plus 16", "Energetic Plus 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Professional Classic 17", "Professional Classic 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Pulse 16", "Pulse 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Pulse 17", "Pulse 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "Pyramid 16", "Pyramid 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (11, "V18 19 (1.12)", "V18 19 (1.12)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Black Shark 16 (1.30)", "Black Shark 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Competition 16/1.30", "Competition 16/1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Competition 17 (1.25)", "Competition 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Competition 17L (1.20)", "Competition 17L (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Max Power 16 (1.30)", "Max Power 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Max Power 17 (1.25)", "Max Power 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Max Power 18 (1.20)", "Max Power 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Max Power Rough 16 (1.30)", "Max Power Rough 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Max Power Rough 17 (1.25)", "Max Power Rough 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Max Power Rough 18 (1.20)", "Max Power Rough 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line Evolution 17 (1.25)", "Pro Line Evolution 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line II 1.30", "Pro Line II 1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line II 17 (1.25)", "Pro Line II 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line II 17L (1.20)", "Pro Line II 17L (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line II 18 (1.15)", "Pro Line II 18 (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line X 16 (1.30)", "Pro Line X 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Pro Line X 17 (1.25)", "Pro Line X 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Spiky Shark 16", "Spiky Shark 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Spiky Shark 17", "Spiky Shark 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Super Smash 16/1.30", "Super Smash 16/1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Super Smash 17 (1.25)", "Super Smash 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Touch Multifibre 16", "Touch Multifibre 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Touch Multifibre 17 (1.25)", "Touch Multifibre 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Xplosive Speed 1.25", "Xplosive Speed 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (12, "Xplosive Speed 1.30", "Xplosive Speed 1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (13, "Hardcore 16/1.30", "Hardcore 16/1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (13, "K-Boom 18 (1.20)", "K-Boom 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (13, "Kicker 16", "Kicker 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (13, "Legend 16 Uncoated", "Legend 16 Uncoated");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (13, "Legend 17 (1.25)", "Legend 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (13, "Scorcher 17 (1.27)", "Scorcher 17 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "1200 16 (1.30)", "1200 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "JB Tour 100 17g (1.25)", "JB Tour 100 17g (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "Native Tour 17 (1.25)", "Native Tour 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "Supreme 2.0 16 (1.30)", "Supreme 2.0 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "Supreme 2.0 17 (1.25)", "Supreme 2.0 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "Vorso 16 (1.28)", "Vorso 16 (1.28)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (14, "Vorso 17 (1.23)", "Vorso 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "4G 16 (1.30)", "4G 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "4G 16L (1.25)", "4G 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "4G Rough 16L", "4G Rough 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "4G S 15", "4G S 15");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "4G Soft 1.25", "4G Soft 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Adrenaline 16", "Adrenaline 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Adrenaline 16L/1.25", "Adrenaline 16L/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Adrenaline Rough 16L/1.25", "Adrenaline Rough 16L/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "ALU Power 125/16L", "ALU Power 125/16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "ALU Power Feel 18/1.20", "ALU Power Feel 18/1.20");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "ALU Power Rough 16L (1.25)", "ALU Power Rough 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Alu Power Soft 1.25", "Alu Power Soft 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Big Banger Ace 18 (1.12)", "Big Banger Ace 18 (1.12)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Big Banger ALU Power Fluoro 17", "Big Banger ALU Power Fluoro 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Big Banger ALU Power Spin 127/16", "Big Banger ALU Power Spin 127/16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Big Banger Original 130/16", "Big Banger Original 130/16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Big Banger Rough 130/16", "Big Banger Rough 130/16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Big Banger TiMO 17L (1.17)", "Big Banger TiMO 17L (1.17)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Element 1.30", "Element 1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Element 16L (1.25)", "Element 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Element Rough 16 (1.30)", "Element Rough 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "LXN Smart 16 (1.30)", "LXN Smart 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "LXN Smart 16L (1.25)", "LXN Smart 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "M2 Plus 130/16", "M2 Plus 130/16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "M2 Pro 125/16", "M2 Pro 125/16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Natural Gut 1.25", "Natural Gut 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (15, "Savage 16/1.27", "Savage 16/1.27");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Co-Focus 17L (1.18)", "Co-Focus 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Co.-Focus 16L", "Co.-Focus 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus Evo 16", "Focus Evo 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus Evo 17", "Focus Evo 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus Hex 17L (1.18)", "Focus Hex 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus Hex Soft 17 (1.25)", "Focus Hex Soft 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus Hex Soft 17L (1.20)", "Focus Hex Soft 17L (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus-Hex +38 16L (1.25)", "Focus-Hex +38 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus-Hex 16 (1.23)", "Focus-Hex 16 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Focus-Hex 16 (1.27)", "Focus-Hex 16 (1.27)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Hepta-Twist 16", "Hepta-Twist 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (16, "Hepta-Twist 17", "Hepta-Twist 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Classic Natural Gut 16", "Classic Natural Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "PMX 16L", "PMX 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "PMX 17", "PMX 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Poly Force 16L", "Poly Force 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Poly Force 17", "Poly Force 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Poly Power Pro 16 (1.30)", "Poly Power Pro 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Poly Power Pro 16L (1.25)", "Poly Power Pro 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Premium Power X 16L", "Premium Power X 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Prime Gut Orange Bull 16 (1.30)", "Prime Gut Orange Bull 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Prime Gut Orange Bull 16L (1.25)", "Prime Gut Orange Bull 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Prime Natural Gut 16", "Prime Natural Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Prime Natural Gut 16L", "Prime Natural Gut 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Tough Gut 16", "Tough Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "Tough Gut 16L", "Tough Gut 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "X Force 16L (1.29)", "X Force 16L (1.29)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "X Force 17", "X Force 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "X Force 18", "X Force 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "XCite 16 (1.30)", "XCite 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (17, "XCite 16L (1.25)", "XCite 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Black Venom 16 (1.30)", "Black Venom 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Black Venom 16L (1.25)", "Black Venom 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Black Venom Rough 16L (1.25)", "Black Venom Rough 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Cobra 17/1.20", "Cobra 17/1.20");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Hexablade 16L (1.25)", "Hexablade 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Hexablade 17L (1.18)", "Hexablade 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Hightec Premium 16/1.30", "Hightec Premium 16/1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Hightec Premium 16L", "Hightec Premium 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Hightec Premium 17", "Hightec Premium 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Panthera 16 (1.30)", "Panthera 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Poly Hightec 16/1.30", "Poly Hightec 16/1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Poly Hightec 16L", "Poly Hightec 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Poly Hightec 17", "Poly Hightec 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Poly Hightec 18", "Poly Hightec 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "TCS 16/1.30", "TCS 16/1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "TCS 16L", "TCS 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "TCS 17", "TCS 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "TCS Rapid 16L/1.25", "TCS Rapid 16L/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Viper 16L/1.25", "Viper 16L/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (18, "Viper 17/1.20", "Viper 17/1.20");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Beast XP 16", "Beast XP 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Diablo Prism 17", "Diablo Prism 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Lightning Pro 16 (1.30)", "Lightning Pro 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Lightning XX 16", "Lightning XX 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Lightning XX 17", "Lightning XX 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Perfection 16 (1.30)", "Perfection 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Control 15L", "Premier Control 15L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Control 16", "Premier Control 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Control 17", "Premier Control 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Power 16", "Premier Power 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Power 17", "Premier Power 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Touch 16", "Premier Touch 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Premier Touch 17", "Premier Touch 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Syn Gut Original 16", "Syn Gut Original 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Syn Gut Original 17", "Syn Gut Original 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Synthetic Gut 16 Duraflex", "Synthetic Gut 16 Duraflex");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Synthetic Gut 17 Duraflex", "Synthetic Gut 17 Duraflex");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "23 W/ Duraflex 15L", "23 W/ Duraflex 15L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XC 15L", "Tour XC 15L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XC 16L", "Tour XC 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XC 17L", "Tour XC 17L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XP 15L", "Tour XP 15L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XP 16", "Tour XP 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XP 17 (1.25)", "Tour XP 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XR 15L (1.35)", "Tour XR 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XR 16 (1.30)", "Tour XR 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XR 17 (1.25)", "Tour XR 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XS 1.35", "Tour XS 1.35");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XS 16", "Tour XS 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Tour XT 18", "Tour XT 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "24ment Nylon 15L", "24ment Nylon 15L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (19, "Vortex 16 (1.30)", "Vortex 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Firestorm 1.25", "Pro Firestorm 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Firestorm 16 (1.30)", "Pro Firestorm 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Hyperion 16", "Pro Hyperion 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Hyperion 17 (1.24)", "Pro Hyperion 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Hyperion 18 (1.18)", "Pro Hyperion 18 (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Plasma HEXtreme 16 (1.30)", "Pro Plasma HEXtreme 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Plasma HEXtreme 16L/1.25", "Pro Plasma HEXtreme 16L/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly Megaforce 16", "Pro Poly Megaforce 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly Megaforce 17 (1.19)", "Pro Poly Megaforce 17 (1.19)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly Plasma 17 (1.23)", "Pro Poly Plasma 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly Speed Spin 1.28", "Pro Poly Speed Spin 1.28");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly-Plasma 16L", "Pro Poly-Plasma 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly-Plasma 17L (1.18)", "Pro Poly-Plasma 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly-Plasma Pure 16L", "Pro Poly-Plasma Pure 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly-Plasma Pure 17 (1.23)", "Pro Poly-Plasma Pure 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Poly-Plasma Pure 17L (1.18)", "Pro Poly-Plasma Pure 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Tornado 16", "Pro Tornado 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Tornado 17 (1.23)", "Pro Tornado 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Tornado 18 (1.17)", "Pro Tornado 18 (1.17)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro X-Perience 17 (1.24)", "Pro X-Perience 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (20, "Pro Yellow Jacket 17g (1.22)", "Pro Yellow Jacket 17g (1.22)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Barb Wire 16", "Barb Wire 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Barb Wire 16L (1.25)", "Barb Wire 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Barb Wire 17 (1.20)", "Barb Wire 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Confidential 16 (1.30)", "Confidential 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Hyper-G 16", "Hyper-G 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Hyper-G 16L (1.25)", "Hyper-G 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Hyper-G 17 (1.20)", "Hyper-G 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Hyper-G 18 (1.15)", "Hyper-G 18 (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Outlast 16", "Outlast 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Outlast 16L (1.25)", "Outlast 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Outlast 17", "Outlast 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Outlast 18 (1.15)", "Outlast 18 (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Revolution 16", "Revolution 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Revolution 16L (1.25)", "Revolution 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Revolution 17", "Revolution 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Revolution 18 (1.16)", "Revolution 18 (1.16)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 15L (1.35)", "Tour Bite 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 16", "Tour Bite 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 16 Soft", "Tour Bite 16 Soft");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 16L (1.25)", "Tour Bite 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 17", "Tour Bite 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 18 (1.15)", "Tour Bite 18 (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 19 (1.10)", "Tour Bite 19 (1.10)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite 20 (1.05)", "Tour Bite 20 (1.05)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite Diamond Rough 16 (1.30)", "Tour Bite Diamond Rough 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite Diamond Rough 17 (1.20)", "Tour Bite Diamond Rough 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite Soft 16L (1.25)", "Tour Bite Soft 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite Soft 17 (1.20)", "Tour Bite Soft 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Tour Bite Soft 18 (1.15)", "Tour Bite Soft 18 (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Vanquish 16", "Vanquish 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "Vanquish 17 (1.20)", "Vanquish 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "X-Natural 16 (1.30)", "X-Natural 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (21, "X-Natural 17 (1.20)", "X-Natural 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 15L (1.32)", "Black Code 15L (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 16", "Black Code 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 17", "Black Code 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 18", "Black Code 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 4S 16 (1.30)", "Black Code 4S 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 4S 17 (1.25)", "Black Code 4S 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Black Code 4S 18 (1.20)", "Black Code 4S 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Duramix HD 16", "Duramix HD 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Duramix HD 17", "Duramix HD 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "E-Matrix 16", "E-Matrix 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "E-Matrix 17", "E-Matrix 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "HDX Tour 16 (1.30)", "HDX Tour 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "HDX Tour 17 (1.24)", "HDX Tour 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Ice Code 16 (1.30)", "Ice Code 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Multi-Feel 16", "Multi-Feel 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Multi-Feel 17 (1.25)", "Multi-Feel 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Multifeel 16 Black (1.30)", "Multifeel 16 Black (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "NRG2 16", "NRG2 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "NRG2 17/1.24", "NRG2 17/1.24");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "NRG2 18 (1.18)", "NRG2 18 (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Pro Red Code 16", "Pro Red Code 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Pro Red Code 17", "Pro Red Code 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Pro Red Code 18", "Pro Red Code 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Pro Red Code Wax 17", "Pro Red Code Wax 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Razor Code 16 (1.30)", "Razor Code 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Razor Code 17 (1.25)", "Razor Code 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Razor Code 18 (1.20)", "Razor Code 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Ruff Code 16 (1.30)", "Ruff Code 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Ruff Code 17 (1.25)", "Ruff Code 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "TGV 16", "TGV 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "TGV 17/1.25", "TGV 17/1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "Triax 16 (1.33)", "Triax 16 (1.33)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "X-One Biphase 16", "X-One Biphase 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "X-One Biphase 17", "X-One Biphase 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (22, "X-One Biphase 18", "X-One Biphase 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Blue 16", "Cyber Blue 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Blue 17", "Cyber Blue 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Blue 17L (1.20)", "Cyber Blue 17L (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Delta 17 (1.26)", "Cyber Delta 17 (1.26)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Flash 16", "Cyber Flash 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Flash 17", "Cyber Flash 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Flash 17L", "Cyber Flash 17L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (23, "Cyber Whirl 17 (1.24)", "Cyber Whirl 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big HItter Black 7 16 (1.25)", "Big HItter Black 7 16 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Black 7 17", "Big Hitter Black 7 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Blue 16", "Big Hitter Blue 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Blue 17", "Big Hitter Blue 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Blue Rough 16", "Big Hitter Blue Rough 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Blue Rough 17", "Big Hitter Blue Rough 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big HItter Silver 16", "Big HItter Silver 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Silver 17", "Big Hitter Silver 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Silver 7 Tour 16 (1.30)", "Big Hitter Silver 7 Tour 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Silver Rough 16", "Big Hitter Silver Rough 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Big Hitter Silver Rough 17", "Big Hitter Silver Rough 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Black Zone 16", "Black Zone 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Black Zone 17", "Black Zone 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Irradiated 16", "Irradiated 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Irradiated 17", "Irradiated 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Quasi Gut 17", "Quasi Gut 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Quasi-Gut 16", "Quasi-Gut 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Quasi-Gut Armor 16", "Quasi-Gut Armor 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Quasi-Gut Armor 17", "Quasi-Gut Armor 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Synthetic Gut Armor 16", "Synthetic Gut Armor 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (24, "Synthetic Gut Armor 17", "Synthetic Gut Armor 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone 16", "Cyclone 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone 17", "Cyclone 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone 18", "Cyclone 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone 18L (1.15)", "Cyclone 18L (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone 19 (1.10)", "Cyclone 19 (1.10)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone Tour 16 (1.30)", "Cyclone Tour 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone Tour 17 (1.25)", "Cyclone Tour 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Cyclone Tour 18 (1.20)", "Cyclone Tour 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Power-Fiber II 16", "Power-Fiber II 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "Power-Fiber II 17", "Power-Fiber II 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Pro 16", "V-Pro 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Pro 17", "V-Pro 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Pro 18", "V-Pro 18");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Square 16 (1.30)", "V-Square 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Star 16 (1.30)", "V-Star 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Star 18 (1.20)", "V-Star 18 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Star 18L (1.15)", "V-Star 18L (1.15)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Star 19 (1.10)", "V-Star 19 (1.10)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Torque 16", "V-Torque 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Torque 18 (1.18)", "V-Torque 18 (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (25, "V-Torque Tour 16 (1.30)", "V-Torque Tour 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "6 Star 16 (1.30)", "6 Star 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Black 5 Edge 17 (1.24)", "Black 5 Edge 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Blue Rock N Power", "Blue Rock N Power");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Explosiv 1.30", "Explosiv 1.30");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "MatchPower 1.25", "MatchPower 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Mosquito Bite 18 (1.16)", "Mosquito Bite 18 (1.16)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Red Ghost 17L (1.18)", "Red Ghost 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Scorpion 1.22", "Scorpion 1.22");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Scorpion 1.33", "Scorpion 1.33");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Scorpion 16L (1.28)", "Scorpion 16L (1.28)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Silverstring 1.25", "Silverstring 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Silverstring 120", "Silverstring 120");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Turbotwist 17 (1.24)", "Turbotwist 17 (1.24)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Turbotwist 17L (1.18)", "Turbotwist 17L (1.18)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (26, "Ultra Cable 17 (1.23)", "Ultra Cable 17 (1.23)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Enduro Mono 16L", "Enduro Mono 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Natural Gut 16 (1.30)", "Natural Gut 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Natural Gut 17", "Natural Gut 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT 15L (1.35)", "NXT 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT 16", "NXT 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT 17", "NXT 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT Control 16 (1.32)", "NXT Control 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT Duramax 15 (1.40)", "NXT Duramax 15 (1.40)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT Duramax 16 (1.32)", "NXT Duramax 16 (1.32)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT Max 15L (1.35)", "NXT Max 15L (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT Max 16", "NXT Max 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "NXT Power 17 (1.26)", "NXT Power 17 (1.26)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Optimus 16 (1.30)", "Optimus 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Revolve 15 (1.35)", "Revolve 15 (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Revolve 16 (1.30)", "Revolve 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Revolve 17 (1.25)", "Revolve 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Revolve Spin 16", "Revolve Spin 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Sensation 15 (1.35)", "Sensation 15 (1.35)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Sensation 16", "Sensation 16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Sensation 17", "Sensation 17");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Sensation Control 16 (1.30)", "Sensation Control 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Synthetic Gut Control 17 (1.25)", "Synthetic Gut Control 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Synthetic Gut Power 16 (1.30)", "Synthetic Gut Power 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (27, "Synthetic Gut Power 17 (1.25)", "Synthetic Gut Power 17 (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Mono Preme 16 (1.30)", "Mono Preme 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour 130/16", "Poly Tour 130/16");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Air 16L", "Poly Tour Air 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Drive 16L (1.25)", "Poly Tour Drive 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Fire 16L (1.25)", "Poly Tour Fire 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour HS 16 (1.30)", "Poly Tour HS 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour HS 16L (1.25)", "Poly Tour HS 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Pro 17 (1.20)", "Poly Tour Pro 17 (1.20)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Pro Yellow 16 (1.30)", "Poly Tour Pro Yellow 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Pro Yellow 16L (1.25)", "Poly Tour Pro Yellow 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Spin 16L (1.25)", "Poly Tour Spin 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Spin G 1.25", "Poly Tour Spin G 1.25");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Strike 16L (1.25)", "Poly Tour Strike 16L (1.25)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Poly Tour Tough 16L", "Poly Tour Tough 16L");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Rexis 16 (1.30)", "Rexis 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Tour Super 850 16 (1.30)", "Tour Super 850 16 (1.30)");
+  Insert into t_gut (t_gut_company_id, name, name_kor) values (28, "Tour Super Pro 850 16 (1.32)", "Tour Super Pro 850 16 (1.32)");

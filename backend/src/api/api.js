@@ -1,7 +1,7 @@
 const express = require('express');
 
 const project = require('../constants/project');
-const gut_company = require('./gut_company/gut_company.routes');
+const gut = require('./gut/gut.routes');
 const user = require('./users/user.routes');
 const user_physical = require('./user_physical/user_physical.routes');
 const user_playstyle = require('./user_playstyle/user_playstyle.routes');
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     message: project.message,
   });
 });
-router.use('/gut_company', gut_company);
+router.use('/gut', gut);
 router.use('/user_physical', user_physical);
 router.use('/user_playstyle', user_playstyle);
 router.use('/user', user);
