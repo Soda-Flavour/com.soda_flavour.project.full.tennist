@@ -155,4 +155,72 @@ module.exports = {
     errorCode: 'E3610',
     errorMessage: '필수값이 누락되었습니다.',
   },
+  E3700: {
+    errorCode: 'E3700',
+    errorMessage: '해당 스트링 회사 정보를 가져오지 못했습니다.',
+  },
+  E3710: {
+    errorCode: 'E3710',
+    errorMessage: '해당 스트링 회사가 존재하지 않습니다.',
+  },
+  E3800: {
+    errorCode: 'E3800',
+    errorMessage: '스트링 회사 리스트를 가져오지 못했습니다.',
+  },
+  E3900: {
+    errorCode: 'E3900',
+    errorMessage: ' 라켓 히스토리를 추가하지 못했습니다.',
+  },
+  E3910: {
+    errorCode: 'E3910',
+    errorMessage: '라켓 아이디값이 없거나 문제가 있습니다.',
+  },
+  E3911: {
+    errorCode: 'E3911',
+    errorMessage: '라켓 무게값이 없거나 문제가 있습니다.',
+  },
+  E3912: {
+    errorCode: 'E3912',
+    errorMessage: '라켓 밸런스 타입값이 없거나 문제가 있습니다.',
+  },
+  E3913: {
+    errorCode: 'E3913',
+    errorMessage: '라켓 밸런스 값이 없거나 문제가 있습니다.',
+  },
+  E3914: {
+    errorCode: 'E3914',
+    errorMessage: '스트링 아이디값이 없거나 문제가 있습니다.',
+  },
+  E3915: {
+    errorCode: 'E3915',
+    errorMessage: '메인텐션 값이 없거나 문제가 있습니다.',
+  },
+  E3916: {
+    errorCode: 'E3916',
+    errorMessage: '크로스텐션 값이 없거나 문제가 있습니다.',
+  },
+  E3917: {
+    errorCode: 'E3917',
+    errorMessage: '원그립 값이 없거나 문제가 있습니다.',
+  },
+  E3918: {
+    errorCode: 'E3918',
+    errorMessage: '오버그립값이 값이 없거나 문제가 있습니다.',
+  },
+  E3919: {
+    errorCode: 'E3919',
+    errorMessage: '아이디 값이 없거나 문제가 있습니다.',
+  },
+  E3400: {
+    errorCode: 'E3400',
+    errorMessage: '라켓 테이터를 가져올 수 없습니다.',
+  },
+  E3410: {
+    errorCode: 'E3410',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E3420: {
+    errorCode: 'E3420',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
 };
