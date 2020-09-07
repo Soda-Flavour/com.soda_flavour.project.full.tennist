@@ -18,6 +18,7 @@ module.exports = {
   async listWithCompany() {
     return db
       .select({
+        id: 'gt.id',
         gut_name: 'gt.name',
         comapany_name: 'gc.name',
       })
