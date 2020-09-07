@@ -68,7 +68,7 @@ class _Tab1MainScreenState extends State<Tab1MainScreen>
           : ListView.builder(
               padding: const EdgeInsets.all(8),
               itemCount: entries.length,
-              itemExtent: 90,
+              itemExtent: 92,
               itemBuilder: (BuildContext context, int index) {
                 // return Container(
                 //   height: 100,
