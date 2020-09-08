@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
 import 'package:tennist_flutter/pages/tab_3/main/Tap3Main.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.screen.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/profile/ProfileList.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/setting/SettingList.screen.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';

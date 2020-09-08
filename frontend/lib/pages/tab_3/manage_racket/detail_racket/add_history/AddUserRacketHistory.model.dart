@@ -1,22 +1,24 @@
 // To parse this JSON data, do
 //
-//     final gutListModel = gutListModelFromJson(jsonString);
+//     final addUserRacketHistoryModel = addUserRacketHistoryModelFromJson(jsonString);
 
 import 'dart:convert';
 
-GutListModel gutListModelFromJson(String str) =>
-    GutListModel.fromJson(json.decode(str));
+AddUserRacketHistoryModel addUserRacketHistoryModelFromJson(String str) =>
+    AddUserRacketHistoryModel.fromJson(json.decode(str));
 
-String gutListModelToJson(GutListModel data) => json.encode(data.toJson());
+String addUserRacketHistoryModelToJson(AddUserRacketHistoryModel data) =>
+    json.encode(data.toJson());
 
-class GutListModel {
-  GutListModel({
+class AddUserRacketHistoryModel {
+  AddUserRacketHistoryModel({
     this.result,
   });
 
   Result result;
 
-  factory GutListModel.fromJson(Map<String, dynamic> json) => GutListModel(
+  factory AddUserRacketHistoryModel.fromJson(Map<String, dynamic> json) =>
+      AddUserRacketHistoryModel(
         result: json["result"] == null ? null : Result.fromJson(json["result"]),
       );
 
@@ -73,23 +75,24 @@ class Data {
 class ListElement {
   ListElement({
     this.id,
-    this.name,
-    this.nameKor,
+    this.gutName,
+    this.comapanyName,
   });
 
   int id;
-  String name;
-  String nameKor;
+  String gutName;
+  String comapanyName;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         id: json["id"] == null ? null : json["id"],
-        name: json["name"] == null ? null : json["name"],
-        nameKor: json["name_kor"] == null ? null : json["name_kor"],
+        gutName: json["gut_name"] == null ? null : json["gut_name"],
+        comapanyName:
+            json["comapany_name"] == null ? null : json["comapany_name"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
-        "name": name == null ? null : name,
-        "name_kor": nameKor == null ? null : nameKor,
+        "gut_name": gutName == null ? null : gutName,
+        "comapany_name": comapanyName == null ? null : comapanyName,
       };
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.provider.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/racket_history/UserRacketHistory.screen.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.provider.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.screen.dart';
+import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 
 import 'package:tennist_flutter/src/widget/BasicListRow.dart';
 
@@ -78,12 +79,14 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
                       "${snapshot.data.result.data.list[index].racketNickname}\n ${snapshot.data.result.data.list[index].nameKor} ${snapshot.data.result.data.list[index].model}",
                   onTap: () {
                     Map<String, dynamic> passData = {
-                      "id": snapshot.data.result.data.list[index].id,
+                      "user_racket_id":
+                          snapshot.data.result.data.list[index].id,
                     };
-
+                    print(
+                        "아이디 전달 : ${snapshot.data.result.data.list[index].id}");
                     Navigator.of(context).pushNamed(
                         UserRacketHistoryScreen.routeName,
-                        arguments: passData);
+                        arguments: ScreenPassData(passData));
                   },
                 );
               },

@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
-import 'package:tennist_flutter/pages/account/signup/SignUp.model.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/UserRacketList.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.model.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
 
 import 'package:tennist_flutter/src/helper/AppConfig.dart';
 import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/model/AppError.model.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
 
 class UserRacketListProvider with ChangeNotifier {
   AppConfig _appConfig;

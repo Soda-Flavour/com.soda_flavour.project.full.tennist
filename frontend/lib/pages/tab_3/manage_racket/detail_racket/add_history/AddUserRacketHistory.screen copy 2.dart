@@ -1,15 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/add_history/AddUserRacketHistory.model.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/add_history/AddUserRacketHistory.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
-
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/add_history/GutCompanyList.model.dart';
 import 'package:tennist_flutter/src/constants/GutTension.dart';
 import 'package:tennist_flutter/src/constants/RacketBalanceType.dart';
 import 'package:tennist_flutter/src/constants/RacketBalanceVal.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
 import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
 
@@ -27,23 +23,12 @@ class AddUserRacketHistoryScreen extends StatelessWidget {
 
 class _AddUserRacketHistoryScreen extends StatelessWidget {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-  int userRacketId;
-  bool isFirstLoading = true;
+
   @override
   Widget build(BuildContext context) {
     final loadingProv = Provider.of<LoadingProvider>(context, listen: false);
     final addUserRacketHistoryProv =
         Provider.of<AddUserRacketHistoryProvider>(context, listen: false);
-
-    ScreenPassData args = ModalRoute.of(context).settings.arguments;
-
-    if (isFirstLoading) {
-      userRacketId = args.data['user_racket_id'];
-      print("add갑확인 : $userRacketId");
-      isFirstLoading = false;
-    }
-
-    var options = ["Option 1", "Option 2", "Option 3"];
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
@@ -56,7 +41,7 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                 automaticallyImplyLeading: true, //왼쪽 화살표 뒤로 없애기
                 backgroundColor: const Color(0xff141414),
                 title: Text(
-                  '라켓 히스토리 추가',
+                  '신체정보',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     letterSpacing: 0.07,
@@ -68,13 +53,13 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: FutureBuilder<AddUserRacketHistoryModel>(
-            future: AddUserRacketHistoryProvider().getGutListData(),
+          body: FutureBuilder<GutCompanyListModel>(
+            future: AddUserRacketHistoryProvider().getGutCompanyListData(),
             builder: (context, snapshot) {
               print(snapshot.connectionState);
 
               if (snapshot.hasData) {
-                List gutList = (snapshot.data.result.data.list != null)
+                List gutCompanyList = (snapshot.data.result.data.list != null)
                     ? snapshot.data.result.data.list
                     : null;
 
@@ -86,7 +71,7 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                           key: _fbKey,
                           initialValue: {
                             // 'date': DateTime.now(),
-                            't_racket_id': userRacketId,
+                            // 'accept_terms': false,
                           },
                           autovalidate: false,
                           child: Padding(
@@ -98,7 +83,6 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                                   decoration:
                                       InputDecoration(labelText: "라켓무게(g)"),
                                   validators: [
-                                    FormBuilderValidators.required(),
                                     FormBuilderValidators.numeric(),
                                     FormBuilderValidators.min(100),
                                     FormBuilderValidators.max(600),
@@ -135,39 +119,90 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                                           child: Text("$val"))).toList(),
                                 ),
                                 FormBuilderDropdown(
-                                  isDense: true,
-                                  isExpanded: true,
-                                  attribute: "t_gut_id",
-                                  decoration: InputDecoration(
-                                    labelText: "스트링",
-                                  ),
-                                  hint: Text('선택해주세요.'),
-                                  validators: [
-                                    FormBuilderValidators.required()
-                                  ],
-                                  items: gutList.map((val) {
-                                    ListElement item = val;
-
-                                    return DropdownMenuItem(
-                                      value: item.id,
-                                      child: Text(
-                                          "${item.comapanyName}: ${item.gutName}"),
-                                    );
-                                  }).toList(),
-                                ),
-                                FormBuilderDropdown(
-                                  attribute: "main_tension",
+                                  attribute: "gut_company_id",
                                   decoration:
-                                      InputDecoration(labelText: "메인텐션"),
+                                      InputDecoration(labelText: "스트링 회사"),
+                                  onChanged: (value) async =>
+                                      addUserRacketHistoryProv
+                                          .getGutListData(value),
+
                                   // initialValue: 'Male',
                                   hint: Text('선택해주세요.'),
                                   validators: [
                                     FormBuilderValidators.required()
                                   ],
-                                  items: GutTension.map((val) =>
-                                      DropdownMenuItem(
-                                          value: val,
-                                          child: Text("$val"))).toList(),
+                                  items: gutCompanyList.map((val) {
+                                    ListElement item = val;
+
+                                    return DropdownMenuItem(
+                                      value: item.id,
+                                      child: Text("${item.name}"),
+                                    );
+                                  }).toList(),
+                                ),
+                                Consumer<AddUserRacketHistoryProvider>(
+                                    builder: (_, dataProv, child) {
+                                  if (dataProv.getGutListModel != null &&
+                                      dataProv.getGutListModel.length != 0) {
+                                    print("1번진입");
+                                    dynamic avalue = null;
+                                    return FormBuilderDropdown(
+                                        attribute: "gut_id",
+                                        initialValue: avalue,
+                                        onChanged: (val) {
+                                          print(val);
+                                          if (dataProv.isSetGutList) {
+                                            print("가가");
+                                          }
+                                          print("vava");
+                                        },
+                                        decoration:
+                                            InputDecoration(labelText: "스트링"),
+                                        hint: Text('선택해주세요.'),
+                                        validators: [
+                                          FormBuilderValidators.required()
+                                        ],
+                                        items: dataProv.getGutListModel
+                                            .map<DropdownMenuItem<dynamic>>(
+                                                (dynamic value) {
+                                          return DropdownMenuItem(
+                                              value: value.id,
+                                              child: Text(value.name));
+                                        }).toList());
+                                  } else {
+                                    print("2번진입");
+                                    return FormBuilderDropdown(
+                                        attribute: "gut_id",
+                                        decoration:
+                                            InputDecoration(labelText: "스트링"),
+
+                                        // initialValue: 'Male',
+                                        hint: Text('선택해주세요.'),
+                                        validators: [
+                                          FormBuilderValidators.required()
+                                        ],
+                                        items: ['라켓 회사를 선택해주세요']
+                                            .map((val) => DropdownMenuItem(
+                                                value: 0, child: Text("$val")))
+                                            .toList());
+                                  }
+                                }),
+                                Consumer<AddUserRacketHistoryProvider>(
+                                  builder: (context, dataProv, child) =>
+                                      FormBuilderDropdown(
+                                    attribute: "main_tension",
+                                    decoration:
+                                        InputDecoration(labelText: "메인텐션"),
+                                    // initialValue: 'Male',
+                                    hint: Text('선택해주세요.'),
+                                    validators: [
+                                      FormBuilderValidators.required()
+                                    ],
+                                    items: GutTension.map((val) =>
+                                        DropdownMenuItem(
+                                            value: val,
+                                            child: Text("$val"))).toList(),
+                                  ),
                                 ),
                                 FormBuilderDropdown(
                                   attribute: "cross_tension",
@@ -184,7 +219,7 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                                           child: Text("$val"))).toList(),
                                 ),
                                 FormBuilderDropdown(
-                                  attribute: "essential_grip",
+                                  attribute: "essential_grip_id",
                                   decoration: InputDecoration(labelText: "원그립"),
                                   // initialValue: 'Male',
                                   hint: Text('선택해주세요.'),
@@ -228,7 +263,7 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                               print(_fbKey.currentState.value);
                               dynamic result =
                                   await AddUserRacketHistoryProvider()
-                                      .insertUserRacketHistory(
+                                      .updatePhysicalInfo(
                                           _fbKey.currentState.value);
 
                               loadingProv.setEndLoading();
@@ -236,10 +271,9 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                                 return DialogPopUpWidget().successDialogBox(
                                   context,
                                   result.message,
-                                  () => Navigator.popUntil(
-                                      context,
-                                      ModalRoute.withName(
-                                          UserRacketListScreen.routeName)),
+                                  () => Navigator.of(context).pop(),
+                                  // Navigator.popUntil(
+                                  //     context, ModalRoute.withName(LogInScreen.routeName)),
                                 );
                               } else {
                                 return DialogPopUpWidget()

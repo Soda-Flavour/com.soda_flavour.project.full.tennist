@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/add_history/AddUserRacketHistory.screen.dart';
+import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 
 class UserRacketHistoryScreen extends StatefulWidget {
   static const String routeName = '/UserRacketHistory';
@@ -13,6 +14,8 @@ class UserRacketHistoryScreen extends StatefulWidget {
 class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
     with AutomaticKeepAliveClientMixin {
   bool loading = false;
+  bool isFirstLoading = true;
+  int userRacketId;
   final List<String> entries = <String>[
     '소다맛환타',
     '콜라',
@@ -38,6 +41,13 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    ScreenPassData args = ModalRoute.of(context).settings.arguments;
+
+    if (isFirstLoading) {
+      userRacketId = args.data['user_racket_id'];
+      print("갑확인 : $userRacketId");
+      isFirstLoading = false;
+    }
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -61,8 +71,14 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                 new IconButton(
                   icon: new Icon(Icons.add),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(AddUserRacketHistoryScreen.routeName);
+                    Map<String, dynamic> passData = {
+                      "user_racket_id": userRacketId,
+                    };
+
+                    Navigator.of(context).pushNamed(
+                      AddUserRacketHistoryScreen.routeName,
+                      arguments: ScreenPassData(passData),
+                    );
                   },
                 ),
               ],
@@ -107,16 +123,25 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 12),
+                              Text(
+                                "나만의 라켓입니다아아아",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(height: 1),
                               Text(
                                 "Graphene 360+ Gravity Pro",
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              SizedBox(height: 4),
+                              SizedBox(height: 2),
                               Text(
                                 "315g 18-20",
                                 style: TextStyle(
@@ -175,14 +200,19 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                       shrinkWrap: true,
                       padding: const EdgeInsets.all(24.0),
                       itemCount: entries.length,
-                      itemExtent: 170,
+                      itemExtent: 175,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
                           child: GestureDetector(
                             onTap: () {
+                              Map<String, dynamic> passData = {
+                                // "user_racket_id": snapshot.data.result.data.list[index].id,
+                              };
                               Navigator.of(context).pushNamed(
-                                  RacketHistoryDetailScreen.routeName);
+                                RacketHistoryDetailScreen.routeName,
+                                arguments: ScreenPassData(passData),
+                              );
                             },
                             child: Row(
                               children: <Widget>[
@@ -256,6 +286,15 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: <Widget>[
+                                                    Text(
+                                                      "weight: 340g",
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
                                                     Text(
                                                       "Balance: 7pt(HL)",
                                                       style: TextStyle(
