@@ -19,6 +19,7 @@ exports.up = async (knex) => {
     knex.schema.createTable(tableNames.userRacketHistorycoment, (table) => {
       table.increments('id').notNullable();
       references(table, tableNames.userRacketHistory);
+      references(table, tableNames.user);
       table.text('comment').notNullable();
       addDefaultColumns(table);
     }),
