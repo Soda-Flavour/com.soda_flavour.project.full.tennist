@@ -2,7 +2,6 @@ const db = require('../../db');
 
 const tableNames = require('../../constants/tableNames');
 
-const fields = [];
 
 module.exports = {
   async getList(racketVersionId) {
@@ -16,7 +15,10 @@ module.exports = {
     return db
       .select('id')
       .from(tableNames.userRacket)
-      .where({ t_user_id: data.id, racket_nickname: data.racket_nickname })
+      .where({
+        t_user_id: data.id,
+        racket_nickname: data.racket_nickname
+      })
       .first();
   },
   async insertRacket(data) {

@@ -1,71 +1,88 @@
 const express = require('express');
 const apiError = require('../../lib/apiError');
-const queries = require('./gut.queryies');
-const { orWhereNotExists } = require('../../db');
+const queries = require('./gut.queries');
 
 const router = express.Router();
 
-router.get('/list_with_company', async (req, res) => {
+router.get('/list_with_company', async (req, res, next) => {
   try {
     const gut_companies = await queries.listWithCompany();
+
     res.json({
       result: {
         status: 200,
         message: 'send data..',
-        data: { list: gut_companies },
+        data: {
+          list: gut_companies
+        },
       },
     });
+
+
   } catch (error) {
-    console.log(error);
     if (error.errorCode == undefined) {
-      error = await apiError('E3800');
+      const _error = await apiError('E3800');
+      next(_error);
     }
     next(error);
   }
+
 });
 
-router.get('/companies', async (req, res) => {
+router.get('/companies', async (req, res, next) => {
   try {
-    console.log('vkvkvkvk');
     const gut_companies = await queries.gutCompanies();
     res.json({
       result: {
         status: 200,
         message: 'send data..',
-        data: { list: gut_companies },
+        data: {
+          list: gut_companies
+        },
       },
     });
   } catch (error) {
     console.log(error);
     if (error.errorCode == undefined) {
-      error = await apiError('E3800');
+      const _error = await apiError('E3800');
+      next(_error);
     }
     next(error);
   }
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
+router.get('/:id', async (req, res, next) => {
+  const {
+    id
+  } = req.params;
   try {
-    const gut_list = await queries.gutList(id);
+    const reqParams = {
+      id
+    };
+    const resultData = await queries.gutList(reqParams);
     res.json({
       result: {
         status: 200,
         message: 'send data..',
-        data: { list: gut_list },
+        data: {
+          list: resultData
+        },
       },
     });
   } catch (error) {
     console.log(error);
     if (error.errorCode == undefined) {
-      error = await apiError('E3800');
+      const _error = await apiError('E3800');
+      next(_error);
     }
     next(error);
   }
 });
 
 router.get('/companies/:id', async (req, res, next) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   try {
     if (isNaN(id)) {
       const error = new Error('Invalid ID');
@@ -83,14 +100,16 @@ router.get('/companies/:id', async (req, res, next) => {
         result: {
           status: 200,
           message: 'send data..',
-          data: { gut_company },
+          data: {
+            gut_company
+          },
         },
       });
     }
   } catch (error) {
-    console.log(error);
     if (error.errorCode == undefined) {
-      error = await apiError('E3700');
+      const _error = await apiError('E3700');
+      next(_error);
     }
     next(error);
   }

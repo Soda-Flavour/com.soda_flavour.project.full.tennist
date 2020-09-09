@@ -15,7 +15,6 @@ async function checkUserHasToken(req, res, next) {
     next();
   } catch (error) {
     console.log('토큰 검증 실패');
-    // console.log(error);
     next();
   }
 }

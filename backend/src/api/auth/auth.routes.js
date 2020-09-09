@@ -1,23 +1,24 @@
 const express = require('express');
-const yup = require('yup');
 const bcrypt = require('bcrypt');
+const router = express.Router();
+
+const jwt = require('../../lib/jwt');
+const apiError = require('../../lib/apiError');
+const authMiddlewares = require('./auth.middlewares');
+
 const {
   DB_PREFIX
 } = require('../../constants/project');
-
 const {
   signUpValidSchema,
   loginValidSchema
 } = require('./auth.validSchema');
 
-const apiError = require('../../lib/apiError');
-
-const jwt = require('../../lib/jwt');
 const User = require('../users/user.model');
 const UserPhysical = require('../user_physical/user_physical.model');
-const authMiddlewares = require('./auth.middlewares');
-const router = express.Router();
-// router.use(authMiddlewares.checkUserHasToken);
+
+//
+//
 
 router.post('/signup', async (req, res, next) => {
   const {
@@ -54,6 +55,7 @@ router.post('/signup', async (req, res, next) => {
     const existingUser = await User.query().where({
       email
     }).first();
+
     if (existingUser) {
       const err = await apiError('E3020');
       res.status(403);
@@ -63,6 +65,7 @@ router.post('/signup', async (req, res, next) => {
     const existingNick = await User.query().where({
       nick
     }).first();
+
     if (existingNick) {
       const err = await apiError('E3021');
       res.status(403);
@@ -76,7 +79,7 @@ router.post('/signup', async (req, res, next) => {
       password: hashedPassword,
     });
 
-    const insertEemptyUserPhysical = await UserPhysical.query(trx).insert({
+    await UserPhysical.query(trx).insert({
       [DB_PREFIX + 'user_id']: insertedUser.id,
     });
 
@@ -93,7 +96,8 @@ router.post('/signup', async (req, res, next) => {
   } catch (error) {
     await trx.rollback();
     if (error.errorCode == undefined) {
-      error = await apiError('E3000');
+      const _error = await apiError('E3000');
+      next(_error);
     }
     next(error);
   }
@@ -132,7 +136,7 @@ router.post('/login', async (req, res, next) => {
     if (!validPassword) {
       const err = await apiError('E3030');
       res.status(403);
-      throw error;
+      throw err;
     }
 
     const payload = {
@@ -155,7 +159,8 @@ router.post('/login', async (req, res, next) => {
     });
   } catch (error) {
     if (error.errorCode == undefined) {
-      error = await apiError('E3100');
+      const _error = await apiError('E3100');
+      next(_error);
     }
     next(error);
   }
@@ -176,7 +181,8 @@ router.post(
       });
     } catch (error) {
       if (error.errorCode == undefined) {
-        error = await apiError('E3040');
+        const _error = await apiError('E3040');
+        next(_error);
       }
       next(error);
     }

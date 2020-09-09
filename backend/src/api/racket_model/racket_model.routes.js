@@ -1,5 +1,4 @@
 const express = require('express');
-const yup = require('yup');
 const apiError = require('../../lib/apiError');
 const queries = require('./racket_model.queries');
 const authMiddlewares = require('../auth/auth.middlewares');
@@ -12,25 +11,31 @@ const router = express.Router();
 router.use(authMiddlewares.checkUserHasToken);
 
 router.get('/:racketVersionId', async (req, res, next) => {
-  const { racketVersionId } = req.params;
+  const {
+    racketVersionId
+  } = req.params;
   try {
-    await getRacketModelValidSchema.validate(
-      { racketVersionId },
-      { abortEarly: false }
-    );
+    await getRacketModelValidSchema.validate({
+      racketVersionId
+    }, {
+      abortEarly: false
+    });
 
     const racketModelList = await queries.getList(racketVersionId);
     res.json({
       result: {
         status: 200,
         message: 'send data..',
-        data: { list: racketModelList },
+        data: {
+          list: racketModelList
+        },
       },
     });
   } catch (error) {
     console.log(error);
     if (error.errorCode == undefined) {
-      error = await apiError('E3500');
+      const _error = await apiError('E3500');
+      next(_error);
     }
     next(error);
   }
@@ -43,8 +48,13 @@ router.post(
     req.body.racket_id = parseInt(req.body.racket_id, 10);
     console.log('body', req.body);
 
-    const { racket_id, racket_nickname } = req.body;
-    const { id } = req.user;
+    const {
+      racket_id,
+      racket_nickname
+    } = req.body;
+    const {
+      id
+    } = req.user;
     try {
       const insertData = {
         racket_id,
@@ -53,7 +63,9 @@ router.post(
       };
       console.log('insertData', insertData);
       const _insertData = await insertRacketModelValidSchema
-        .validate(insertData, { abortEarly: true })
+        .validate(insertData, {
+          abortEarly: true
+        })
         .catch(async (err) => {
           console.log(err);
           const _err = await apiError(err.params.label);
@@ -71,7 +83,7 @@ router.post(
         throw err;
       }
 
-      const racketInsert = await queries.insertRacket(_insertData);
+      await queries.insertRacket(_insertData);
 
       res.json({
         result: {
@@ -83,7 +95,8 @@ router.post(
     } catch (error) {
       console.log(error);
       if (error.errorCode == undefined) {
-        error = await apiError('E3510');
+        const _error = await apiError('E3510');
+        next(_error);
       }
       next(error);
     }

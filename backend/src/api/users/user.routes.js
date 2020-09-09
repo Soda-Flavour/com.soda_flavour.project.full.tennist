@@ -5,12 +5,13 @@ const User = require('./user.model');
 const UserPhysical = require('../user_physical/user_physical.model');
 const connection = require('../../db');
 const authMiddlewares = require('../auth/auth.middlewares');
-const { updateBasicInfoschema } = require('./user.validSchema');
+const {
+  updateBasicInfoschema
+} = require('./user.validSchema');
 
 const user_racket = require('./user_racket/user_racket.routes');
 const user_racket_history = require('./user_racket_history/user_racket_history.routes');
 
-const { orWhereNotExists } = require('../../db');
 const router = express.Router();
 router.use('/racket', user_racket);
 router.use('/racket_history', user_racket_history);
@@ -29,9 +30,15 @@ const schema = yup.object().shape({
 // });
 
 router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
-  const { id } = req.user;
+  const {
+    id
+  } = req.user;
   try {
-    await schema.validate({ id }, { abortEarly: false });
+    await schema.validate({
+      id
+    }, {
+      abortEarly: false
+    });
     if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
     const users = await User.query()
       .select('id', 'email', 'nick')
@@ -88,22 +95,36 @@ router.get(
   '/basic_info',
   authMiddlewares.isLoggedIn,
   async (req, res, next) => {
-    const { id } = req.user;
+    const {
+      id
+    } = req.user;
     try {
-      await schema.validate({ id }, { abortEarly: false });
+      await schema.validate({
+        id
+      }, {
+        abortEarly: false
+      });
       if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
 
       // const users = await User.getMyPage(id);
 
       let data = await connection
         .select('tu.nick', 'age', 'sex')
-        .from({ tu: 't_user' })
-        .innerJoin({ tup: 't_user_physical' }, 'tu.id', '=', 'tup.t_user_id')
+        .from({
+          tu: 't_user'
+        })
+        .innerJoin({
+          tup: 't_user_physical'
+        }, 'tu.id', '=', 'tup.t_user_id')
         .where('tu.id', id);
 
       console.log(data);
       res.json({
-        result: { status: 200, message: 'succeed!!', data: data },
+        result: {
+          status: 200,
+          message: 'succeed!!',
+          data: data
+        },
       });
     } catch (error) {
       next(error);
@@ -116,7 +137,11 @@ router.post(
   authMiddlewares.isLoggedIn,
   async (req, res, next) => {
     req.body.age = parseInt(req.body.age, 10);
-    const { nick, age, sex } = req.body;
+    const {
+      nick,
+      age,
+      sex
+    } = req.body;
     const trx = await User.startTransaction();
     try {
       const basicInfo = {
@@ -126,7 +151,9 @@ router.post(
       };
 
       await updateBasicInfoschema
-        .validate(basicInfo, { abortEarly: true })
+        .validate(basicInfo, {
+          abortEarly: true
+        })
         .catch(async (err) => {
           console.log(err);
           const _err = await apiError(err.params.label);
@@ -135,7 +162,9 @@ router.post(
         });
       const id = req.user.id;
       const existingNick = await User.query()
-        .where({ nick })
+        .where({
+          nick
+        })
         .where('id', '!=', id)
         .first();
       if (existingNick) {
