@@ -211,16 +211,48 @@ module.exports = {
     errorCode: 'E3919',
     errorMessage: '아이디 값이 없거나 문제가 있습니다.',
   },
-  E3400: {
-    errorCode: 'E3400',
+  E4000: {
+    errorCode: 'E4000',
     errorMessage: '라켓 테이터를 가져올 수 없습니다.',
   },
-  E3410: {
-    errorCode: 'E3410',
+  E4110: {
+    errorCode: 'E4110',
     errorMessage: '필수 값이 없거나 문제가 있습니다.',
   },
-  E3420: {
-    errorCode: 'E3420',
+  E4120: {
+    errorCode: 'E4120',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E4130: {
+    errorCode: 'E4130',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E4200: {
+    errorCode: 'E4200',
+    errorMessage: '라켓 상세 히스토리 테이터를 가져올 수 없습니다.',
+  },
+  E4210: {
+    errorCode: 'E4210',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E4220: {
+    errorCode: 'E4220',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E4300: {
+    errorCode: 'E4300',
+    errorMessage: '코멘트를 추가할 수 없습니다.',
+  },
+  E4310: {
+    errorCode: 'E4310',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E4320: {
+    errorCode: 'E4320',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.',
+  },
+  E4330: {
+    errorCode: 'E4330',
     errorMessage: '필수 값이 없거나 문제가 있습니다.',
   },
 };

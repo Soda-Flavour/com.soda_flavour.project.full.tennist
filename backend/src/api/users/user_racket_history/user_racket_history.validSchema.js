@@ -1,7 +1,14 @@
 const yup = require('yup');
 
-const getUserRacketListValidSchema = yup.object().shape({
-  id: yup.number().required().label('E3610'),
+const getUserRacketHistoryDetailValidSchema = yup.object().shape({
+  userRacketHistoryId: yup.number().required().label('E4210'),
+  t_user_id: yup.number().required().label('E4220'),
+});
+
+const insertUserRacketHistoryDetailCommentValidSchema = yup.object().shape({
+  t_user_racket_history_id: yup.number().required().label('E4310'),
+  comment: yup.string().trim().required().label('E4320'),
+  t_user_id: yup.number().required().label('E4330'),
 });
 
 const insertRacketHistoryValidSchema = yup.object().shape({
@@ -18,12 +25,14 @@ const insertRacketHistoryValidSchema = yup.object().shape({
 });
 
 const getUserRacketDataValidSchema = yup.object().shape({
-  id: yup.number().required().label('E3410'),
-  userRacketId: yup.number().required().label('E3420'),
+  id: yup.number().required().label('E4110'),
+  userRacketId: yup.number().required().label('E4120'),
+  racketId: yup.number().required().label('E4130'),
 });
 
 module.exports = {
-  getUserRacketListValidSchema,
+  getUserRacketHistoryDetailValidSchema,
+  insertUserRacketHistoryDetailCommentValidSchema,
   insertRacketHistoryValidSchema,
   getUserRacketDataValidSchema,
 };

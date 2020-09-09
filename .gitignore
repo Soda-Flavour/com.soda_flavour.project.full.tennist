@@ -126,3 +126,6 @@ app.*.symbols
 
 
 
+backend/.eslintrc.js
+.gitignore
+.gitignore

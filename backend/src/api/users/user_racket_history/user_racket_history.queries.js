@@ -5,28 +5,84 @@ const tableNames = require('../../../constants/tableNames');
 const fields = [];
 
 module.exports = {
-  async getRacketList(userId) {
-    return db
+  async getRacketHistoryDetailData(reqParams) {
+    // reqParams.userRacketHistoryId   t_user_id
+
+    const racketHistoryData = await db
       .select(
-        'ru.id',
-        'ru.racket_nickname',
-        'ru.seq',
-        'tr.model',
-        'rv.name_kor'
+        'urh.weight_tune',
+        'urh.replacement_grip_type',
+        'urh.overgrip_num',
+        'urh.racket_balance_type',
+        'urh.racket_balance_val',
+        'urh.main_gut_lb_tension',
+        'urh.cross_gut_lb_tension',
+        {
+          racket_vertion: 'rv.name',
+          racket_model: 'ra.model',
+          gut_company_name: 'gutc.name',
+          gut_name: 'gut.name',
+        }
       )
-      .from({ ru: tableNames.userRacket })
-      .innerJoin({ tr: tableNames.racket }, 'tr.id', '=', 'ru.t_racket_id')
+      .from({ urh: tableNames.userRacketHistory })
+      .innerJoin(
+        { ur: tableNames.userRacket },
+        'ur.id',
+        '=',
+        'urh.t_user_racket_id'
+      )
+      .innerJoin({ ra: tableNames.racket }, 'ra.id', '=', 'ur.t_racket_id')
       .innerJoin(
         { rv: tableNames.racketVersion },
         'rv.id',
         '=',
-        'tr.t_racket_version_id'
+        'ra.t_racket_version_id'
       )
-      .where({ 'ru.t_user_id': userId });
+      .innerJoin({ gut: tableNames.gut }, 'gut.id', '=', 'urh.t_gut_id')
+      .innerJoin(
+        { gutc: tableNames.gutCompany },
+        'gutc.id',
+        '=',
+        'gut.t_gut_company_id'
+      )
+      .where({
+        'urh.t_user_id': reqParams.t_user_id,
+        'urh.id': reqParams.userRacketHistoryId,
+      })
+      .first();
+
+    console.log('racketHistoryData', racketHistoryData);
+
+    const commentListData = await db
+      .select('tu.nick', 'urhc.comment', {
+        updated_date: 'urhc.updated_at',
+      })
+      .from({ urhc: tableNames.userRacketHistorycoment })
+      .innerJoin({ tu: tableNames.user }, 'tu.id', '=', 'urhc.t_user_id')
+      .where({
+        'urhc.t_user_racket_history_id': reqParams.userRacketHistoryId,
+      })
+      .orderBy('urhc.updated_at', 'desc');
+
+    return { racket_data: racketHistoryData, list: commentListData };
   },
 
   async insertRacketHistory(userRacketHistoryData) {
     return db(tableNames.userRacketHistory).insert(userRacketHistoryData);
+  },
+
+  async insertRacketHistoryDetailComment(reqParams) {
+    const insertId = await db(tableNames.userRacketHistorycoment).insert(
+      reqParams
+    );
+
+    const result = await db
+      .select('urhc.comment', 'urhc.updated_at', { nick: 'tu.nick' })
+      .from({ urhc: tableNames.userRacketHistorycoment })
+      .innerJoin({ tu: tableNames.user }, 'tu.id', '=', 'urhc.t_user_id')
+      .where({ 'urhc.id': insertId })
+      .first();
+    return result;
   },
 
   async getUserRacketHistoryData(reqParams) {
@@ -40,7 +96,12 @@ module.exports = {
         'urh.racket_balance_type',
         'urh.racket_balance_val',
         'urh.main_gut_lb_tension',
-        'urh.cross_gut_lb_tension'
+        'urh.cross_gut_lb_tension',
+        {
+          gut_company_name: 'gutc.name',
+          gut_name: 'gut.name',
+          updated_date: 'urh.updated_at',
+        }
       )
       .from({ urh: tableNames.userRacketHistory })
       .innerJoin({ gut: tableNames.gut }, 'gut.id', '=', 'urh.t_gut_id')
@@ -55,10 +116,8 @@ module.exports = {
         'urh.t_user_racket_id': reqParams.userRacketId,
       });
 
-    console.log(racketHistoryData);
-    const userRacketId = racketHistoryData[0].t_user_racket_id;
+    console.log('racketHistoryData', racketHistoryData);
 
-    console.log(racketHistoryData[0].t_user_racket_id);
     const RacketInfoData = await db
       .select({
         racket_nickname: 'ru.racket_nickname',
@@ -68,8 +127,8 @@ module.exports = {
         weight_ungut: 'tr.weight_ungut',
         racket_balance_lb_val: 'tr.racket_balance_lb_val',
         racket_balance_lb_type: 'tr.racket_balance_lb_type',
-        main_tension: 'rp.main',
-        cross_tension: 'rp.cross',
+        main_pattern: 'rp.main',
+        cross_pattern: 'rp.cross',
       })
       .from({ ru: tableNames.userRacket })
       .innerJoin({ tr: tableNames.racket }, 'tr.id', '=', 'ru.t_racket_id')
@@ -92,10 +151,11 @@ module.exports = {
         'tr.t_racket_pattern_id'
       )
       .where({
-        'ru.id': userRacketId,
+        'ru.id': reqParams.userRacketId,
         'ru.t_user_id': reqParams.id,
       })
       .first();
+
     return { list: racketHistoryData, racket_info: RacketInfoData };
   },
 

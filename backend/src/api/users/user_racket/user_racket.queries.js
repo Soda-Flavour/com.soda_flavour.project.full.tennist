@@ -12,7 +12,8 @@ module.exports = {
         'ru.racket_nickname',
         'ru.seq',
         'tr.model',
-        'rv.name_kor'
+        'rv.name_kor',
+        'ru.t_racket_id'
       )
       .from({ ru: tableNames.userRacket })
       .innerJoin({ tr: tableNames.racket }, 'tr.id', '=', 'ru.t_racket_id')
