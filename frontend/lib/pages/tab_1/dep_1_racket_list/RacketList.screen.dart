@@ -1,7 +1,11 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:tennist_flutter/pages/tab_1/dep_1_racket_list/RacketList.model.dart';
+import 'package:tennist_flutter/pages/tab_1/dep_1_racket_list/RacketList.provider.dart';
 import 'package:tennist_flutter/pages/tab_1/dep_2_racket_history/RacketHistory.screen.dart';
+import 'package:tennist_flutter/src/constants/Sex.dart';
+import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 
 class RacketListScreen extends StatefulWidget {
   static const String routeName = '/RacketList';
@@ -13,24 +17,8 @@ class RacketListScreen extends StatefulWidget {
 class _RacketListScreenState extends State<RacketListScreen>
     with AutomaticKeepAliveClientMixin {
   bool loading = false;
-  final List<String> entries = <String>[
-    '소다맛환타',
-    '콜라',
-    'axa8380',
-    '소다맛환타',
-    '콜라',
-    'axa8380'
-  ];
-  final List<String> racket = <String>[
-    'Graphene 360+ Gravity Pro',
-    'Graphene 360+ speed MP',
-    'Blade V7 (18x20)',
-    'Graphene 360+ Gravity Pro',
-    'Graphene 360+ speed MP',
-    'Blade V7 (18x20)'
-  ];
-  final List<String> tension = <String>['54-54', '50-48', '48-46'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+  Future serverData;
+  bool isFirstLoading = true;
 
   @override
   bool get wantKeepAlive => true;
@@ -38,6 +26,13 @@ class _RacketListScreenState extends State<RacketListScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    ScreenPassData args = ModalRoute.of(context).settings.arguments;
+
+    if (isFirstLoading) {
+      serverData = RacketListProvider().getData(args.data['user_id']);
+      isFirstLoading = false;
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -60,11 +55,11 @@ class _RacketListScreenState extends State<RacketListScreen>
             ),
           ),
         ),
-        body: loading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Column(
+        body: FutureBuilder<RacketListModel>(
+          future: serverData,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Column(
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Stack(
@@ -74,96 +69,60 @@ class _RacketListScreenState extends State<RacketListScreen>
                         padding:
                             const EdgeInsets.fromLTRB(16.0, 18.0, 16.0, 50.0),
                         child: Container(
-                            width: double.infinity,
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(
-                                  width: 70,
-                                  // height: 100,
-                                  child: AspectRatio(
-                                    aspectRatio: 1 / 1,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        color: Colors.white,
-                                        image: new DecorationImage(
-                                          image: ExactAssetImage(
-                                            'assets/images/profile_1.jpeg',
-                                          ),
-                                          fit: BoxFit.fitWidth,
+                          width: double.infinity,
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: 70,
+                                // height: 100,
+                                child: AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      color: Colors.white,
+                                      image: new DecorationImage(
+                                        image: ExactAssetImage(
+                                          'assets/images/profile_1.jpeg',
                                         ),
+                                        fit: BoxFit.fitWidth,
                                       ),
                                     ),
                                   ),
                                 ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 8, 8, 8),
-                                    child: Container(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            '소다맛환타 (NTRP 2.5)',
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.w600),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                                  child: Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          '${snapshot.data.result.data.userData.nick} (NTRP ${snapshot.data.result.data.userData.ntrp})',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(
+                                          '${Sex[snapshot.data.result.data.userData.sex]} ${snapshot.data.result.data.userData.age} - ${snapshot.data.result.data.userData.playStyle}\n${snapshot.data.result.data.userData.heightCm}cm ${snapshot.data.result.data.userData.weightKg}Kg ${snapshot.data.result.data.userData.handed}-handed\n${snapshot.data.result.data.userData.backhandStyle}-back',
+                                          style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black,
                                           ),
-                                          Text(
-                                            'Female 31 - baseLine Player\n188cm 93Kg Right-handed\nOne-hand Back',
-                                            style: TextStyle(
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                )
-                              ],
-                            )
-                            // child: ListTile(
-                            //   // onTap: () => {
-                            //   //   Navigator.of(context)
-                            //   //       .pushNamed(RacketListScreen.routeName)
-                            //   // },
-                            //   leading: AspectRatio(
-                            //     aspectRatio: 1 / 1,
-                            //     child: Container(
-                            //       decoration: BoxDecoration(
-                            //         borderRadius: BorderRadius.circular(10.0),
-                            //         color: Colors.white,
-                            //         image: new DecorationImage(
-                            //           image: ExactAssetImage(
-                            //             'assets/images/profile_1.jpeg',
-                            //           ),
-                            //           fit: BoxFit.fitWidth,
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            //   title: Text(
-                            //     '소다맛환타 (NTRP 2.5)',
-                            //     style: TextStyle(
-                            //         fontSize: 20.0, fontWeight: FontWeight.w600),
-                            //   ),
-                            //   subtitle: Text(
-                            //     'Female 31 - baseLine Player\n188cm 93Kg Right-handed\nOne-hand Back',
-                            //     style: TextStyle(
-                            //       fontSize: 16.0,
-                            //       fontWeight: FontWeight.w400,
-                            //       color: Colors.black,
-                            //     ),
-                            //   ),
-                            //   // trailing: Icon(Icons.keyboard_arrow_right),
-                            // ),
-                            ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                       SizedBox(
                         width: double.infinity,
@@ -200,15 +159,22 @@ class _RacketListScreenState extends State<RacketListScreen>
                     child: ListView.builder(
                       shrinkWrap: true,
                       padding: const EdgeInsets.all(24.0),
-                      itemCount: entries.length,
-                      itemExtent: 170,
+                      itemCount: snapshot.data.result.data.list.length,
+                      itemExtent: 90,
                       itemBuilder: (BuildContext context, int index) {
+                        ListElement rowData =
+                            snapshot.data.result.data.list[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.of(context)
-                                  .pushNamed(RacketHistoryScreen.routeName);
+                              Map<String, dynamic> passData = {
+                                "user_racket_id": rowData.userRacketId
+                              };
+
+                              Navigator.of(context).pushNamed(
+                                  RacketHistoryScreen.routeName,
+                                  arguments: ScreenPassData(passData));
                             },
                             child: Row(
                               children: <Widget>[
@@ -283,7 +249,7 @@ class _RacketListScreenState extends State<RacketListScreen>
                                                       CrossAxisAlignment.start,
                                                   children: <Widget>[
                                                     Text(
-                                                      "Graphene 360+ Gravity Pro",
+                                                      "${rowData.racketCompanyName}",
                                                       style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 16,
@@ -293,7 +259,7 @@ class _RacketListScreenState extends State<RacketListScreen>
                                                     ),
                                                     SizedBox(height: 2),
                                                     Text(
-                                                      "Balance: 7pt(HL)",
+                                                      "${rowData.racketVertion} ${rowData.racketModel}",
                                                       style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 16,
@@ -301,46 +267,154 @@ class _RacketListScreenState extends State<RacketListScreen>
                                                             FontWeight.w500,
                                                       ),
                                                     ),
-                                                    SizedBox(height: 2),
-                                                    Text(
-                                                      "String : 얄루파워 125",
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 2),
-                                                    Text(
-                                                      "Tension: 54-54",
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 2),
-                                                    Text(
-                                                      "Essential grip: leather",
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 2),
-                                                    Text(
-                                                      "Over grip Count: 2",
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
+                                                    // SizedBox(height: 2),
+                                                    // RichText(
+                                                    //   text: TextSpan(
+                                                    //     text: 'weight: ',
+                                                    //     style: TextStyle(
+                                                    //       color: Colors.black,
+                                                    //       fontSize: 16,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w500,
+                                                    //     ),
+                                                    //     children: <TextSpan>[
+                                                    //       TextSpan(
+                                                    //           text:
+                                                    //               '${rowData.weightTune}g',
+                                                    //           style: TextStyle(
+                                                    //               fontSize:
+                                                    //                   14.0,
+                                                    //               color: Colors
+                                                    //                   .black87,
+                                                    //               fontWeight:
+                                                    //                   FontWeight
+                                                    //                       .w400)),
+                                                    //     ],
+                                                    //   ),
+                                                    // ),
+                                                    // SizedBox(height: 2),
+                                                    // RichText(
+                                                    //   text: TextSpan(
+                                                    //     text: 'Balance: ',
+                                                    //     style: TextStyle(
+                                                    //       color: Colors.black,
+                                                    //       fontSize: 16,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w500,
+                                                    //     ),
+                                                    //     children: <TextSpan>[
+                                                    //       TextSpan(
+                                                    //           text: '21pt(HH)',
+                                                    //           style: TextStyle(
+                                                    //               fontSize:
+                                                    //                   14.0,
+                                                    //               color: Colors
+                                                    //                   .black87,
+                                                    //               fontWeight:
+                                                    //                   FontWeight
+                                                    //                       .w400)),
+                                                    //     ],
+                                                    //   ),
+                                                    // ),
+                                                    // SizedBox(height: 2),
+                                                    // RichText(
+                                                    //   text: TextSpan(
+                                                    //     text: 'String: ',
+                                                    //     style: TextStyle(
+                                                    //       color: Colors.black,
+                                                    //       fontSize: 16,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w500,
+                                                    //     ),
+                                                    //     children: <TextSpan>[
+                                                    //       TextSpan(
+                                                    //           text:
+                                                    //               'erewrewrtewr',
+                                                    //           style: TextStyle(
+                                                    //               fontSize:
+                                                    //                   14.0,
+                                                    //               color: Colors
+                                                    //                   .black87,
+                                                    //               fontWeight:
+                                                    //                   FontWeight
+                                                    //                       .w400)),
+                                                    //     ],
+                                                    //   ),
+                                                    // ),
+                                                    // SizedBox(height: 2),
+                                                    // RichText(
+                                                    //   text: TextSpan(
+                                                    //     text: 'Tension: ',
+                                                    //     style: TextStyle(
+                                                    //       color: Colors.black,
+                                                    //       fontSize: 16,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w500,
+                                                    //     ),
+                                                    //     children: <TextSpan>[
+                                                    //       TextSpan(
+                                                    //           text: '45-45',
+                                                    //           style: TextStyle(
+                                                    //               fontSize:
+                                                    //                   14.0,
+                                                    //               color: Colors
+                                                    //                   .black87,
+                                                    //               fontWeight:
+                                                    //                   FontWeight
+                                                    //                       .w400)),
+                                                    //     ],
+                                                    //   ),
+                                                    // ),
+                                                    // SizedBox(height: 2),
+                                                    // RichText(
+                                                    //   text: TextSpan(
+                                                    //     text:
+                                                    //         'Essential grip: ',
+                                                    //     style: TextStyle(
+                                                    //       color: Colors.black,
+                                                    //       fontSize: 16,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w500,
+                                                    //     ),
+                                                    //     children: <TextSpan>[
+                                                    //       TextSpan(
+                                                    //           text: 'leather',
+                                                    //           style: TextStyle(
+                                                    //               fontSize:
+                                                    //                   14.0,
+                                                    //               color: Colors
+                                                    //                   .black87,
+                                                    //               fontWeight:
+                                                    //                   FontWeight
+                                                    //                       .w400)),
+                                                    //     ],
+                                                    //   ),
+                                                    // ),
+                                                    // SizedBox(height: 2),
+                                                    // RichText(
+                                                    //   text: TextSpan(
+                                                    //     text:
+                                                    //         'Over grip Count: ',
+                                                    //     style: TextStyle(
+                                                    //       color: Colors.black,
+                                                    //       fontSize: 16,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w500,
+                                                    //     ),
+                                                    //     children: <TextSpan>[
+                                                    //       TextSpan(
+                                                    //           text: '4',
+                                                    //           style: TextStyle(
+                                                    //               fontSize:
+                                                    //                   14.0,
+                                                    //               color: Colors
+                                                    //                   .black87,
+                                                    //               fontWeight:
+                                                    //                   FontWeight
+                                                    //                       .w400)),
+                                                    //     ],
+                                                    //   ),
+                                                    // ),
                                                   ],
                                                 ),
                                               ),
@@ -369,7 +443,24 @@ class _RacketListScreenState extends State<RacketListScreen>
                     ),
                   ),
                 ],
+              );
+            }
+            return Container(
+              child: new Center(
+                child: Container(
+                  color: Colors.black.withOpacity(.5),
+                  child: const Center(
+                    child: const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
               ),
+            );
+          },
+        ),
       ),
     );
   }

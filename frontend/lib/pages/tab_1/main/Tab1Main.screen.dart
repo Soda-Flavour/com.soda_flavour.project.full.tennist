@@ -1,7 +1,9 @@
-import 'dart:ffi';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tennist_flutter/pages/tab_1/dep_1_racket_list/RacketList.screen.dart';
+import 'package:tennist_flutter/pages/tab_1/main/Tab1Main.model.dart';
+import 'package:tennist_flutter/pages/tab_1/main/Tab1Main.provider.dart';
+import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
 
 class Tab1MainScreen extends StatefulWidget {
   static const String routeName = '/Tab1Main';
@@ -13,14 +15,6 @@ class Tab1MainScreen extends StatefulWidget {
 class _Tab1MainScreenState extends State<Tab1MainScreen>
     with AutomaticKeepAliveClientMixin {
   bool loading = false;
-  final List<String> entries = <String>['소다맛환타', '콜라', 'axa8380'];
-  final List<String> racket = <String>[
-    'Graphene 360+ Gravity Pro',
-    'Graphene 360+ speed MP',
-    'Blade V7 (18x20)'
-  ];
-  final List<String> tension = <String>['54-54', '50-48', '48-46'];
-  final List<int> colorCodes = <int>[600, 500, 100];
 
   @override
   bool get wantKeepAlive => true;
@@ -61,27 +55,27 @@ class _Tab1MainScreenState extends State<Tab1MainScreen>
           ],
         ),
       ),
-      body: loading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
+      body: FutureBuilder<Tab1MainModel>(
+        future: Tab1MainProvider().getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
               padding: const EdgeInsets.all(8),
-              itemCount: entries.length,
+              itemCount: snapshot.data.result.data.list.length,
               itemExtent: 92,
               itemBuilder: (BuildContext context, int index) {
-                // return Container(
-                //   height: 100,
-                //   color: Colors.amber[colorCodes[index]],
-                //   child: Center(child: Text('Entry ${entries[index]}')),
-                // );
-
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      onTap: () => {
-                        Navigator.of(context)
-                            .pushNamed(RacketListScreen.routeName)
+                      onTap: () {
+                        Map<String, dynamic> passData = {
+                          "user_id":
+                              snapshot.data.result.data.list[index].userId
+                        };
+
+                        Navigator.of(context).pushNamed(
+                            RacketListScreen.routeName,
+                            arguments: ScreenPassData(passData));
                       },
                       leading: AspectRatio(
                         aspectRatio: 1 / 1,
@@ -105,12 +99,12 @@ class _Tab1MainScreenState extends State<Tab1MainScreen>
                       //   backgroundColor: Colors.white,
                       // ),
                       title: Text(
-                        '${entries[index]}',
+                        '${snapshot.data.result.data.list[index].userNick}',
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.w600),
                       ),
                       subtitle: Text(
-                        '${racket[index]} \n(tension: ${tension[index]})',
+                        '${snapshot.data.result.data.list[index].racketVersion} ${snapshot.data.result.data.list[index].racketModel}\n${snapshot.data.result.data.list[index].racketCnt}개의 라켓',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w400,
@@ -124,7 +118,25 @@ class _Tab1MainScreenState extends State<Tab1MainScreen>
                     )
                   ],
                 );
-              }),
+              },
+            );
+          }
+          return Container(
+            child: new Center(
+              child: Container(
+                color: Colors.black.withOpacity(.5),
+                child: const Center(
+                  child: const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
