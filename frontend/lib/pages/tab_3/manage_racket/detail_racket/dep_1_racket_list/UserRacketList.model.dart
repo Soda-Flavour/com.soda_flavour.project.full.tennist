@@ -79,28 +79,32 @@ class ListElement {
     this.seq,
     this.model,
     this.nameKor,
+    this.tRacketId,
   });
 
   int id;
   String racketNickname;
-  int seq;
+  dynamic seq;
   String model;
   String nameKor;
+  int tRacketId;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         id: json["id"] == null ? null : json["id"],
         racketNickname:
             json["racket_nickname"] == null ? null : json["racket_nickname"],
-        seq: json["seq"] == null ? null : json["seq"],
+        seq: json["seq"],
         model: json["model"] == null ? null : json["model"],
         nameKor: json["name_kor"] == null ? null : json["name_kor"],
+        tRacketId: json["t_racket_id"] == null ? null : json["t_racket_id"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "racket_nickname": racketNickname == null ? null : racketNickname,
-        "seq": seq == null ? null : seq,
+        "seq": seq,
         "model": model == null ? null : model,
         "name_kor": nameKor == null ? null : nameKor,
+        "t_racket_id": tRacketId == null ? null : tRacketId,
       };
 }

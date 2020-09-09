@@ -81,9 +81,12 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
                     Map<String, dynamic> passData = {
                       "user_racket_id":
                           snapshot.data.result.data.list[index].id,
+                      "racket_id":
+                          snapshot.data.result.data.list[index].tRacketId,
                     };
+                    print("아이디 전달 : ${snapshot.data.result.data.list[index]}");
                     print(
-                        "아이디 전달 : ${snapshot.data.result.data.list[index].id}");
+                        "라켓값 전달 : ${snapshot.data.result.data.list[index].tRacketId}");
                     Navigator.of(context).pushNamed(
                         UserRacketHistoryScreen.routeName,
                         arguments: ScreenPassData(passData));

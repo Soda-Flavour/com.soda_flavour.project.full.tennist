@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.model.dart';
 
 import 'package:tennist_flutter/src/helper/AppConfig.dart';
 import 'package:tennist_flutter/src/helper/AuthHelper.dart';
 
-class UserRacketListProvider with ChangeNotifier {
+class UserRacketHistoryProvider with ChangeNotifier {
   AppConfig _appConfig;
   AppConfig get appConfig => _appConfig;
   final AsyncMemoizer _memoizer = AsyncMemoizer();
@@ -19,17 +20,18 @@ class UserRacketListProvider with ChangeNotifier {
     }
   }
 
-  Future<UserRacketListModel> getData() async {
+  Future<UserRacketHistoryModel> getData(racketHistoryId, racketId) async {
     try {
       String accessT = await AuthHelper.getAccessToken();
       Map<String, String> headers = {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/user/racket/list';
+      final String url =
+          'http://localhost:3000/api/v1/user/racket_history?racket_history_id=$racketHistoryId&racket_id=$racketId';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        final resultModel = userRacketListModelFromJson(response.body);
+        final resultModel = userRacketHistoryModelFromJson(response.body);
         return resultModel;
       }
 

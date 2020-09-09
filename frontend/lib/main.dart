@@ -10,6 +10,7 @@ import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_4_set_r
 import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/add_history/AddUserRacketHistory.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.screen.dart';
+import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.screen.dart';
 
 import 'package:tennist_flutter/pages/tab_3/profile/ProfileList.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/profile/basic_info/UserBasicInfoForm.screen.dart';
@@ -67,6 +68,8 @@ class MyApp extends StatelessWidget {
           UserRacketListScreen.routeName: (context) => UserRacketListScreen(),
           UserRacketHistoryScreen.routeName: (context) =>
               UserRacketHistoryScreen(),
+          UserRacketHistoryDetailScreen.routeName: (context) =>
+              UserRacketHistoryDetailScreen(),
           AddUserRacketHistoryScreen.routeName: (context) =>
               AddUserRacketHistoryScreen(),
           SettingListScreen.routeName: (context) => SettingListScreen(),
