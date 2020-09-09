@@ -9,7 +9,7 @@ const auth = require('./auth/auth.routes');
 const racket_company = require('./racket_company/racket_company.routes');
 const racket_version = require('./racket_version/racket_version.routes');
 const racket_model = require('./racket_model/racket_model.routes');
-// const gut_company = require('./gut_company/gut_company.routes');
+const section_1 = require('./section_1/section_1.routes');
 // const gut_company = require('./gut_company/gut_company.routes');
 // const gut_company = require('./gut_company/gut_company.routes');
 // const gut_company = require('./gut_company/gut_company.routes');
@@ -29,6 +29,7 @@ router.use('/auth', auth);
 router.use('/racket_company', racket_company);
 router.use('/racket_version', racket_version);
 router.use('/racket_model', racket_model);
+router.use('/section_1', section_1);
 //  router.use('/gut_company', gut_company);
 //  router.use('/gut_company', gut_company);
 

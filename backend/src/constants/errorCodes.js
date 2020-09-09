@@ -255,4 +255,13 @@ module.exports = {
     errorCode: 'E4330',
     errorMessage: '필수 값이 없거나 문제가 있습니다.',
   },
+  E4400: {
+    errorCode: 'E4400',
+    errorMessage: '유저의 라켓을 가져올 수 없습니다.',
+  },
+  E4410: {
+    errorCode: 'E4410',
+    errorMessage: '필수 값이 없거나 문제가 있습니다.'
+
+  },
 };
