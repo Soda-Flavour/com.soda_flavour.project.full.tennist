@@ -33,7 +33,7 @@ class UserBasicInfoFormProvider with ChangeNotifier {
   //     //     "Content-Type": "application/json",
   //     //     "Authorization": "Bearer $accessT"
   //     //   };
-  //     //   final String url = 'http://localhost:3000/api/v1/user/basic_info';
+  //     //   final String url = 'http://172.30.1.38:3000/api/v1/user/basic_info';
   //     //   final http.Response response = await http.get(url, headers: headers);
   //     //   if (response.statusCode == 200) {
   //     //     print("하이이이이");
@@ -56,7 +56,7 @@ class UserBasicInfoFormProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/user/basic_info';
+      final String url = 'http://172.30.1.38:3000/api/v1/user/basic_info';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         print("하이이이이");
@@ -79,7 +79,7 @@ class UserBasicInfoFormProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/user/basic_info';
+      final String url = 'http://172.30.1.38:3000/api/v1/user/basic_info';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response =
           await http.post(url, headers: headers, body: json.encode(data));

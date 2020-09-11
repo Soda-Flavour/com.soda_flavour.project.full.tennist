@@ -28,7 +28,7 @@ class UserRacketHistoryProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user/racket_history?racket_history_id=$racketHistoryId&racket_id=$racketId';
+          'http://172.30.1.38:3000/api/v1/user/racket_history?racket_history_id=$racketHistoryId&racket_id=$racketId';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = userRacketHistoryModelFromJson(response.body);

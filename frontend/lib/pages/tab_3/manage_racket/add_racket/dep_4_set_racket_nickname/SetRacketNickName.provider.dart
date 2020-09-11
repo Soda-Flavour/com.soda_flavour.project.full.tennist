@@ -31,7 +31,7 @@ class SetRacketNickNameProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/racket_model/insert_user_racket';
+          'http://172.30.1.38:3000/api/v1/racket_model/insert_user_racket';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response =
           await http.post(url, headers: headers, body: json.encode(data));

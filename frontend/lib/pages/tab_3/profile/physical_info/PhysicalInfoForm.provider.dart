@@ -27,7 +27,8 @@ class PhysicalInfoFormProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/user_physical/physical';
+      final String url =
+          'http://172.30.1.38:3000/api/v1/user_physical/physical';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = physicalInfoFormModelFromJson(response.body);
@@ -51,7 +52,8 @@ class PhysicalInfoFormProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/user_physical/physical';
+      final String url =
+          'http://172.30.1.38:3000/api/v1/user_physical/physical';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response =
           await http.post(url, headers: headers, body: json.encode(data));

@@ -26,7 +26,7 @@ class Tab1MainProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/section_1/racket_of_users';
+          'http://172.30.1.38:3000/api/v1/section_1/racket_of_users';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = tab1MainModelFromJson(response.body);
@@ -35,6 +35,7 @@ class Tab1MainProvider with ChangeNotifier {
 
       throw new Exception('notLoggedin');
     } catch (e) {
+      print(e);
       throw new Exception('eeee');
     }
   }

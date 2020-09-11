@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
 import 'package:tennist_flutter/pages/tab_3/main/Tap3Main.provider.dart';
@@ -10,8 +12,6 @@ import 'package:tennist_flutter/pages/tab_3/profile/ProfileList.screen.dart';
 import 'package:tennist_flutter/pages/tab_3/setting/SettingList.screen.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';
 import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
-import 'package:tennist_flutter/src/helper/ApiReciver.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
 
 class Tab3MainScreen extends StatefulWidget {
   static const String routeName = '/Tab3Main';
@@ -24,9 +24,54 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
   final storage = new FlutterSecureStorage();
   final isLogin = false;
 
+  String imagePath;
+  double _animatedHeight = 0.0;
+  String _errorMsg = '';
+
+  String timestamp() => new DateTime.now().millisecondsSinceEpoch.toString();
+
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> loadAssets() async {
+    print("접근");
+    // setState(() {
+    //   images = List<Asset>();
+    // });
+
+    List<Asset> resultList;
+    String error;
+
+    try {
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: 1,
+        enableCamera: true,
+      );
+    } on Exception catch (e) {
+      print(e);
+      error = e.toString();
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    ByteData byteData =
+        await resultList[0].getThumbByteData(300, 300, quality: 80);
+
+    await Tap3MainProvider().uploadThumbnail(byteData);
+    // setState(() {
+    //   images = resultList;
+    //   if (error == null) _error = 'No Error Dectected';
+    // });
   }
 
   Widget buildProfile(String nick, String ntrp) {
@@ -37,32 +82,35 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Stack(
-                alignment: AlignmentDirectional.bottomEnd,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 35.0,
-                    backgroundImage:
-                        new AssetImage('assets/images/profile_1.jpeg'),
-                  ),
-                  // CircleAvatar(
-                  //   radius: 12.0,
-                  //   backgroundColor: const Color(0xff48caf5),
-                  //   backgroundImage: new AssetImage(
-                  //     'assets/images/outline_create_white.png',
-                  //   ),
-                  // ),
-                  CircleAvatar(
-                    radius: 12,
-                    backgroundColor: const Color(0xff48caf5),
-                    child: ClipOval(
-                      child: Image.asset(
-                        'assets/images/outline_create_white.png',
-                        width: 18.0,
+              GestureDetector(
+                onTap: loadAssets,
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  children: <Widget>[
+                    CircleAvatar(
+                      radius: 35.0,
+                      backgroundImage:
+                          new AssetImage('assets/images/profile_1.jpeg'),
+                    ),
+                    // CircleAvatar(
+                    //   radius: 12.0,
+                    //   backgroundColor: const Color(0xff48caf5),
+                    //   backgroundImage: new AssetImage(
+                    //     'assets/images/outline_create_white.png',
+                    //   ),
+                    // ),
+                    CircleAvatar(
+                      radius: 12,
+                      backgroundColor: const Color(0xff48caf5),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/images/outline_create_white.png',
+                          width: 18.0,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Expanded(
                 child: Padding(

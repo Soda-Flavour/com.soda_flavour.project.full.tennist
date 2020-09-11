@@ -34,7 +34,7 @@ class UserRacketHistoryDetailProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user/racket_history/detail?user_racket_history_id=$racketHistoryDetailId';
+          'http://172.30.1.38:3000/api/v1/user/racket_history/detail?user_racket_history_id=$racketHistoryDetailId';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = userRacketHistoryDetailModelFromJson(response.body);
@@ -58,7 +58,7 @@ class UserRacketHistoryDetailProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user/racket_history/detail';
+          'http://172.30.1.38:3000/api/v1/user/racket_history/detail';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response = await http.post(url,
           headers: headers,

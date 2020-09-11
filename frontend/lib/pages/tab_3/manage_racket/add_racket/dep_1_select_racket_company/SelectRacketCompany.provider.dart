@@ -30,7 +30,7 @@ class SelectRacketCompanyProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/racket_company';
+      final String url = 'http://172.30.1.38:3000/api/v1/racket_company';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = selectRacketCompanyModelFromJson(response.body);

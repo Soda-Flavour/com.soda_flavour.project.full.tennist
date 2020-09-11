@@ -22,7 +22,7 @@ class SignUpProvider with ChangeNotifier {
       Map<String, String> headers = {
         "Content-Type": "application/json",
       };
-      final String url = 'http://localhost:3000/api/v1/auth/signup';
+      final String url = 'http://172.30.1.38:3000/api/v1/auth/signup';
       // final String url = '${appConfig.baseUrl}/signup';
 
       final http.Response response =

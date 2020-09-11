@@ -26,7 +26,7 @@ class RacketListProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/section_1/user_rackets/$user_id';
+          'http://172.30.1.38:3000/api/v1/section_1/user_rackets/$user_id';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = racketListModelFromJson(response.body);
