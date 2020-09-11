@@ -264,4 +264,9 @@ module.exports = {
     errorMessage: '필수 값이 없거나 문제가 있습니다.'
 
   },
+  E4500: {
+    errorCode: 'E4500',
+    errorMessage: '썸네일 이미지 업로드에 실패했습니다.'
+
+  },
 };

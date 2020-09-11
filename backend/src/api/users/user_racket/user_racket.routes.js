@@ -1,17 +1,24 @@
 const express = require('express');
-const yup = require('yup');
 const apiError = require('../../../lib/apiError');
 const authMiddlewares = require('../../auth/auth.middlewares');
 const queries = require('./user_racket.queries');
-const { getUserRacketListValidSchema } = require('./user_racket.validSchema');
+const {
+  getUserRacketListValidSchema
+} = require('./user_racket.validSchema');
 
 const router = express.Router();
 router.use(authMiddlewares.checkUserHasToken);
 
 router.get('/list', authMiddlewares.isLoggedIn, async (req, res, next) => {
-  const { id } = req.user;
+  const {
+    id
+  } = req.user;
   try {
-    await getUserRacketListValidSchema.validate({ id }, { abortEarly: false });
+    await getUserRacketListValidSchema.validate({
+      id
+    }, {
+      abortEarly: false
+    });
 
     const userRacketList = await queries.getRacketList(id);
 
@@ -19,7 +26,9 @@ router.get('/list', authMiddlewares.isLoggedIn, async (req, res, next) => {
       result: {
         status: 200,
         message: 'send data..',
-        data: { list: userRacketList },
+        data: {
+          list: userRacketList
+        },
       },
     });
   } catch (error) {

@@ -1,10 +1,17 @@
 const express = require('express');
 const yup = require('yup');
+const queries = require('./user.queries');
 const apiError = require('../../lib/apiError');
 const User = require('./user.model');
 const UserPhysical = require('../user_physical/user_physical.model');
 const connection = require('../../db');
 const authMiddlewares = require('../auth/auth.middlewares');
+
+
+const fs = require('fs');
+const Readable = require('stream').Readable;
+
+
 const {
   updateBasicInfoschema
 } = require('./user.validSchema');
@@ -29,33 +36,112 @@ const schema = yup.object().shape({
 //   res.json(users);
 // });
 
-router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
-  const {
-    id
-  } = req.user;
+
+
+
+router.post('/mypage/upload_thumb', authMiddlewares.isLoggedIn, async (req, res, next) => {
+
   try {
-    await schema.validate({
+    const {
       id
-    }, {
-      abortEarly: false
-    });
-    if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
-    const users = await User.query()
-      .select('id', 'email', 'nick')
-      .where('id', id)
-      .where('deleted_at', null);
+    } = req.user;
+    const fileName = await Math.random().toString(36).substr(2, 11) + id + "_date_" + await Date.now() + '.png';
+    const reqParams = {
+      id,
+      fileName
+    }
+
+    const imgBuffer = new Buffer.from(req.body.data, 'base64')
+    var s = new Readable();
+    s.push(imgBuffer)
+    s.push(null)
+    s.pipe(fs.createWriteStream(`./src/public/image/thumb/${fileName}`));
+
+    const resultData = await queries.insertUserThumb(reqParams);
 
     res.json({
       result: {
         status: 200,
         message: 'send data..',
-        data: users,
+        data: {
+          "thumb": fileName
+        },
+      },
+    });
+
+  } catch (error) {
+    console.log(error);
+    if (error.errorCode == undefined) {
+      error = await apiError('E4500');
+    }
+    next(error);
+  }
+
+});
+
+
+
+router.get('/mypage', async (req, res, next) => {
+  const {
+    id
+  } = req.user;
+  try {
+    const reqParams = {
+      id
+    };
+
+    const userRacketList = await queries.getMyPageData(reqParams);
+
+    res.json({
+      result: {
+        status: 200,
+        message: 'send data..',
+        data: {
+          list: userRacketList
+        },
       },
     });
   } catch (error) {
+    console.log(error);
+    if (error.errorCode == undefined) {
+      error = await apiError('E3600');
+    }
     next(error);
   }
 });
+
+
+
+// router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
+//   const {
+//     id
+//   } = req.user;
+//   try {
+//     await schema.validate({
+//       id
+//     }, {
+//       abortEarly: false
+//     });
+//     if (req.user.id != id) throw new Error('허용되지 않은 요청입니다.');
+
+// const resultData = awaut queries.getMyPage()
+
+//     const users = await User.query()
+//       .select('id', 'email', 'nick')
+//       .where('id', id)
+//       .where('deleted_at', null);
+
+//     res.json({
+//       result: {
+//         status: 200,
+//         message: 'send data..',
+//         data: users,
+//       },
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
 //   console.log(req.user);
