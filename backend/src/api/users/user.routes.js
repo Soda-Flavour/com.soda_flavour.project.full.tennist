@@ -81,7 +81,7 @@ router.post('/mypage/upload_thumb', authMiddlewares.isLoggedIn, async (req, res,
 
 
 
-router.get('/mypage', async (req, res, next) => {
+router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
   const {
     id
   } = req.user;
@@ -91,14 +91,12 @@ router.get('/mypage', async (req, res, next) => {
     };
 
     const userRacketList = await queries.getMyPageData(reqParams);
-
+    console.log(userRacketList);
     res.json({
       result: {
         status: 200,
         message: 'send data..',
-        data: {
-          list: userRacketList
-        },
+        data: userRacketList,
       },
     });
   } catch (error) {
@@ -259,11 +257,11 @@ router.post(
         throw err;
       }
 
-      const insertedUser = await User.query(trx).findById(id).patch({
+      await User.query(trx).findById(id).patch({
         nick,
       });
 
-      const updateUserPhysical = await UserPhysical.query(trx)
+      await UserPhysical.query(trx)
         .patch({
           age,
           sex,
@@ -275,7 +273,7 @@ router.post(
           status: 200,
           message: '기본정보를 업데이트 했습니다.',
           data: null,
-        },
+        }
       });
       await trx.commit();
     } catch (error) {
