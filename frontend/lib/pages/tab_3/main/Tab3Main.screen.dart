@@ -28,6 +28,9 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
   double _animatedHeight = 0.0;
   String _errorMsg = '';
 
+  String thumbUrl = null;
+  bool isLoggedIn = false;
+
   String timestamp() => new DateTime.now().millisecondsSinceEpoch.toString();
 
   @override
@@ -67,11 +70,18 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
     ByteData byteData =
         await resultList[0].getThumbByteData(300, 300, quality: 80);
 
-    await Tap3MainProvider().uploadThumbnail(byteData);
-    // setState(() {
-    //   images = resultList;
-    //   if (error == null) _error = 'No Error Dectected';
-    // });
+    dynamic result = await Tap3MainProvider().uploadThumbnail(byteData);
+
+    if (result.status == 200) {
+      this.thumbUrl =
+          'http://172.30.1.38:3000/public/image/thumb/' + result.data.thumb;
+    } else {
+      return DialogPopUpWidget().errorDialogBox(context, result.message);
+    }
+    setState(() {
+      // images = resultList;
+      // if (error == null) _error = 'No Error Dectected';
+    });
   }
 
   Widget buildProfile(String nick, String ntrp) {
@@ -83,15 +93,22 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               GestureDetector(
-                onTap: loadAssets,
+                onTap: () async {
+                  if (isLoggedIn) {
+                    loadAssets();
+                  } else {
+                    DialogPopUpWidget().needLoginDialogBox(context);
+                  }
+                  print("Container was tapped");
+                },
                 child: Stack(
                   alignment: AlignmentDirectional.bottomEnd,
                   children: <Widget>[
                     CircleAvatar(
-                      radius: 35.0,
-                      backgroundImage:
-                          new AssetImage('assets/images/profile_1.jpeg'),
-                    ),
+                        radius: 35.0,
+                        backgroundImage: (thumbUrl == null)
+                            ? new AssetImage('assets/images/profile_1.jpeg')
+                            : NetworkImage(thumbUrl)),
                     // CircleAvatar(
                     //   radius: 12.0,
                     //   backgroundColor: const Color(0xff48caf5),
@@ -184,16 +201,18 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
         future: Tap3MainProvider().getData(),
         builder: (context, snapshot) {
           if (snapshot.hasData || snapshot.hasError) {
-            bool isLoggedIn = (snapshot.data != null) ? true : false;
+            isLoggedIn = (snapshot.data != null) ? true : false;
+            print("로그인여부 : ${snapshot.data}");
+            print("로그인여부 : $isLoggedIn");
             String nick = (snapshot.data != null)
-                ? snapshot.data.result.data[0].nick
+                ? snapshot.data.result.data.nick
                 : '로그인이 필요합니다.';
             String ntrp = (snapshot.data != null)
-                ? snapshot.data.result.data[0].ntrp
+                ? snapshot.data.result.data.ntrp.toString()
                 : '-';
 
             String play_style = (snapshot.data != null)
-                ? snapshot.data.result.data[0].playStyle
+                ? snapshot.data.result.data.playStyle.toString()
                 : '-';
 
             print("데이터가 있습니다.");

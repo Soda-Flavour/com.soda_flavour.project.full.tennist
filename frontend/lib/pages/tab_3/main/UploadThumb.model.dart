@@ -1,22 +1,24 @@
 // To parse this JSON data, do
 //
-//     final tab3MainModel = tab3MainModelFromJson(jsonString);
+//     final uploadThumbModel = uploadThumbModelFromJson(jsonString);
 
 import 'dart:convert';
 
-Tab3MainModel tab3MainModelFromJson(String str) =>
-    Tab3MainModel.fromJson(json.decode(str));
+UploadThumbModel uploadThumbModelFromJson(String str) =>
+    UploadThumbModel.fromJson(json.decode(str));
 
-String tab3MainModelToJson(Tab3MainModel data) => json.encode(data.toJson());
+String uploadThumbModelToJson(UploadThumbModel data) =>
+    json.encode(data.toJson());
 
-class Tab3MainModel {
-  Tab3MainModel({
+class UploadThumbModel {
+  UploadThumbModel({
     this.result,
   });
 
   Result result;
 
-  factory Tab3MainModel.fromJson(Map<String, dynamic> json) => Tab3MainModel(
+  factory UploadThumbModel.fromJson(Map<String, dynamic> json) =>
+      UploadThumbModel(
         result: Result.fromJson(json["result"]),
       );
 
@@ -51,24 +53,16 @@ class Result {
 
 class Data {
   Data({
-    this.nick,
-    this.ntrp,
-    this.playStyle,
+    this.thumb,
   });
 
-  String nick;
-  double ntrp;
-  String playStyle;
+  String thumb;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        nick: json["nick"],
-        ntrp: json["ntrp"].toDouble(),
-        playStyle: json["play_style"],
+        thumb: json["thumb"],
       );
 
   Map<String, dynamic> toJson() => {
-        "nick": nick,
-        "ntrp": ntrp,
-        "play_style": playStyle,
+        "thumb": thumb,
       };
 }

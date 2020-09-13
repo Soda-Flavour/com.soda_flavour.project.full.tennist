@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:tennist_flutter/pages/account/signup/SignUp.model.dart';
 import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
+import 'package:tennist_flutter/pages/tab_3/main/UploadThumb.model.dart';
 import 'package:tennist_flutter/src/helper/AppConfig.dart';
 import 'package:tennist_flutter/src/helper/AuthHelper.dart';
 import 'package:tennist_flutter/src/model/AppError.model.dart';
@@ -69,10 +70,9 @@ class Tap3MainProvider with ChangeNotifier {
           body: json.encode({'data': base64.encode(byte)}));
 
       if (response.statusCode == 200) {
-        // final resultModel = selectRacketModelModelFromJson(response.body);
+        final resultModel = uploadThumbModelFromJson(response.body);
 
-        // return resultModel.result;
-        return null;
+        return resultModel.result;
       }
       final errorModel = errorModelFromJson(response.body);
 
