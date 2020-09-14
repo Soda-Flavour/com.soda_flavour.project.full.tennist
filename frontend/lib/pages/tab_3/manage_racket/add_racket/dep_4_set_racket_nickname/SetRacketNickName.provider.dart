@@ -10,17 +10,6 @@ import 'package:tennist_flutter/src/model/AppError.model.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';
 
 class SetRacketNickNameProvider with ChangeNotifier {
-  AppConfig _appConfig;
-  AppConfig get appConfig => _appConfig;
-  final AsyncMemoizer _memoizer = AsyncMemoizer();
-
-  set appConfig(AppConfig appConfigVal) {
-    if (_appConfig != appConfigVal) {
-      _appConfig = appConfigVal;
-      notifyListeners();
-    }
-  }
-
   Future<dynamic> insertUserRacket(data) async {
     try {
       print('checkData');
@@ -31,7 +20,7 @@ class SetRacketNickNameProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://172.30.1.38:3000/api/v1/racket_model/insert_user_racket';
+          'http://localhost:3000/api/v1/racket_model/insert_user_racket';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response =
           await http.post(url, headers: headers, body: json.encode(data));

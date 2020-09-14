@@ -74,7 +74,7 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
 
     if (result.status == 200) {
       this.thumbUrl =
-          'http://172.30.1.38:3000/public/image/thumb/' + result.data.thumb;
+          'http://localhost:3000/public/image/thumb/' + result.data.thumb;
     } else {
       return DialogPopUpWidget().errorDialogBox(context, result.message);
     }

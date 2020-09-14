@@ -8,22 +8,12 @@ import 'package:tennist_flutter/src/model/AppError.model.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';
 
 class LogInProvider with ChangeNotifier {
-  AppConfig _appConfig;
-  AppConfig get appConfig => _appConfig;
-
-  set appConfig(AppConfig appConfigVal) {
-    if (_appConfig != appConfigVal) {
-      _appConfig = appConfigVal;
-      notifyListeners();
-    }
-  }
-
   Future<dynamic> logIn(data) async {
     try {
       Map<String, String> headers = {
         "Content-Type": "application/json",
       };
-      final String url = 'http://172.30.1.38:3000/api/v1/auth/login';
+      final String url = 'http://localhost:3000/api/v1/auth/login';
       // final String url = '${appConfig.baseUrl}/signup';
 
       final http.Response response =

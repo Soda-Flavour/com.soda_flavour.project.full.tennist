@@ -11,17 +11,6 @@ import 'package:tennist_flutter/src/model/AppError.model.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';
 
 class UserBasicInfoFormProvider with ChangeNotifier {
-  AppConfig _appConfig;
-  AppConfig get appConfig => _appConfig;
-  final AsyncMemoizer _memoizer = AsyncMemoizer();
-
-  set appConfig(AppConfig appConfigVal) {
-    if (_appConfig != appConfigVal) {
-      _appConfig = appConfigVal;
-      notifyListeners();
-    }
-  }
-
   // Future<UserBasicInfoFormModel> getData() async {
   //   return this._memoizer.runOnce(() async {
   //     await Future.delayed(Duration(seconds: 2));
@@ -33,7 +22,7 @@ class UserBasicInfoFormProvider with ChangeNotifier {
   //     //     "Content-Type": "application/json",
   //     //     "Authorization": "Bearer $accessT"
   //     //   };
-  //     //   final String url = 'http://172.30.1.38:3000/api/v1/user/basic_info';
+  //     //   final String url = 'http://localhost:3000/api/v1/user/basic_info';
   //     //   final http.Response response = await http.get(url, headers: headers);
   //     //   if (response.statusCode == 200) {
   //     //     print("하이이이이");
@@ -56,7 +45,7 @@ class UserBasicInfoFormProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://172.30.1.38:3000/api/v1/user/basic_info';
+      final String url = 'http://localhost:3000/api/v1/user/basic_info';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         print("하이이이이");
@@ -79,7 +68,7 @@ class UserBasicInfoFormProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://172.30.1.38:3000/api/v1/user/basic_info';
+      final String url = 'http://localhost:3000/api/v1/user/basic_info';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response =
           await http.post(url, headers: headers, body: json.encode(data));

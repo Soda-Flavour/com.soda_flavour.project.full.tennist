@@ -10,17 +10,6 @@ import 'package:tennist_flutter/src/helper/AppConfig.dart';
 import 'package:tennist_flutter/src/helper/AuthHelper.dart';
 
 class RacketHistoryProvider with ChangeNotifier {
-  AppConfig _appConfig;
-  AppConfig get appConfig => _appConfig;
-  final AsyncMemoizer _memoizer = AsyncMemoizer();
-
-  set appConfig(AppConfig appConfigVal) {
-    if (_appConfig != appConfigVal) {
-      _appConfig = appConfigVal;
-      notifyListeners();
-    }
-  }
-
   Future<RacketHistoryModel> getData(racketHistoryId) async {
     try {
       String accessT = await AuthHelper.getAccessToken();
@@ -29,7 +18,7 @@ class RacketHistoryProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://172.30.1.38:3000/api/v1/section_1/racket_history?racket_history_id=$racketHistoryId';
+          'http://localhost:3000/api/v1/section_1/racket_history?racket_history_id=$racketHistoryId';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = racketHistoryModelFromJson(response.body);

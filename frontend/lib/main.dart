@@ -25,6 +25,7 @@ import 'package:tennist_flutter/pages/tab_3/setting/SettingList.screen.dart';
 import 'package:tennist_flutter/src/helper/AppConfig.dart';
 import 'package:tennist_flutter/pages/BottomNaviController.dart';
 import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
+import 'package:tennist_flutter/src/provider/auth.dart';
 
 class MyApp extends StatelessWidget {
   final appConfiguration;
@@ -35,14 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<AppConfig>.value(
-          value: appConfiguration,
-        ),
-        ChangeNotifierProxyProvider<AppConfig, LoadingProvider>(
+        ChangeNotifierProvider<LoadingProvider>(
+          //localhost
           create: (_) => LoadingProvider(),
-          update: (_, appConfig, loadingNotifier) {
-            return loadingNotifier;
-          },
         ),
       ],
       child: MaterialApp(

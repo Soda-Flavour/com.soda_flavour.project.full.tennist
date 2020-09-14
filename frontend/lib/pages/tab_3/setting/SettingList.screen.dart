@@ -21,7 +21,7 @@ class _SettingListScreen extends State<SettingListScreen> {
     super.initState();
     //TODO: 해당 응답이 3040번 에러이면 로그인이 안되어 있는 것이다. ==> 로그인 페이지 로딩
     // ApiReciver.POST(
-    //     'http://172.30.1.38:3000/api/v1/auth/checkAccessToken', null, true);
+    //     'http://localhost:3000/api/v1/auth/checkAccessToken', null, true);
   }
 
   @override

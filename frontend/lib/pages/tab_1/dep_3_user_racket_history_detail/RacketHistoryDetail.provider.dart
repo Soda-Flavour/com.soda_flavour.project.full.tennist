@@ -14,17 +14,6 @@ import 'package:tennist_flutter/src/model/AppError.model.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';
 
 class RacketHistoryDetailProvider with ChangeNotifier {
-  AppConfig _appConfig;
-  AppConfig get appConfig => _appConfig;
-  final AsyncMemoizer _memoizer = AsyncMemoizer();
-
-  set appConfig(AppConfig appConfigVal) {
-    if (_appConfig != appConfigVal) {
-      _appConfig = appConfigVal;
-      notifyListeners();
-    }
-  }
-
   Future<RacketHistoryDetailModel> getData(
     racketHistoryDetailId,
   ) async {
@@ -35,7 +24,7 @@ class RacketHistoryDetailProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://172.30.1.38:3000/api/v1/section_1/racket_history/detail?user_racket_history_id=$racketHistoryDetailId';
+          'http://localhost:3000/api/v1/section_1/racket_history/detail?user_racket_history_id=$racketHistoryDetailId';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = racketHistoryDetailModelFromJson(response.body);
@@ -59,7 +48,7 @@ class RacketHistoryDetailProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://172.30.1.38:3000/api/v1/section_1/racket_history/detail';
+          'http://localhost:3000/api/v1/section_1/racket_history/detail';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response = await http.post(url,
           headers: headers,

@@ -12,17 +12,6 @@ import 'package:tennist_flutter/src/model/AppError.model.dart';
 import 'package:tennist_flutter/src/model/Error.model.dart';
 
 class SelectRacketCompanyProvider with ChangeNotifier {
-  AppConfig _appConfig;
-  AppConfig get appConfig => _appConfig;
-  final AsyncMemoizer _memoizer = AsyncMemoizer();
-
-  set appConfig(AppConfig appConfigVal) {
-    if (_appConfig != appConfigVal) {
-      _appConfig = appConfigVal;
-      notifyListeners();
-    }
-  }
-
   Future<SelectRacketCompanyModel> getData() async {
     try {
       String accessT = await AuthHelper.getAccessToken();
@@ -30,7 +19,7 @@ class SelectRacketCompanyProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://172.30.1.38:3000/api/v1/racket_company';
+      final String url = 'http://localhost:3000/api/v1/racket_company';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = selectRacketCompanyModelFromJson(response.body);

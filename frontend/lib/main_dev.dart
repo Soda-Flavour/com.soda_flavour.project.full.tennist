@@ -9,8 +9,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   const String kPort = '3000';
   final String baseUrl = Platform.isAndroid
-      ? 'http://172.30.1.38:' + kPort
-      : 'http://172.30.1.38:' + kPort;
+      ? 'http://localhost:' + kPort
+      : 'http://localhost:' + kPort;
 
   final String dataUrl = '$baseUrl/api/v1';
 
