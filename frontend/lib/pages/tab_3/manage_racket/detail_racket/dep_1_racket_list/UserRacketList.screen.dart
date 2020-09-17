@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.screen.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.screen.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.screen.dart';
+import 'package:tennist/src/helper/PopWithResults.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
 
-import 'package:tennist_flutter/src/widget/BasicListRow.dart';
+import 'package:tennist/src/widget/BasicListRow.dart';
 
 class UserRacketListScreen extends StatefulWidget {
   static const String routeName = '/UserRacketList';
@@ -19,24 +20,22 @@ class UserRacketListScreen extends StatefulWidget {
 class _UserRacketListScreen extends State<UserRacketListScreen> {
   final storage = new FlutterSecureStorage();
   final isLogin = false;
-
-  final List<String> entries = <String>[
-    'Blade 98 CV (18x20)r고고고고고고고고고고ㅗ곡고고고고고고고고고고고고ㅗ곡고고고고고고고고고고고ㅗ곡고고고고고고고고고고고ㅗ곡고고고고고고고고고고고ㅗ곡고고고고고고고고고고고ㅗ곡고고고고고고고고고고고ㅗ곡고고고고고고고고고고고ㅗ곡고고고',
-    'Graphene 360+ Gravity Pro',
-    'Graphene 360+ Speed MP'
-  ];
+  Future serverData;
 
   @override
   void initState() {
     print("페이지가 인잇됩니다.");
     super.initState();
+    serverData = UserRacketListProvider().getData();
     //TODO: 해당 응답이 3040번 에러이면 로그인이 안되어 있는 것이다. ==> 로그인 페이지 로딩
     // ApiReciver.POST(
-    //     'http://localhost:3000/api/v1/auth/checkAccessToken', null, true);
+    //     'https://water-flavour.com/api/v1/auth/checkAccessToken', null, true);
   }
 
   @override
   Widget build(BuildContext context) {
+    print("동적불고가!!");
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
@@ -60,7 +59,22 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
                 icon: new Icon(Icons.add),
                 onPressed: () {
                   Navigator.of(context)
-                      .pushNamed(SelectRacketCompanyScreen.routeName);
+                      .pushNamed(SelectRacketCompanyScreen.routeName)
+                      .then((results) {
+                    PopWithResults popResult = results as PopWithResults;
+                    if (popResult != null) {
+                      if (popResult.toPage == UserRacketListScreen.routeName) {
+                        print(popResult.results.values.toList()[0]);
+                        serverData = UserRacketListProvider().getData();
+                        setState(() {});
+                      } else {
+                        Navigator.of(context).pop(results);
+                      }
+                    }
+                  });
+
+                  // Navigator.of(context)
+                  //     .pushNamed(SelectRacketCompanyScreen.routeName);
                 },
               ),
             ],
@@ -68,7 +82,7 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
         ),
       ),
       body: FutureBuilder<UserRacketListModel>(
-        future: UserRacketListProvider().getData(),
+        future: serverData,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

@@ -1,4 +1,4 @@
-import 'package:tennist_flutter/src/helper/StorageHelper.dart';
+import 'package:tennist/src/helper/StorageHelper.dart';
 
 class AuthHelper {
   static final AuthHelper _instance = AuthHelper._internal();

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetailComment.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetailComment.model.dart';
 
-import 'package:tennist_flutter/src/helper/AppConfig.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/model/AppError.model.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
+import 'package:tennist/src/helper/AppConfig.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
+import 'package:tennist/src/model/AppError.model.dart';
+import 'package:tennist/src/model/Error.model.dart';
 
 class UserRacketHistoryDetailProvider with ChangeNotifier {
   Future<UserRacketHistoryDetailModel> getData(
@@ -23,7 +23,7 @@ class UserRacketHistoryDetailProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user/racket_history/detail?user_racket_history_id=$racketHistoryDetailId';
+          'https://water-flavour.com/api/v1/user/racket_history/detail?user_racket_history_id=$racketHistoryDetailId';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = userRacketHistoryDetailModelFromJson(response.body);
@@ -47,7 +47,7 @@ class UserRacketHistoryDetailProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user/racket_history/detail';
+          'https://water-flavour.com/api/v1/user/racket_history/detail';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response = await http.post(url,
           headers: headers,

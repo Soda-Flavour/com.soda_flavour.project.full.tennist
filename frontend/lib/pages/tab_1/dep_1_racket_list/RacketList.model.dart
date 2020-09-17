@@ -105,6 +105,7 @@ class UserData {
     this.id,
     this.nick,
     this.ntrp,
+    this.user_image,
     this.sex,
     this.age,
     this.weightKg,
@@ -119,6 +120,7 @@ class UserData {
   String nick;
   double ntrp;
   String sex;
+  String user_image;
   int age;
   int weightKg;
   int heightCm;
@@ -128,30 +130,34 @@ class UserData {
   String backhandStyle;
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
-        id: json["id"],
-        nick: json["nick"],
-        ntrp: json["ntrp"].toDouble(),
-        sex: json["sex"],
-        age: json["age"],
-        weightKg: json["weight_kg"],
-        heightCm: json["height_cm"],
-        handed: json["handed"],
-        playStyle: json["play_style"],
-        forehandStyle: json["forehand_style"],
-        backhandStyle: json["backhand_style"],
+        id: json["id"] == null ? null : json["id"],
+        nick: json["nick"] == null ? null : json["nick"],
+        ntrp: json["ntrp"] == null ? null : json["ntrp"].toDouble(),
+        sex: json["sex"] == null ? null : json["sex"],
+        age: json["age"] == null ? null : json["age"],
+        weightKg: json["weight_kg"] == null ? null : json["weight_kg"],
+        heightCm: json["height_cm"] == null ? null : json["height_cm"],
+        handed: json["handed"] == null ? null : json["handed"],
+        user_image: json["user_image"] == null ? null : json["user_image"],
+        playStyle: json["play_style"] == null ? null : json["play_style"],
+        forehandStyle:
+            json["forehand_style"] == null ? null : json["forehand_style"],
+        backhandStyle:
+            json["backhand_style"] == null ? null : json["backhand_style"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "nick": nick,
-        "ntrp": ntrp,
-        "sex": sex,
-        "age": age,
-        "weight_kg": weightKg,
-        "height_cm": heightCm,
-        "handed": handed,
-        "play_style": playStyle,
-        "forehand_style": forehandStyle,
-        "backhand_style": backhandStyle,
+        "id": id == null ? null : id,
+        "nick": nick == null ? null : nick,
+        "ntrp": ntrp == null ? null : ntrp,
+        "sex": sex == null ? null : sex,
+        "age": age == null ? null : age,
+        "weight_kg": weightKg == null ? null : weightKg,
+        "height_cm": heightCm == null ? null : heightCm,
+        "handed": handed == null ? null : handed,
+        "user_image": user_image == null ? null : user_image,
+        "play_style": playStyle == null ? null : playStyle,
+        "forehand_style": forehandStyle == null ? null : forehandStyle,
+        "backhand_style": backhandStyle == null ? null : backhandStyle,
       };
 }

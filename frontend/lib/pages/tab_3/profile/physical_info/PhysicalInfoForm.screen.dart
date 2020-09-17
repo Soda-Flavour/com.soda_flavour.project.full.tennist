@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/physical_info/PhysicalInfoForm.model.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/physical_info/PhysicalInfoForm.provider.dart';
-import 'package:tennist_flutter/src/constants/Handed.dart';
-import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/pages/tab_3/profile/physical_info/PhysicalInfoForm.model.dart';
+import 'package:tennist/pages/tab_3/profile/physical_info/PhysicalInfoForm.provider.dart';
+import 'package:tennist/src/constants/Handed.dart';
+import 'package:tennist/src/provider/LoadingProvider.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class PhysicalInfoFormScreen extends StatelessWidget {
   static const String routeName = '/UserBasicInfoForm';

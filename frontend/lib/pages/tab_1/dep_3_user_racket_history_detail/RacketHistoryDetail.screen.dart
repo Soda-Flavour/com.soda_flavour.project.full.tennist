@@ -2,13 +2,13 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.model.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.provider.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.provider.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetailComment.model.dart'
+import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.model.dart';
+import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.provider.dart';
+import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.provider.dart';
+import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetailComment.model.dart'
     as CommentModel;
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class RacketHistoryDetailScreen extends StatefulWidget {
   static const String routeName = '/RacketHistoryDetail';
@@ -447,11 +447,17 @@ class _RacketHistoryDetailScreenState extends State<RacketHistoryDetailScreen>
                                                                 .end,
                                                         children: <Widget>[
                                                           CircleAvatar(
-                                                            radius: 10,
-                                                            backgroundImage:
-                                                                AssetImage(
-                                                                    'assets/images/profile_1.jpeg'),
-                                                          ),
+                                                              radius: 10,
+                                                              backgroundImage: (commentList[
+                                                                              index]
+                                                                          .thumb ==
+                                                                      null)
+                                                                  ? AssetImage(
+                                                                      'assets/images/logo_sq.png')
+                                                                  : NetworkImage(
+                                                                      'https://water-flavour.com/public/image/thumb/' +
+                                                                          commentList[index]
+                                                                              .thumb)),
                                                           SizedBox(
                                                             width: 5.0,
                                                           ),

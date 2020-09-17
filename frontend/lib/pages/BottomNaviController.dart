@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tennist_flutter/pages/tab_1/main/Tab1Main.screen.dart';
-import 'package:tennist_flutter/pages/tab_2/main/Tab2Main.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.screen.dart';
+import 'package:tennist/pages/tab_1/main/Tab1Main.screen.dart';
+import 'package:tennist/pages/tab_2/main/Tab2Main.screen.dart';
+import 'package:tennist/pages/tab_3/main/Tab3Main.screen.dart';
 
 class BottomNaviController extends StatefulWidget {
   static const String routeName = '/bottomNavi';

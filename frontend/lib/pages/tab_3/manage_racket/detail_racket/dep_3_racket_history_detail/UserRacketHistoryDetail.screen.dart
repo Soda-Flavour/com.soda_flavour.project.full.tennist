@@ -2,12 +2,12 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetailComment.model.dart'
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetailComment.model.dart'
     as UserCommentModel;
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class UserRacketHistoryDetailScreen extends StatefulWidget {
   static const String routeName = '/UserRacketHistoryDetail';

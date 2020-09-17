@@ -1,11 +1,12 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
-import 'package:tennist_flutter/src/widget/BasicListRow.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
+import 'package:tennist/src/helper/PopWithResults.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
+import 'package:tennist/src/widget/BasicListRow.dart';
 
 class SelectRacketCompanyScreen extends StatelessWidget {
   static const String routeName = '/SelectRacketComapny';
@@ -58,10 +59,27 @@ class SelectRacketCompanyScreen extends StatelessWidget {
                           snapshot.data.result.data.list[index].nameKor,
                     };
 
-                    Navigator.of(context).pushNamed(
+                    Navigator.of(context)
+                        .pushNamed(
                       SelectRacketVersionScreen.routeName,
                       arguments: ScreenPassData(passData),
-                    );
+                    )
+                        .then((results) {
+                      if (results is PopWithResults) {
+                        PopWithResults popResult = results;
+                        if (popResult.toPage ==
+                            SelectRacketCompanyScreen.routeName) {
+                          // TODO do stuff
+                        } else {
+                          Navigator.of(context).pop(results);
+                        }
+                      }
+                    });
+
+                    // Navigator.of(context).pushNamed(
+                    //   SelectRacketVersionScreen.routeName,
+                    //   arguments: ScreenPassData(passData),
+                    // );
                   },
                 );
               },

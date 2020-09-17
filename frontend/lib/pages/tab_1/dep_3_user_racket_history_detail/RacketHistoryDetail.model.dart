@@ -82,16 +82,19 @@ class ListElement {
   ListElement({
     this.nick,
     this.comment,
+    this.thumb,
     this.updatedDate,
   });
 
   String nick;
   String comment;
+  String thumb;
   DateTime updatedDate;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         nick: json["nick"] == null ? null : json["nick"],
         comment: json["comment"] == null ? null : json["comment"],
+        thumb: json["thumb"] == null ? null : json["thumb"],
         updatedDate: json["updated_date"] == null
             ? null
             : DateTime.parse(json["updated_date"]),
@@ -100,6 +103,7 @@ class ListElement {
   Map<String, dynamic> toJson() => {
         "nick": nick == null ? null : nick,
         "comment": comment == null ? null : comment,
+        "thumb": thumb == null ? null : thumb,
         "updated_date":
             updatedDate == null ? null : updatedDate.toIso8601String(),
       };

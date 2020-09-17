@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_1_racket_list/RacketList.screen.dart';
-import 'package:tennist_flutter/pages/tab_1/main/Tab1Main.model.dart';
-import 'package:tennist_flutter/pages/tab_1/main/Tab1Main.provider.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
+import 'package:tennist/pages/tab_1/dep_1_racket_list/RacketList.screen.dart';
+import 'package:tennist/pages/tab_1/main/Tab1Main.model.dart';
+import 'package:tennist/pages/tab_1/main/Tab1Main.provider.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
 
 class Tab1MainScreen extends StatefulWidget {
   static const String routeName = '/Tab1Main';
@@ -85,8 +85,16 @@ class _Tab1MainScreenState extends State<Tab1MainScreen>
                             borderRadius: BorderRadius.circular(7.0),
                             color: Colors.white,
                             image: new DecorationImage(
-                              image: ExactAssetImage(
-                                  'assets/images/profile_1.jpeg'),
+                              image: (snapshot.data.result.data.list[index]
+                                          .userThumb ==
+                                      null)
+                                  ? ExactAssetImage(
+                                      'assets/images/logo_sq.png',
+                                    )
+                                  : NetworkImage(
+                                      'https://water-flavour.com/public/image/thumb/' +
+                                          snapshot.data.result.data.list[index]
+                                              .userThumb),
                               fit: BoxFit.fitHeight,
                             ),
                           ),

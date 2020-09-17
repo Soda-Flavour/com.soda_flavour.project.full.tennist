@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:tennist_flutter/src/helper/AppConfig.dart';
+import 'package:tennist/src/helper/AppConfig.dart';
 
 class AuthProvider with ChangeNotifier {
   String _token;

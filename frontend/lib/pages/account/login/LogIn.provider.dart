@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:tennist_flutter/pages/account/login/LogIn.model.dart';
-import 'package:tennist_flutter/src/helper/AppConfig.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/model/AppError.model.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
+import 'package:tennist/pages/account/login/LogIn.model.dart';
+import 'package:tennist/src/helper/AppConfig.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
+import 'package:tennist/src/model/AppError.model.dart';
+import 'package:tennist/src/model/Error.model.dart';
 
 class LogInProvider with ChangeNotifier {
   Future<dynamic> logIn(data) async {
@@ -13,7 +13,7 @@ class LogInProvider with ChangeNotifier {
       Map<String, String> headers = {
         "Content-Type": "application/json",
       };
-      final String url = 'http://localhost:3000/api/v1/auth/login';
+      final String url = 'https://water-flavour.com/api/v1/auth/login';
       // final String url = '${appConfig.baseUrl}/signup';
 
       final http.Response response =

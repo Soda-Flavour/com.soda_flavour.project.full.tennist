@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/tennis_info/TennisInfoForm.model.dart';
-import 'package:tennist_flutter/src/helper/AppConfig.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/model/AppError.model.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
+import 'package:tennist/pages/tab_3/profile/tennis_info/TennisInfoForm.model.dart';
+import 'package:tennist/src/helper/AppConfig.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
+import 'package:tennist/src/model/AppError.model.dart';
+import 'package:tennist/src/model/Error.model.dart';
 
 class TennisInfoFormProvider with ChangeNotifier {
   Future<TennisInfoFormModel> getData() async {
@@ -17,7 +17,7 @@ class TennisInfoFormProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user_playstyle/playstyle';
+          'https://water-flavour.com/api/v1/user_playstyle/playstyle';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = tennisInfoFormModelFromJson(response.body);
@@ -42,7 +42,7 @@ class TennisInfoFormProvider with ChangeNotifier {
         "Authorization": "Bearer $accessT"
       };
       final String url =
-          'http://localhost:3000/api/v1/user_playstyle/playstyle';
+          'https://water-flavour.com/api/v1/user_playstyle/playstyle';
       // final String url = '${appConfig.baseUrl}/signup';
       final http.Response response =
           await http.post(url, headers: headers, body: json.encode(data));

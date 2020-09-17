@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tennist_flutter/pages/account/login/LogIn.screen.dart';
+import 'package:tennist/pages/account/login/LogIn.screen.dart';
 
 class DialogPopUpWidget {
   void errorDialogBox(BuildContext context, String msg) {

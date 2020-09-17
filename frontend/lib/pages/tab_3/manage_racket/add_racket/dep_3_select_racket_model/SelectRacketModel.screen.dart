@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.model.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/add_racket/dep_4_set_racket_nickname/SetRacketNickname.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
-import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
-import 'package:tennist_flutter/src/widget/BasicListRow.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.model.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_4_set_racket_nickname/SetRacketNickname.screen.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
+import 'package:tennist/src/helper/PopWithResults.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
+import 'package:tennist/src/provider/LoadingProvider.dart';
+import 'package:tennist/src/widget/BasicListRow.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class SelectRacketModelScreen extends StatelessWidget {
   static const String routeName = '/SelectRacketModel';
@@ -90,10 +91,27 @@ class SelectRacketModelScreen extends StatelessWidget {
                             "racketName":
                                 "${args.data['versionName']} ${snapshot.data.result.data.list[index].model}",
                           };
-                          Navigator.of(context).pushNamed(
+                          Navigator.of(context)
+                              .pushNamed(
                             SelectRacketNickNameScreen.routeName,
                             arguments: ScreenPassData(passData),
-                          );
+                          )
+                              .then((results) {
+                            if (results is PopWithResults) {
+                              PopWithResults popResult = results;
+                              if (popResult.toPage ==
+                                  SelectRacketModelScreen.routeName) {
+                                // TODO do stuff
+                              } else {
+                                Navigator.of(context).pop(results);
+                              }
+                            }
+                          });
+
+                          // Navigator.of(context).pushNamed(
+                          //   SelectRacketNickNameScreen.routeName,
+                          //   arguments: ScreenPassData(passData),
+                          // );
                         },
                       );
                     },

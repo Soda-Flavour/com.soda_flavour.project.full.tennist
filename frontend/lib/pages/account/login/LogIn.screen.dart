@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:tennist_flutter/pages/BottomNaviController.dart';
-import 'package:tennist_flutter/pages/account/FindPassword.screen.dart';
-import 'package:tennist_flutter/pages/account/login/LogIn.provider.dart';
-import 'package:tennist_flutter/pages/account/signup/SignUp.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.screen.dart';
-import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/pages/BottomNaviController.dart';
+import 'package:tennist/pages/account/FindPassword.screen.dart';
+import 'package:tennist/pages/account/login/LogIn.provider.dart';
+import 'package:tennist/pages/account/signup/SignUp.screen.dart';
+import 'package:tennist/pages/tab_3/main/Tab3Main.screen.dart';
+import 'package:tennist/src/provider/LoadingProvider.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class LogInScreen extends StatefulWidget {
   static const String routeName = '/LogIn';
@@ -113,6 +113,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           FormBuilderTextField(
                             attribute: "password",
                             textAlign: TextAlign.center,
+                            obscureText: true,
                             maxLines: 1,
                             style: TextStyle(color: const Color(0xffffffff)),
                             decoration: InputDecoration(
@@ -194,20 +195,20 @@ class _LogInScreenState extends State<LogInScreen> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              InkWell(
-                                onTap: () {
-                                  Navigator.of(context)
-                                      .pushNamed(FindPasswordScreen.routeName);
-                                },
-                                child: Text(
-                                  "비밀번호 찾기",
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff01a0e8),
-                                  ),
-                                ),
-                              ),
+                              // InkWell(
+                              //   onTap: () {
+                              //     Navigator.of(context)
+                              //         .pushNamed(FindPasswordScreen.routeName);
+                              //   },
+                              //   child: Text(
+                              //     "비밀번호 찾기",
+                              //     style: TextStyle(
+                              //       fontSize: 16.0,
+                              //       fontWeight: FontWeight.w600,
+                              //       color: Color(0xff01a0e8),
+                              //     ),
+                              //   ),
+                              // ),
                               SizedBox(
                                 height: 8,
                               ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/basic_info/UserBasicInfoForm.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/physical_info/PhysicalInfoForm.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/tennis_info/tennisInfoForm.screen.dart';
-import 'package:tennist_flutter/src/helper/ApiReciver.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/widget/BasicListRow.dart';
+import 'package:tennist/pages/tab_3/profile/basic_info/UserBasicInfoForm.screen.dart';
+import 'package:tennist/pages/tab_3/profile/physical_info/PhysicalInfoForm.screen.dart';
+import 'package:tennist/pages/tab_3/profile/tennis_info/tennisInfoForm.screen.dart';
+import 'package:tennist/src/helper/ApiReciver.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
+import 'package:tennist/src/widget/BasicListRow.dart';
 
 class ProfileListScreen extends StatefulWidget {
   static const String routeName = '/ProfileList';
@@ -30,7 +30,7 @@ class _ProfileListScreen extends State<ProfileListScreen> {
     super.initState();
     //TODO: 해당 응답이 3040번 에러이면 로그인이 안되어 있는 것이다. ==> 로그인 페이지 로딩
     // ApiReciver.POST(
-    //     'http://localhost:3000/api/v1/auth/checkAccessToken', null, true);
+    //     'https://water-flavour.com/api/v1/auth/checkAccessToken', null, true);
   }
 
   @override

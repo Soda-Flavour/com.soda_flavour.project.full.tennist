@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:path/path.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
 
 class ApiReciver {
   static Map<String, String> headers = {

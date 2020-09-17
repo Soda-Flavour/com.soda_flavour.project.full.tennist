@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:tennist_flutter/src/constants/Sex.dart';
-import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
+import 'package:tennist/src/constants/Sex.dart';
+import 'package:tennist/src/provider/LoadingProvider.dart';
 
 class FindPasswordScreen extends StatefulWidget {
   static const String routeName = '/FindPassword';

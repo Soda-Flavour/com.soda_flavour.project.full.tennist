@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_2_racket_history/RacketHistory.model.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_2_racket_history/RacketHistory.provider.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.screen.dart';
+import 'package:tennist/pages/tab_1/dep_2_racket_history/RacketHistory.model.dart';
+import 'package:tennist/pages/tab_1/dep_2_racket_history/RacketHistory.provider.dart';
+import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.screen.dart';
 
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.screen.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_2_racket_history/UserRacketHistory.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetail.screen.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
 
 class RacketHistoryScreen extends StatefulWidget {
   static const String routeName = '/RacketHistory';

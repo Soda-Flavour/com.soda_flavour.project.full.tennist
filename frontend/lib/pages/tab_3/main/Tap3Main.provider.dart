@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:tennist_flutter/pages/account/signup/SignUp.model.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
-import 'package:tennist_flutter/pages/tab_3/main/UploadThumb.model.dart';
-import 'package:tennist_flutter/src/helper/AppConfig.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/model/AppError.model.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
+import 'package:tennist/pages/account/signup/SignUp.model.dart';
+import 'package:tennist/pages/tab_3/main/Tab3Main.model.dart';
+import 'package:tennist/pages/tab_3/main/UploadThumb.model.dart';
+import 'package:tennist/src/helper/AppConfig.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
+import 'package:tennist/src/model/AppError.model.dart';
+import 'package:tennist/src/model/Error.model.dart';
 
 class Tap3MainProvider with ChangeNotifier {
   Future<Tab3MainModel> getData() async {
@@ -24,7 +24,7 @@ class Tap3MainProvider with ChangeNotifier {
         "Content-Type": "application/json",
         "Authorization": "Bearer $accessT"
       };
-      final String url = 'http://localhost:3000/api/v1/user/mypage';
+      final String url = 'https://water-flavour.com/api/v1/user/mypage';
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         print('진입1');
@@ -54,7 +54,7 @@ class Tap3MainProvider with ChangeNotifier {
       var client = http.Client();
 
       final http.Response response = await client.post(
-          'http://localhost:3000/api/v1/user/mypage/upload_thumb',
+          'https://water-flavour.com/api/v1/user/mypage/upload_thumb',
           headers: headers,
           body: json.encode({'data': base64.encode(byte)}));
 

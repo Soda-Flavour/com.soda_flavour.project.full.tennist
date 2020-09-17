@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/src/helper/ApiReciver.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
-import 'package:tennist_flutter/src/widget/BasicListRow.dart';
+import 'package:tennist/pages/BottomNaviController.dart';
+import 'package:tennist/src/helper/ApiReciver.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
+import 'package:tennist/src/widget/BasicListRow.dart';
 
 class SettingListScreen extends StatefulWidget {
   static const String routeName = '/SettingList';
@@ -21,7 +22,15 @@ class _SettingListScreen extends State<SettingListScreen> {
     super.initState();
     //TODO: 해당 응답이 3040번 에러이면 로그인이 안되어 있는 것이다. ==> 로그인 페이지 로딩
     // ApiReciver.POST(
-    //     'http://localhost:3000/api/v1/auth/checkAccessToken', null, true);
+    //     'https://water-flavour.com/api/v1/auth/checkAccessToken', null, true);
+  }
+
+  logout() async {
+    await AuthHelper.deleteAllToken();
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      BottomNaviController.routeName,
+      (route) => false,
+    );
   }
 
   @override
@@ -47,7 +56,7 @@ class _SettingListScreen extends State<SettingListScreen> {
               ))),
       body: ListView.builder(
         shrinkWrap: true,
-        itemCount: 5,
+        itemCount: 6,
         itemBuilder: (BuildContext context, int index) {
           // final item = snapshot.data[index];
 
@@ -149,6 +158,80 @@ class _SettingListScreen extends State<SettingListScreen> {
                   },
                 ),
               ],
+            );
+          }
+
+          if (index == 3) {
+            return Card(
+              color: const Color(0xff004e80),
+              child: Padding(
+                padding: EdgeInsets.all(0),
+                child: ListTile(
+                  title: new Center(
+                    child: Text(
+                      "로그아웃",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                          fontSize: 16.0),
+                    ),
+                  ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false, // user must tap button!
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(
+                            "로그아웃",
+                            style: TextStyle(
+                              color: const Color(0xff444444),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          content: Text(
+                            "로그아웃 하시겠나요?",
+                            style: TextStyle(
+                              color: const Color(0xff444444),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: new Text(
+                                "아니요",
+                                style: TextStyle(
+                                  color: const Color(0xffFF4E72),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            FlatButton(
+                              child: new Text(
+                                "네",
+                                style: TextStyle(
+                                  color: const Color(0xffFF4E72),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              onPressed: () {
+                                logout();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             );
           }
         },

@@ -5,13 +5,13 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tap3Main.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/ProfileList.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/setting/SettingList.screen.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/pages/tab_3/main/Tab3Main.model.dart';
+import 'package:tennist/pages/tab_3/main/Tap3Main.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
+import 'package:tennist/pages/tab_3/profile/ProfileList.screen.dart';
+import 'package:tennist/pages/tab_3/setting/SettingList.screen.dart';
+import 'package:tennist/src/model/Error.model.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class Tab3MainScreen extends StatefulWidget {
   static const String routeName = '/Tab3Main';
@@ -74,7 +74,7 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
 
     if (result.status == 200) {
       this.thumbUrl =
-          'http://localhost:3000/public/image/thumb/' + result.data.thumb;
+          'https://water-flavour.com/public/image/thumb/' + result.data.thumb;
     } else {
       return DialogPopUpWidget().errorDialogBox(context, result.message);
     }
@@ -107,7 +107,7 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
                     CircleAvatar(
                         radius: 35.0,
                         backgroundImage: (thumbUrl == null)
-                            ? new AssetImage('assets/images/profile_1.jpeg')
+                            ? new AssetImage('assets/images/logo_sq.png')
                             : NetworkImage(thumbUrl)),
                     // CircleAvatar(
                     //   radius: 12.0,
@@ -204,16 +204,22 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
             isLoggedIn = (snapshot.data != null) ? true : false;
             print("로그인여부 : ${snapshot.data}");
             print("로그인여부 : $isLoggedIn");
+
             String nick = (snapshot.data != null)
                 ? snapshot.data.result.data.nick
                 : '로그인이 필요합니다.';
-            String ntrp = (snapshot.data != null)
-                ? snapshot.data.result.data.ntrp.toString()
-                : '-';
 
-            String play_style = (snapshot.data != null)
-                ? snapshot.data.result.data.playStyle.toString()
-                : '-';
+            String ntrp = '-';
+            String play_style = "-";
+            if (isLoggedIn) {
+              play_style = '프로필을 입력해주세요';
+              if (snapshot.data.result.data.ntrp != null) {
+                ntrp = snapshot.data.result.data.ntrp.toString();
+              }
+              if (snapshot.data.result.data.playStyle != null) {
+                play_style = snapshot.data.result.data.playStyle.toString();
+              }
+            }
 
             print("데이터가 있습니다.");
             return ListView.builder(

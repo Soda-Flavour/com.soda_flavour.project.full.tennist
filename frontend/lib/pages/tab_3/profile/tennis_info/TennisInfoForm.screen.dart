@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/tennis_info/TennisInfoForm.model.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/tennis_info/TennisInfoForm.provider.dart';
-import 'package:tennist_flutter/src/constants/BackHand.dart';
-import 'package:tennist_flutter/src/constants/ForeHand.dart';
-import 'package:tennist_flutter/src/constants/NTRP.dart';
-import 'package:tennist_flutter/src/constants/PlayStyle.dart';
-import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/pages/tab_3/profile/tennis_info/TennisInfoForm.model.dart';
+import 'package:tennist/pages/tab_3/profile/tennis_info/TennisInfoForm.provider.dart';
+import 'package:tennist/src/constants/BackHand.dart';
+import 'package:tennist/src/constants/ForeHand.dart';
+import 'package:tennist/src/constants/NTRP.dart';
+import 'package:tennist/src/constants/PlayStyle.dart';
+import 'package:tennist/src/provider/LoadingProvider.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class TennisInfoFormScreen extends StatelessWidget {
   static const String routeName = '/TennisInfoForm';

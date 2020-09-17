@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tab3Main.model.dart';
-import 'package:tennist_flutter/pages/tab_3/main/Tap3Main.provider.dart';
-import 'package:tennist_flutter/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/profile/ProfileList.screen.dart';
-import 'package:tennist_flutter/pages/tab_3/setting/SettingList.screen.dart';
-import 'package:tennist_flutter/src/model/Error.model.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
-import 'package:tennist_flutter/src/helper/ApiReciver.dart';
-import 'package:tennist_flutter/src/helper/AuthHelper.dart';
+import 'package:tennist/pages/tab_3/main/Tab3Main.model.dart';
+import 'package:tennist/pages/tab_3/main/Tap3Main.provider.dart';
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_1_racket_list/UserRacketList.screen.dart';
+import 'package:tennist/pages/tab_3/profile/ProfileList.screen.dart';
+import 'package:tennist/pages/tab_3/setting/SettingList.screen.dart';
+import 'package:tennist/src/model/Error.model.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/src/helper/ApiReciver.dart';
+import 'package:tennist/src/helper/AuthHelper.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tennist_flutter/src/helper/Utils.dart';
+import 'package:tennist/src/helper/Utils.dart';
 
 class Tab3MainScreen extends StatefulWidget {
   static const String routeName = '/Tab3Main';

@@ -1,11 +1,11 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_1_racket_list/RacketList.model.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_1_racket_list/RacketList.provider.dart';
-import 'package:tennist_flutter/pages/tab_1/dep_2_racket_history/RacketHistory.screen.dart';
-import 'package:tennist_flutter/src/constants/Sex.dart';
-import 'package:tennist_flutter/src/helper/ScreenPassData.dart';
+import 'package:tennist/pages/tab_1/dep_1_racket_list/RacketList.model.dart';
+import 'package:tennist/pages/tab_1/dep_1_racket_list/RacketList.provider.dart';
+import 'package:tennist/pages/tab_1/dep_2_racket_history/RacketHistory.screen.dart';
+import 'package:tennist/src/constants/Sex.dart';
+import 'package:tennist/src/helper/ScreenPassData.dart';
 
 class RacketListScreen extends StatefulWidget {
   static const String routeName = '/RacketList';
@@ -59,6 +59,39 @@ class _RacketListScreenState extends State<RacketListScreen>
           future: serverData,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              String ntrp = (snapshot.data.result.data.userData.ntrp != null)
+                  ? snapshot.data.result.data.userData.ntrp.toString()
+                  : '-';
+
+              String sex = (snapshot.data.result.data.userData.sex != null)
+                  ? Sex[snapshot.data.result.data.userData.sex] + ' '
+                  : '';
+              String age = (snapshot.data.result.data.userData.age != null)
+                  ? snapshot.data.result.data.userData.age.toString() + ' '
+                  : '';
+
+              String playStyle =
+                  (snapshot.data.result.data.userData.playStyle != null)
+                      ? snapshot.data.result.data.userData.playStyle
+                      : '';
+              String heightCm =
+                  (snapshot.data.result.data.userData.heightCm != null)
+                      ? snapshot.data.result.data.userData.heightCm.toString()
+                      : '';
+              String weightKg =
+                  (snapshot.data.result.data.userData.weightKg != null)
+                      ? snapshot.data.result.data.userData.weightKg.toString()
+                      : '';
+              String handed =
+                  (snapshot.data.result.data.userData.handed != null)
+                      ? snapshot.data.result.data.userData.handed + '-handed'
+                      : '';
+              String backhandStyle =
+                  (snapshot.data.result.data.userData.backhandStyle != null)
+                      ? snapshot.data.result.data.userData.backhandStyle +
+                          '-back'
+                      : '';
+
               return Column(
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -82,9 +115,16 @@ class _RacketListScreenState extends State<RacketListScreen>
                                       borderRadius: BorderRadius.circular(10.0),
                                       color: Colors.white,
                                       image: new DecorationImage(
-                                        image: ExactAssetImage(
-                                          'assets/images/profile_1.jpeg',
-                                        ),
+                                        image: (snapshot.data.result.data
+                                                    .userData.user_image ==
+                                                null)
+                                            ? ExactAssetImage(
+                                                'assets/images/logo_sq.png',
+                                              )
+                                            : NetworkImage(
+                                                'https://water-flavour.com/public/image/thumb/' +
+                                                    snapshot.data.result.data
+                                                        .userData.user_image),
                                         fit: BoxFit.fitWidth,
                                       ),
                                     ),
@@ -102,13 +142,13 @@ class _RacketListScreenState extends State<RacketListScreen>
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Text(
-                                          '${snapshot.data.result.data.userData.nick} (NTRP ${snapshot.data.result.data.userData.ntrp})',
+                                          '${snapshot.data.result.data.userData.nick} (NTRP ${ntrp})',
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(
-                                          '${Sex[snapshot.data.result.data.userData.sex]} ${snapshot.data.result.data.userData.age} - ${snapshot.data.result.data.userData.playStyle}\n${snapshot.data.result.data.userData.heightCm}cm ${snapshot.data.result.data.userData.weightKg}Kg ${snapshot.data.result.data.userData.handed}-handed\n${snapshot.data.result.data.userData.backhandStyle}-back',
+                                          '$sex$age$playStyle\n${heightCm}cm ${weightKg}Kg ${handed}\n${backhandStyle}',
                                           style: TextStyle(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w400,

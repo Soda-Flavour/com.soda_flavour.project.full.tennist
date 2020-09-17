@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:tennist_flutter/pages/account/login/LogIn.screen.dart';
-import 'package:tennist_flutter/pages/account/signup/SignUp.provider.dart';
-import 'package:tennist_flutter/src/constants/Sex.dart';
-import 'package:tennist_flutter/src/provider/LoadingProvider.dart';
-import 'package:tennist_flutter/src/widget/DialogPopUp.widget.dart';
+import 'package:tennist/pages/account/login/LogIn.screen.dart';
+import 'package:tennist/pages/account/signup/SignUp.provider.dart';
+import 'package:tennist/src/constants/Sex.dart';
+import 'package:tennist/src/provider/LoadingProvider.dart';
+import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String routeName = '/SignUp';
@@ -143,6 +143,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           FormBuilderTextField(
                             attribute: "password",
                             textAlign: TextAlign.center,
+                            obscureText: true,
                             maxLines: 1,
                             style: TextStyle(color: const Color(0xffffffff)),
                             decoration: InputDecoration(
@@ -173,6 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             attribute: "repassword",
                             textAlign: TextAlign.center,
                             maxLines: 1,
+                            obscureText: true,
                             style: TextStyle(color: const Color(0xffffffff)),
                             decoration: InputDecoration(
                               hintMaxLines: 1,

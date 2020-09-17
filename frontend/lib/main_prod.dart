@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'package:tennist_flutter/main.dart';
-import 'package:tennist_flutter/src/helper/AppConfig.dart';
+import 'package:tennist/main.dart';
+import 'package:tennist/src/helper/AppConfig.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,9 @@ void main() {
     dataUrl: dataUrl,
     buildFlavor: 'prod',
   );
-
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(MyApp(appConfig));
 }
