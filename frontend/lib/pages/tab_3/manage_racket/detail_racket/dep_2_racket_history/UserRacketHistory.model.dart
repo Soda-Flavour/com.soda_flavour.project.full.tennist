@@ -164,7 +164,7 @@ class RacketInfo {
     this.companyName,
     this.racketVersionName,
     this.model,
-    this.weightUngut,
+    this.weightStrung,
     this.racketBalanceLbVal,
     this.racketBalanceLbType,
     this.mainPattern,
@@ -175,7 +175,7 @@ class RacketInfo {
   String companyName;
   String racketVersionName;
   String model;
-  int weightUngut;
+  int weightStrung;
   int racketBalanceLbVal;
   String racketBalanceLbType;
   int mainPattern;
@@ -189,7 +189,8 @@ class RacketInfo {
             ? null
             : json["racket_version_name"],
         model: json["model"] == null ? null : json["model"],
-        weightUngut: json["weight_ungut"] == null ? null : json["weight_ungut"],
+        weightStrung:
+            json["weight_strung"] == null ? null : json["weight_strung"],
         racketBalanceLbVal: json["racket_balance_lb_val"] == null
             ? null
             : json["racket_balance_lb_val"],
@@ -207,7 +208,7 @@ class RacketInfo {
         "racket_version_name":
             racketVersionName == null ? null : racketVersionName,
         "model": model == null ? null : model,
-        "weight_ungut": weightUngut == null ? null : weightUngut,
+        "weight_strung": weightStrung == null ? null : weightStrung,
         "racket_balance_lb_val":
             racketBalanceLbVal == null ? null : racketBalanceLbVal,
         "racket_balance_lb_type":

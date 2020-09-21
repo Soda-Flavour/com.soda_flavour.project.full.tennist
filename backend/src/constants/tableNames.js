@@ -1,4 +1,6 @@
-const { DB_PREFIX } = require('../constants/project');
+const {
+  DB_PREFIX
+} = require('../constants/project');
 
 let tableNames = {
   user: DB_PREFIX + 'user',
@@ -17,6 +19,7 @@ let tableNames = {
   userPhysical: DB_PREFIX + 'user_physical',
   userImg: DB_PREFIX + 'user_img',
   racket: DB_PREFIX + 'racket',
+  racketData: DB_PREFIX + 'racket_data',
   gut: DB_PREFIX + 'gut',
 
   userRacket: DB_PREFIX + 'user_racket',

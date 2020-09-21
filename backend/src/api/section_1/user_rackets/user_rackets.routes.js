@@ -31,10 +31,10 @@ router.get('/:id', async (req, res, next) => {
         abortEarly: false,
       }
     );
-    console.log(_reqParams)
 
     const resultData = await queries.getUserRacketsData(_reqParams);
 
+    console.log(resultData)
     res.json({
       result: {
         status: 200,

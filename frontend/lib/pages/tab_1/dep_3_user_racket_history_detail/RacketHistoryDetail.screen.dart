@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.model.dart';
 import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.provider.dart';
 import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetail.provider.dart';
-import 'package:tennist/pages/tab_1/dep_3_user_racket_history_detail/RacketHistoryDetailComment.model.dart'
-    as CommentModel;
+import 'package:tennist/pages/tab_3/manage_racket/detail_racket/dep_3_racket_history_detail/UserRacketHistoryDetailComment.model.dart'
+    as UserCommentModel;
 import 'package:tennist/src/helper/ScreenPassData.dart';
 import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
@@ -36,7 +36,8 @@ class _RacketHistoryDetailScreenState extends State<RacketHistoryDetailScreen>
         .sendComment(userRacketHistoryId, textController.text);
 
     if (result.status == 200) {
-      CommentModel.Result _result = result;
+      print("접근");
+      UserCommentModel.Result _result = result;
       ListElement data = ListElement(
           nick: _result.data.nick,
           comment: _result.data.comment,
@@ -143,32 +144,32 @@ class _RacketHistoryDetailScreenState extends State<RacketHistoryDetailScreen>
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Center(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                              color: const Color(0xff004d80),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      8, 4, 8, 4),
-                                              child: Text(
-                                                "Main",
-                                                style: TextStyle(
-                                                  fontSize: 16.0,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                        // Center(
+                                        //   child: Container(
+                                        //     decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(4.0),
+                                        //       color: const Color(0xff004d80),
+                                        //     ),
+                                        //     child: Padding(
+                                        //       padding:
+                                        //           const EdgeInsets.fromLTRB(
+                                        //               8, 4, 8, 4),
+                                        //       child: Text(
+                                        //         "Main",
+                                        //         style: TextStyle(
+                                        //           fontSize: 16.0,
+                                        //           color: Colors.white,
+                                        //           fontWeight: FontWeight.w500,
+                                        //         ),
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         SizedBox(height: 8),
                                         Center(
                                           child: Text(
-                                            "${snapshot.data.result.data.racketData.racketVertion} ${snapshot.data.result.data.racketData.racketModel}",
+                                            "${snapshot.data.result.data.racketData.racketModel}",
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 20,

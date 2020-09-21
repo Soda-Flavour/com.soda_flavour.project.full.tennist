@@ -31,6 +31,7 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
     ScreenPassData args = ModalRoute.of(context).settings.arguments;
 
     if (isFirstLoading) {
+      userRacketId = args.data['user_racket_id'];
       serverData = UserRacketHistoryProvider()
           .getData(args.data['user_racket_id'], args.data['racket_id']);
       isFirstLoading = false;
@@ -93,25 +94,25 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4.0),
-                                  color: const Color(0xff004d80),
-                                ),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                                  child: Text(
-                                    "Main",
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 12),
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //     borderRadius: BorderRadius.circular(4.0),
+                              //     color: const Color(0xff004d80),
+                              //   ),
+                              //   child: Padding(
+                              //     padding:
+                              //         const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                              //     child: Text(
+                              //       "Main",
+                              //       style: TextStyle(
+                              //         fontSize: 16.0,
+                              //         color: Colors.white,
+                              //         fontWeight: FontWeight.w500,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // SizedBox(height: 12),
                               Text(
                                 "${snapshot.data.result.data.racketInfo.racketNickname}",
                                 style: TextStyle(
@@ -122,7 +123,7 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                               ),
                               SizedBox(height: 1),
                               Text(
-                                "${snapshot.data.result.data.racketInfo.racketVersionName} ${snapshot.data.result.data.racketInfo.model}",
+                                "${snapshot.data.result.data.racketInfo.model}",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
@@ -131,7 +132,7 @@ class _UserRacketHistoryScreenState extends State<UserRacketHistoryScreen>
                               ),
                               SizedBox(height: 2),
                               Text(
-                                "${snapshot.data.result.data.racketInfo.weightUngut}g ${snapshot.data.result.data.racketInfo.mainPattern}x${snapshot.data.result.data.racketInfo.crossPattern}",
+                                "${snapshot.data.result.data.racketInfo.weightStrung}g(strung) ${snapshot.data.result.data.racketInfo.mainPattern}x${snapshot.data.result.data.racketInfo.crossPattern}",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,

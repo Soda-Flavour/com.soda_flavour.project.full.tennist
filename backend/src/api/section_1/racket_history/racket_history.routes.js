@@ -32,6 +32,9 @@ router.get('/detail', async (req, res, next) => {
 
     const resultData = await queries.getRacketHistoryDetailData(_reqParams);
 
+    console.log('rererere', resultData)
+
+
     res.json({
       result: {
         status: 200,
@@ -77,6 +80,9 @@ router.post('/detail', authMiddlewares.isLoggedIn, async (req, res, next) => {
       _reqParams
     );
 
+
+
+    console.log('resultData', resultData);
     res.json({
       result: {
         status: 200,

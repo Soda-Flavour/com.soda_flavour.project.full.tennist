@@ -89,9 +89,10 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
               itemCount: snapshot.data.result.data.list.length,
               itemBuilder: (context, index) {
                 // ProjectModel project = projectSnap.data[index];
+
                 return BasicListRow(
                   rowText:
-                      "${snapshot.data.result.data.list[index].racketNickname}\n ${snapshot.data.result.data.list[index].nameKor} ${snapshot.data.result.data.list[index].model}",
+                      "${snapshot.data.result.data.list[index].racketNickname}\n ${snapshot.data.result.data.list[index].model}",
                   onTap: () {
                     Map<String, dynamic> passData = {
                       "user_racket_id":
@@ -99,7 +100,8 @@ class _UserRacketListScreen extends State<UserRacketListScreen> {
                       "racket_id":
                           snapshot.data.result.data.list[index].tRacketId,
                     };
-                    print("아이디 전달 : ${snapshot.data.result.data.list[index]}");
+                    print(
+                        "아이디 전달 : ${snapshot.data.result.data.list[index].id}");
                     print(
                         "라켓값 전달 : ${snapshot.data.result.data.list[index].tRacketId}");
                     Navigator.of(context).pushNamed(

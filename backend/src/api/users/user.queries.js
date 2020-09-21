@@ -29,14 +29,14 @@ module.exports = {
       // .leftJoin({
       //   tr: tableNames.racket
       // }, 'tr.id', '=', 'ru.t_racket_id')
-      .innerJoin({
+      .leftJoin({
           up: tableNames.userPhysical
         },
         'up.t_user_id',
         '=',
         'user.id'
       )
-      .innerJoin({
+      .leftJoin({
           ps: tableNames.playStyle
         },
         'ps.id',

@@ -139,32 +139,32 @@ class _RacketHistoryDetailScreenState
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Center(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                              color: const Color(0xff004d80),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      8, 4, 8, 4),
-                                              child: Text(
-                                                "Main",
-                                                style: TextStyle(
-                                                  fontSize: 16.0,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                        // Center(
+                                        //   child: Container(
+                                        //     decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(4.0),
+                                        //       color: const Color(0xff004d80),
+                                        //     ),
+                                        //     child: Padding(
+                                        //       padding:
+                                        //           const EdgeInsets.fromLTRB(
+                                        //               8, 4, 8, 4),
+                                        //       child: Text(
+                                        //         "Main",
+                                        //         style: TextStyle(
+                                        //           fontSize: 16.0,
+                                        //           color: Colors.white,
+                                        //           fontWeight: FontWeight.w500,
+                                        //         ),
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         SizedBox(height: 8),
                                         Center(
                                           child: Text(
-                                            "${snapshot.data.result.data.racketData.racketVertion} ${snapshot.data.result.data.racketData.racketModel}",
+                                            "${snapshot.data.result.data.racketData.racketModel}",
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 20,

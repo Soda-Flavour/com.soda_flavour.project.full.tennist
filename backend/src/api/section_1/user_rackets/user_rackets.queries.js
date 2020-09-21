@@ -7,12 +7,14 @@ module.exports = {
       .select(
         'user.id',
         'user.nick',
+        // 'user.thumb',
         'up.ntrp',
         'up.sex',
         'up.age',
         'up.weight_kg',
         'up.height_cm',
         'up.handed', {
+          user_image: 'user.thumb',
           play_style: 'ps.name',
           forehand_style: 'fhs.name',
           backhand_style: 'bhs.name',
@@ -45,7 +47,6 @@ module.exports = {
 
         {
           user_racket_id: 'ur.id',
-          racket_vertion: 'rv.name',
           racket_model: 'ra.model',
           racket_company_name: 'rc.name',
         },
@@ -54,15 +55,8 @@ module.exports = {
         ur: tableNames.userRacket
       })
       .innerJoin({
-        ra: tableNames.racket
+        ra: tableNames.racketData
       }, 'ra.id', '=', 'ur.t_racket_id')
-      .innerJoin({
-          rv: tableNames.racketVersion
-        },
-        'rv.id',
-        '=',
-        'ra.t_racket_version_id'
-      )
       .innerJoin({
           rc: tableNames.racketCompany
         },

@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 
 const middlewares = require('./middlewares');
 const api = require('./api/api');
+const web = require('./web/index');
 const project = require('./constants/project');
 
 const app = express();
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', api);
+app.use('/web', web);
 app.use('/public', express.static('./src/public'));
 
 app.use(middlewares.notFound);

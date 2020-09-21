@@ -15,7 +15,6 @@ module.exports = {
         'urh.racket_balance_val',
         'urh.main_gut_lb_tension',
         'urh.cross_gut_lb_tension', {
-          racket_vertion: 'rv.name',
           racket_model: 'ra.model',
           gut_company_name: 'gutc.name',
           gut_name: 'gut.name',
@@ -32,15 +31,9 @@ module.exports = {
         'urh.t_user_racket_id'
       )
       .innerJoin({
-        ra: tableNames.racket
+        ra: tableNames.racketData
       }, 'ra.id', '=', 'ur.t_racket_id')
-      .innerJoin({
-          rv: tableNames.racketVersion
-        },
-        'rv.id',
-        '=',
-        'ra.t_racket_version_id'
-      )
+
       .innerJoin({
         gut: tableNames.gut
       }, 'gut.id', '=', 'urh.t_gut_id')
@@ -60,7 +53,7 @@ module.exports = {
     console.log('racketHistoryData', racketHistoryData);
 
     const commentListData = await db
-      .select('tu.nick', 'urhc.comment', {
+      .select('tu.thumb', 'tu.nick', 'urhc.comment', {
         updated_date: 'urhc.updated_at',
       })
       .from({
@@ -147,27 +140,20 @@ module.exports = {
       .select({
         racket_nickname: 'ru.racket_nickname',
         company_name: 'rc.name',
-        racket_version_name: 'tv.name',
         model: 'tr.model',
-        weight_ungut: 'tr.weight_ungut',
-        racket_balance_lb_val: 'tr.racket_balance_lb_val',
-        racket_balance_lb_type: 'tr.racket_balance_lb_type',
-        main_pattern: 'rp.main',
-        cross_pattern: 'rp.cross',
+        weight_strung: 'tr.weight_strung',
+        racket_balance_lb_val: 'tr.balance_pt',
+        racket_balance_lb_type: 'tr.balance_type',
+        main_pattern: 'tr.pattern_main',
+        cross_pattern: 'tr.pattern_cross',
       })
       .from({
         ru: tableNames.userRacket
       })
       .innerJoin({
-        tr: tableNames.racket
+        tr: tableNames.racketData
       }, 'tr.id', '=', 'ru.t_racket_id')
-      .innerJoin({
-          tv: tableNames.racketVersion
-        },
-        'tv.id',
-        '=',
-        'tr.t_racket_version_id'
-      )
+
       .innerJoin({
           rc: tableNames.racketCompany
         },
@@ -175,13 +161,7 @@ module.exports = {
         '=',
         'tr.t_racket_company_id'
       )
-      .innerJoin({
-          rp: tableNames.racketPattern
-        },
-        'rp.id',
-        '=',
-        'tr.t_racket_pattern_id'
-      )
+
       .where({
         'ru.id': reqParams.userRacketId,
         'ru.t_user_id': reqParams.id,

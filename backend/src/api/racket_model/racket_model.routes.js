@@ -10,18 +10,18 @@ const {
 const router = express.Router();
 router.use(authMiddlewares.checkUserHasToken);
 
-router.get('/:racketVersionId', async (req, res, next) => {
+router.get('/:racketCompanyId', async (req, res, next) => {
   const {
-    racketVersionId
+    racketCompanyId
   } = req.params;
   try {
     await getRacketModelValidSchema.validate({
-      racketVersionId
+      racketCompanyId
     }, {
       abortEarly: false
     });
 
-    const racketModelList = await queries.getList(racketVersionId);
+    const racketModelList = await queries.getList(racketCompanyId);
     res.json({
       result: {
         status: 200,
@@ -40,6 +40,40 @@ router.get('/:racketVersionId', async (req, res, next) => {
     next(error);
   }
 });
+
+
+// router.get('/:racketVersionId', async (req, res, next) => {
+//   const {
+//     racketVersionId
+//   } = req.params;
+//   try {
+//     await getRacketModelValidSchema.validate({
+//       racketVersionId
+//     }, {
+//       abortEarly: false
+//     });
+
+//     const racketModelList = await queries.getList(racketVersionId);
+//     res.json({
+//       result: {
+//         status: 200,
+//         message: 'send data..',
+//         data: {
+//           list: racketModelList
+//         },
+//       },
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     if (error.errorCode == undefined) {
+//       const _error = await apiError('E3500');
+//       next(_error);
+//     }
+//     next(error);
+//   }
+// });
+
+
 
 router.post(
   '/insert_user_racket',

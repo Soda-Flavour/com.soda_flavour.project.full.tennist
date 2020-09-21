@@ -129,7 +129,7 @@ module.exports = {
   },
   E3511: {
     errorCode: 'E3511',
-    errorMessage: '해당되는 라켓 모델 리스트가 없습니다.',
+    errorMessage: '해당되는 라켓 회사 리스트가 없습니다.',
   },
   E3512: {
     errorCode: 'E3512',

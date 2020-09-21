@@ -19,9 +19,9 @@ router.get('/list', authMiddlewares.isLoggedIn, async (req, res, next) => {
     }, {
       abortEarly: false
     });
-
+    console.log(id);
     const userRacketList = await queries.getRacketList(id);
-
+    console.log(userRacketList);
     res.json({
       result: {
         status: 200,

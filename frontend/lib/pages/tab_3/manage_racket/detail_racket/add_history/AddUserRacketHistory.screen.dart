@@ -39,6 +39,7 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
 
     if (isFirstLoading) {
       userRacketId = args.data['user_racket_id'];
+
       print("add갑확인 : $userRacketId");
       isFirstLoading = false;
     }

@@ -223,38 +223,38 @@ class _RacketListScreenState extends State<RacketListScreen>
                                   height: double.infinity,
                                   child: Container(
                                     color: const Color(0xff004d80),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(top: 10.0),
-                                      child: Column(
-                                        children: <Widget>[
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(left: 10.0),
-                                            width: double.infinity,
-                                            child: Text(
-                                              (index == 0) ? "Main" : "Sub",
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 14.0,
-                                              ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        // Container(
+                                        //   padding:
+                                        //       EdgeInsets.only(left: 10.0),
+                                        //   width: double.infinity,
+                                        //   child: Text(
+                                        //     (index == 0)
+                                        //         ? ""
+                                        //         : "", //(index == 0) ? "Main" : "Sub",
+                                        //     textAlign: TextAlign.left,
+                                        //     style: TextStyle(
+                                        //       color: Colors.white,
+                                        //       fontSize: 14.0,
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        Container(
+                                          padding: EdgeInsets.only(right: 10.0),
+                                          width: double.infinity,
+                                          child: Text(
+                                            "${++index}",
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20.0,
                                             ),
                                           ),
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(right: 10.0),
-                                            width: double.infinity,
-                                            child: Text(
-                                              "${++index}",
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -299,7 +299,7 @@ class _RacketListScreenState extends State<RacketListScreen>
                                                     ),
                                                     SizedBox(height: 2),
                                                     Text(
-                                                      "${rowData.racketVertion} ${rowData.racketModel}",
+                                                      "${rowData.racketModel}",
                                                       style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 16,

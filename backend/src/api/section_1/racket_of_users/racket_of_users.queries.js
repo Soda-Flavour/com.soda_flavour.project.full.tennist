@@ -9,7 +9,6 @@ module.exports = {
         user_nick: 'user.nick',
         user_thumb: 'user.thumb',
         racket_model: 'ra.model',
-        racket_version: 'rv.name',
         racket_cnt: db.raw('(select count(ur_c.id) from t_user_racket ur_c where ur_c.t_user_id = user.id)')
       })
       .from({
@@ -19,11 +18,8 @@ module.exports = {
         user: tableNames.user
       }, 'user.id', '=', 'ur.t_user_id')
       .innerJoin({
-        ra: tableNames.racket
+        ra: tableNames.racketData
       }, 'ra.id', '=', 'ur.t_racket_id')
-      .innerJoin({
-        rv: tableNames.racketVersion
-      }, 'rv.id', '=', 'ra.t_racket_version_id')
       .where(
         'ur.created_at',
         '=',

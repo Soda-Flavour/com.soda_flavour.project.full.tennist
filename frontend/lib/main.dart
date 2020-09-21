@@ -19,7 +19,7 @@ import 'package:tennist/pages/tab_3/profile/physical_info/PhysicalInfoForm.scree
 import 'package:tennist/pages/tab_3/profile/tennis_info/TennisInfoForm.screen.dart';
 
 import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.screen.dart';
-import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
+// import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
 import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.screen.dart';
 import 'package:tennist/pages/tab_3/setting/SettingList.screen.dart';
 
@@ -72,8 +72,8 @@ class MyApp extends StatelessWidget {
           SettingListScreen.routeName: (context) => SettingListScreen(),
           SelectRacketCompanyScreen.routeName: (context) =>
               SelectRacketCompanyScreen(),
-          SelectRacketVersionScreen.routeName: (context) =>
-              SelectRacketVersionScreen(),
+          // SelectRacketVersionScreen.routeName: (context) =>
+          //     SelectRacketVersionScreen(),
           SelectRacketModelScreen.routeName: (context) =>
               SelectRacketModelScreen(),
           SelectRacketNickNameScreen.routeName: (context) =>

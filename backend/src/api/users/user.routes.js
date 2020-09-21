@@ -92,6 +92,8 @@ router.get('/mypage', authMiddlewares.isLoggedIn, async (req, res, next) => {
 
     const userRacketList = await queries.getMyPageData(reqParams);
     console.log(userRacketList);
+
+
     res.json({
       result: {
         status: 200,

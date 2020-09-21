@@ -4,11 +4,11 @@ const tableNames = require('../../constants/tableNames');
 
 
 module.exports = {
-  async getList(racketVersionId) {
+  async getList(racketCompanyId) {
     return db
-      .select('id', 'model')
-      .from(tableNames.racket)
-      .where('t_racket_version_id', racketVersionId);
+      .select('*')
+      .from(tableNames.racketData)
+      .where('t_racket_company_id', racketCompanyId);
   },
 
   async ckeckRacketNickName(data) {

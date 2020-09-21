@@ -1,4 +1,4 @@
-package com.example.tennist_flutter
+package com.example.tennist
 
 import io.flutter.embedding.android.FlutterActivity
 

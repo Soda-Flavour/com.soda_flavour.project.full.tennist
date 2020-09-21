@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.model.dart';
 import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_1_select_racket_company/SelectRacketCompany.provider.dart';
-import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_2_select_racket_version/SelectRacketVersion.screen.dart';
+import 'package:tennist/pages/tab_3/manage_racket/add_racket/dep_3_select_racket_model/SelectRacketModel.screen.dart';
 import 'package:tennist/src/helper/PopWithResults.dart';
 import 'package:tennist/src/helper/ScreenPassData.dart';
 import 'package:tennist/src/widget/BasicListRow.dart';
@@ -61,7 +61,7 @@ class SelectRacketCompanyScreen extends StatelessWidget {
 
                     Navigator.of(context)
                         .pushNamed(
-                      SelectRacketVersionScreen.routeName,
+                      SelectRacketModelScreen.routeName,
                       arguments: ScreenPassData(passData),
                     )
                         .then((results) {

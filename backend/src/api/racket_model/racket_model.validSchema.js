@@ -1,7 +1,7 @@
 const yup = require('yup');
 
 const getRacketModelValidSchema = yup.object().shape({
-  racketVersionId: yup.number().required().label('E3511'),
+  racketCompanyId: yup.number().required().label('E3511'),
 });
 const insertRacketModelValidSchema = yup.object().shape({
   racket_id: yup.string().required().label('E3512'),

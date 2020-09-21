@@ -112,7 +112,7 @@ class _Tab1MainScreenState extends State<Tab1MainScreen>
                             fontSize: 20.0, fontWeight: FontWeight.w600),
                       ),
                       subtitle: Text(
-                        '${snapshot.data.result.data.list[index].racketVersion} ${snapshot.data.result.data.list[index].racketModel}\n${snapshot.data.result.data.list[index].racketCnt}개의 라켓',
+                        '${snapshot.data.result.data.list[index].racketModel}\n${snapshot.data.result.data.list[index].racketCnt}개의 라켓',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w400,

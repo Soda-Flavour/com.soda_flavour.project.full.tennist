@@ -16,8 +16,12 @@ router.use(authMiddlewares.checkUserHasToken);
 router.get('/detail', authMiddlewares.isLoggedIn, async (req, res, next) => {
   console.log('req.params', req.query);
   try {
-    const { user_racket_history_id: userRacketHistoryId } = req.query;
-    const { id } = req.user;
+    const {
+      user_racket_history_id: userRacketHistoryId
+    } = req.query;
+    const {
+      id
+    } = req.user;
 
     const reqParams = {
       userRacketHistoryId,
@@ -25,8 +29,7 @@ router.get('/detail', authMiddlewares.isLoggedIn, async (req, res, next) => {
     };
 
     const _reqParams = await getUserRacketHistoryDetailValidSchema.validate(
-      reqParams,
-      {
+      reqParams, {
         abortEarly: false,
       }
     );
@@ -52,7 +55,9 @@ router.get('/detail', authMiddlewares.isLoggedIn, async (req, res, next) => {
 router.post('/detail', authMiddlewares.isLoggedIn, async (req, res, next) => {
   const user_racket_history_id = parseInt(req.body.user_racket_history_id, 10);
   const comment = req.body.comment;
-  const { id } = req.user;
+  const {
+    id
+  } = req.user;
 
   try {
     const reqParams = {
@@ -62,7 +67,9 @@ router.post('/detail', authMiddlewares.isLoggedIn, async (req, res, next) => {
     };
 
     const _reqParams = await insertUserRacketHistoryDetailCommentValidSchema
-      .validate(reqParams, { abortEarly: true })
+      .validate(reqParams, {
+        abortEarly: true
+      })
       .catch(async (err) => {
         console.log(err);
         const _err = await apiError(err.params.label);
@@ -100,8 +107,11 @@ router.post('/insert', authMiddlewares.isLoggedIn, async (req, res, next) => {
   const essential_grip = req.body.essential_grip;
   const over_grip_num = parseInt(req.body.over_grip_num, 10);
   const balance_type = req.body.balance_type;
-  const { id } = req.user;
+  const {
+    id
+  } = req.user;
 
+  console.log(req.body)
   try {
     const userRacketHistoryData = {
       t_user_racket_id: t_racket_id,
@@ -118,7 +128,9 @@ router.post('/insert', authMiddlewares.isLoggedIn, async (req, res, next) => {
 
     console.log(userRacketHistoryData);
     const _userRacketHistoryData = await insertRacketHistoryValidSchema
-      .validate(userRacketHistoryData, { abortEarly: true })
+      .validate(userRacketHistoryData, {
+        abortEarly: true
+      })
       .catch(async (err) => {
         console.log(err);
         const _err = await apiError(err.params.label);
@@ -149,9 +161,14 @@ router.post('/insert', authMiddlewares.isLoggedIn, async (req, res, next) => {
 router.get('/', authMiddlewares.isLoggedIn, async (req, res, next) => {
   console.log('req.params', req.query);
   try {
-    const { racket_history_id: userRacketId, racket_id: racketId } = req.query;
+    const {
+      racket_history_id: userRacketId,
+      racket_id: racketId
+    } = req.query;
 
-    const { id } = req.user;
+    const {
+      id
+    } = req.user;
     const reqParams = {
       userRacketId,
       racketId,
