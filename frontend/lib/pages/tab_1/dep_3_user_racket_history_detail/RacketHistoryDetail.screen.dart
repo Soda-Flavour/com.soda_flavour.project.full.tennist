@@ -83,6 +83,7 @@ class _RacketHistoryDetailScreenState extends State<RacketHistoryDetailScreen>
       userRacketHistoryId = args.data['user_racket_history_id'];
       print('전달받은 아이디: ${userRacketHistoryId}');
       serverData = RacketHistoryDetailProvider().getData(userRacketHistoryId);
+      print('서버 데이터를 받습니다.');
       isFirstLoading = false;
     }
 
@@ -116,6 +117,8 @@ class _RacketHistoryDetailScreenState extends State<RacketHistoryDetailScreen>
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 commentList = snapshot.data.result.data.list;
+                print('코멘트 길이');
+                print(commentList);
                 return GestureDetector(
                   onTap: () => FocusScope.of(context).unfocus(),
                   child: SingleChildScrollView(

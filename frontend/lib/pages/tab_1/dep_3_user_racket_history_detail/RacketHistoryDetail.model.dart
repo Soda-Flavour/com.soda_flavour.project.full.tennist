@@ -1,6 +1,6 @@
 // To parse this JSON data, do
 //
-//     final RacketHistoryDetailModel = racketHistoryDetailModelFromJson(jsonString);
+//     final racketHistoryDetailModel = racketHistoryDetailModelFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -81,20 +81,20 @@ class Data {
 class ListElement {
   ListElement({
     this.nick,
-    this.comment,
     this.thumb,
+    this.comment,
     this.updatedDate,
   });
 
   String nick;
-  String comment;
   String thumb;
+  String comment;
   DateTime updatedDate;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         nick: json["nick"] == null ? null : json["nick"],
-        comment: json["comment"] == null ? null : json["comment"],
         thumb: json["thumb"] == null ? null : json["thumb"],
+        comment: json["comment"] == null ? null : json["comment"],
         updatedDate: json["updated_date"] == null
             ? null
             : DateTime.parse(json["updated_date"]),
@@ -102,8 +102,8 @@ class ListElement {
 
   Map<String, dynamic> toJson() => {
         "nick": nick == null ? null : nick,
-        "comment": comment == null ? null : comment,
         "thumb": thumb == null ? null : thumb,
+        "comment": comment == null ? null : comment,
         "updated_date":
             updatedDate == null ? null : updatedDate.toIso8601String(),
       };
@@ -118,7 +118,6 @@ class RacketData {
     this.racketBalanceVal,
     this.mainGutLbTension,
     this.crossGutLbTension,
-    this.racketVertion,
     this.racketModel,
     this.gutCompanyName,
     this.gutName,
@@ -128,10 +127,9 @@ class RacketData {
   String replacementGripType;
   int overgripNum;
   String racketBalanceType;
-  int racketBalanceVal;
+  double racketBalanceVal;
   double mainGutLbTension;
   double crossGutLbTension;
-  String racketVertion;
   String racketModel;
   String gutCompanyName;
   String gutName;
@@ -147,15 +145,13 @@ class RacketData {
             : json["racket_balance_type"],
         racketBalanceVal: json["racket_balance_val"] == null
             ? null
-            : json["racket_balance_val"],
+            : json["racket_balance_val"].toDouble(),
         mainGutLbTension: json["main_gut_lb_tension"] == null
             ? null
             : json["main_gut_lb_tension"].toDouble(),
         crossGutLbTension: json["cross_gut_lb_tension"] == null
             ? null
             : json["cross_gut_lb_tension"].toDouble(),
-        racketVertion:
-            json["racket_vertion"] == null ? null : json["racket_vertion"],
         racketModel: json["racket_model"] == null ? null : json["racket_model"],
         gutCompanyName:
             json["gut_company_name"] == null ? null : json["gut_company_name"],
@@ -175,7 +171,6 @@ class RacketData {
             mainGutLbTension == null ? null : mainGutLbTension,
         "cross_gut_lb_tension":
             crossGutLbTension == null ? null : crossGutLbTension,
-        "racket_vertion": racketVertion == null ? null : racketVertion,
         "racket_model": racketModel == null ? null : racketModel,
         "gut_company_name": gutCompanyName == null ? null : gutCompanyName,
         "gut_name": gutName == null ? null : gutName,

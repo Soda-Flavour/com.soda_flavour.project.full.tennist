@@ -19,14 +19,16 @@ class RacketHistoryProvider with ChangeNotifier {
       };
       final String url =
           'https://water-flavour.com/api/v1/section_1/racket_history?racket_history_id=$racketHistoryId';
+      print(url);
       final http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         final resultModel = racketHistoryModelFromJson(response.body);
+        print(resultModel.result.data.list.length);
         return resultModel;
       }
-
       throw new Exception('notLoggedin');
     } catch (e) {
+      print(e);
       throw new Exception('eeee');
     }
   }

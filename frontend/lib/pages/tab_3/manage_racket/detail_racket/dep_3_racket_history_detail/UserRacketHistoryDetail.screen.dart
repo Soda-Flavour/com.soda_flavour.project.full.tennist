@@ -443,11 +443,17 @@ class _RacketHistoryDetailScreenState
                                                                 .end,
                                                         children: <Widget>[
                                                           CircleAvatar(
-                                                            radius: 10,
-                                                            backgroundImage:
-                                                                AssetImage(
-                                                                    'assets/images/profile_1.jpeg'),
-                                                          ),
+                                                              radius: 10,
+                                                              backgroundImage: (commentList[
+                                                                              index]
+                                                                          .thumb ==
+                                                                      null)
+                                                                  ? AssetImage(
+                                                                      'assets/images/logo_sq.png')
+                                                                  : NetworkImage(
+                                                                      'https://water-flavour.com/public/image/thumb/' +
+                                                                          commentList[index]
+                                                                              .thumb)),
                                                           SizedBox(
                                                             width: 5.0,
                                                           ),

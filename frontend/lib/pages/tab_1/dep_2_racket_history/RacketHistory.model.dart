@@ -1,6 +1,6 @@
 // To parse this JSON data, do
 //
-//     final RacketHistoryModel = racketHistoryModelFromJson(jsonString);
+//     final racketHistoryModel = racketHistoryModelFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -81,7 +81,7 @@ class Data {
 class ListElement {
   ListElement({
     this.id,
-    this.tRacketId,
+    this.tUserRacketId,
     this.weightTune,
     this.replacementGripType,
     this.overgripNum,
@@ -95,12 +95,12 @@ class ListElement {
   });
 
   int id;
-  int tRacketId;
+  int tUserRacketId;
   int weightTune;
   String replacementGripType;
   int overgripNum;
   String racketBalanceType;
-  int racketBalanceVal;
+  double racketBalanceVal;
   double mainGutLbTension;
   double crossGutLbTension;
   String gutCompanyName;
@@ -109,7 +109,8 @@ class ListElement {
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         id: json["id"] == null ? null : json["id"],
-        tRacketId: json["t__racket_id"] == null ? null : json["t__racket_id"],
+        tUserRacketId:
+            json["t_user_racket_id"] == null ? null : json["t_user_racket_id"],
         weightTune: json["weight_tune"] == null ? null : json["weight_tune"],
         replacementGripType: json["replacement_grip_type"] == null
             ? null
@@ -120,10 +121,10 @@ class ListElement {
             : json["racket_balance_type"],
         racketBalanceVal: json["racket_balance_val"] == null
             ? null
-            : json["racket_balance_val"],
+            : json["racket_balance_val"].toDouble(),
         mainGutLbTension: json["main_gut_lb_tension"] == null
             ? null
-            : json["main_gut_lb_tension"].toDouble(),
+            : json["main_gut_lb_tension"],
         crossGutLbTension: json["cross_gut_lb_tension"] == null
             ? null
             : json["cross_gut_lb_tension"].toDouble(),
@@ -137,7 +138,7 @@ class ListElement {
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
-        "t__racket_id": tRacketId == null ? null : tRacketId,
+        "t_user_racket_id": tUserRacketId == null ? null : tUserRacketId,
         "weight_tune": weightTune == null ? null : weightTune,
         "replacement_grip_type":
             replacementGripType == null ? null : replacementGripType,
@@ -161,7 +162,6 @@ class RacketInfo {
   RacketInfo({
     this.racketNickname,
     this.companyName,
-    this.racketVersionName,
     this.model,
     this.weightUngut,
     this.racketBalanceLbVal,
@@ -172,7 +172,6 @@ class RacketInfo {
 
   String racketNickname;
   String companyName;
-  String racketVersionName;
   String model;
   int weightUngut;
   int racketBalanceLbVal;
@@ -184,9 +183,6 @@ class RacketInfo {
         racketNickname:
             json["racket_nickname"] == null ? null : json["racket_nickname"],
         companyName: json["company_name"] == null ? null : json["company_name"],
-        racketVersionName: json["racket_version_name"] == null
-            ? null
-            : json["racket_version_name"],
         model: json["model"] == null ? null : json["model"],
         weightUngut: json["weight_ungut"] == null ? null : json["weight_ungut"],
         racketBalanceLbVal: json["racket_balance_lb_val"] == null
@@ -203,8 +199,6 @@ class RacketInfo {
   Map<String, dynamic> toJson() => {
         "racket_nickname": racketNickname == null ? null : racketNickname,
         "company_name": companyName == null ? null : companyName,
-        "racket_version_name":
-            racketVersionName == null ? null : racketVersionName,
         "model": model == null ? null : model,
         "weight_ungut": weightUngut == null ? null : weightUngut,
         "racket_balance_lb_val":

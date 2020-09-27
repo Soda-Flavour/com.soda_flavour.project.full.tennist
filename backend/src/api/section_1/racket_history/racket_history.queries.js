@@ -52,7 +52,7 @@ module.exports = {
 
 
     const commentListData = await db
-      .select('tu.nick', 'urhc.comment', {
+      .select('tu.nick', 'tu.thumb', 'urhc.comment', {
         updated_date: 'urhc.updated_at',
       })
       .from({

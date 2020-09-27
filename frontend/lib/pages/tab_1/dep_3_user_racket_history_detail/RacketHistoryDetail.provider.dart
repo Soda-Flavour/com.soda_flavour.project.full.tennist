@@ -29,11 +29,14 @@ class RacketHistoryDetailProvider with ChangeNotifier {
       if (response.statusCode == 200) {
         final resultModel = racketHistoryDetailModelFromJson(response.body);
         print("resultModel");
+
         return resultModel;
       }
 
       throw new Exception('notLoggedin');
     } catch (e) {
+      print('에러');
+      print(e);
       throw new Exception('eeee');
     }
   }

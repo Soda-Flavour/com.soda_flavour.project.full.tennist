@@ -81,16 +81,19 @@ class Data {
 class ListElement {
   ListElement({
     this.nick,
+    this.thumb,
     this.comment,
     this.updatedDate,
   });
 
   String nick;
+  String thumb;
   String comment;
   DateTime updatedDate;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         nick: json["nick"] == null ? null : json["nick"],
+        thumb: json["thumb"] == null ? null : json["thumb"],
         comment: json["comment"] == null ? null : json["comment"],
         updatedDate: json["updated_date"] == null
             ? null
@@ -99,6 +102,7 @@ class ListElement {
 
   Map<String, dynamic> toJson() => {
         "nick": nick == null ? null : nick,
+        "thumb": thumb == null ? null : thumb,
         "comment": comment == null ? null : comment,
         "updated_date":
             updatedDate == null ? null : updatedDate.toIso8601String(),
@@ -124,7 +128,7 @@ class RacketData {
   String replacementGripType;
   int overgripNum;
   String racketBalanceType;
-  int racketBalanceVal;
+  double racketBalanceVal;
   double mainGutLbTension;
   double crossGutLbTension;
   String racketVertion;

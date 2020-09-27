@@ -100,7 +100,7 @@ class ListElement {
   String replacementGripType;
   int overgripNum;
   String racketBalanceType;
-  int racketBalanceVal;
+  double racketBalanceVal;
   double mainGutLbTension;
   double crossGutLbTension;
   String gutCompanyName;
