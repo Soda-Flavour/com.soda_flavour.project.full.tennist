@@ -57,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   // 'date': DateTime.now(),
                   // 'accept_terms': false,
                 },
-                autovalidate: true,
+                autovalidateMode: AutovalidateMode.always,
                 child: Container(
                   height: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(

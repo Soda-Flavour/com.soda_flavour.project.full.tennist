@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:tennist/pages/account/login/LogIn.model.dart';
-import 'package:tennist/src/helper/AppConfig.dart';
 import 'package:tennist/src/helper/AuthHelper.dart';
 import 'package:tennist/src/model/AppError.model.dart';
 import 'package:tennist/src/model/Error.model.dart';

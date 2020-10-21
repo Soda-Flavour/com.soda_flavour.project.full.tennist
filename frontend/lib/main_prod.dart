@@ -8,7 +8,7 @@ import 'package:tennist/src/helper/AppConfig.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  const String kPort = '3000';
+
   final String baseUrl = Platform.isAndroid
       ? 'https://water-flavour.com'
       : 'https://water-flavour.com';

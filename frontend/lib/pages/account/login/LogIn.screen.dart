@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:tennist/pages/BottomNaviController.dart';
-import 'package:tennist/pages/account/FindPassword.screen.dart';
 import 'package:tennist/pages/account/login/LogIn.provider.dart';
 import 'package:tennist/pages/account/signup/SignUp.screen.dart';
-import 'package:tennist/pages/tab_3/main/Tab3Main.screen.dart';
-import 'package:tennist/src/provider/LoadingProvider.dart';
 import 'package:tennist/src/widget/DialogPopUp.widget.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -56,7 +52,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   // 'date': DateTime.now(),
                   // 'accept_terms': false,
                 },
-                autovalidate: true,
+                autovalidateMode: AutovalidateMode.always,
                 child: Container(
                   height: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(

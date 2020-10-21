@@ -53,22 +53,26 @@ class Data {
   Data({
     this.nick,
     this.ntrp,
+    this.weight,
     this.playStyle,
   });
 
   String nick;
   double ntrp;
+  int weight;
   String playStyle;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         nick: json["nick"] == null ? null : json["nick"],
         ntrp: json["ntrp"] == null ? null : json["ntrp"].toDouble(),
+        weight: json["weight"] == null ? null : json["weight"],
         playStyle: json["play_style"] == null ? null : json["play_style"],
       );
 
   Map<String, dynamic> toJson() => {
         "nick": nick == null ? null : nick,
         "ntrp": ntrp == null ? null : ntrp,
+        "weight": weight == null ? null : weight,
         "play_style": playStyle == null ? null : playStyle,
       };
 }

@@ -68,7 +68,7 @@ class PhysicalInfoFormScreen extends StatelessWidget {
                             // 'date': DateTime.now(),
                             // 'accept_terms': false,
                           },
-                          autovalidate: false,
+                          autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
                             padding: const EdgeInsets.all(30.0),
                             child: Column(

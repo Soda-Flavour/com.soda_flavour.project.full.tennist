@@ -1,4 +1,3 @@
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -68,7 +67,7 @@ class UserBasicInfoFormScreen extends StatelessWidget {
                             // 'date': DateTime.now(),
                             // 'accept_terms': false,
                           },
-                          autovalidate: false,
+                          autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
                             padding: const EdgeInsets.all(30.0),
                             child: Column(

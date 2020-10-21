@@ -360,8 +360,14 @@ class _Tab3MainScreenState extends State<Tab3MainScreen> {
                   return GestureDetector(
                     onTap: () {
                       if (isLoggedIn) {
-                        Navigator.of(context)
-                            .pushNamed(UserRacketListScreen.routeName);
+                        if (snapshot.data.result.data.ntrp != null &&
+                            snapshot.data.result.data.weight != null) {
+                          Navigator.of(context)
+                              .pushNamed(UserRacketListScreen.routeName);
+                        } else {
+                          return DialogPopUpWidget().errorDialogBox(
+                              context, "프로필 관리의 항목을 모두 입력해주세요.");
+                        }
                       } else {
                         DialogPopUpWidget().needLoginDialogBox(context);
                       }

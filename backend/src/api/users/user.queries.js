@@ -1,10 +1,6 @@
 const db = require('../../db');
 
 const tableNames = require('../../constants/tableNames');
-const {
-  where
-} = require('../../db');
-
 
 
 module.exports = {
@@ -19,6 +15,7 @@ module.exports = {
       .select(
         'user.nick', {
           ntrp: 'up.ntrp',
+          weight: 'up.weight_kg',
           play_style: 'ps.name'
 
         }

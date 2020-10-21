@@ -89,7 +89,7 @@ class _AddUserRacketHistoryScreen extends StatelessWidget {
                             // 'date': DateTime.now(),
                             't_racket_id': userRacketId,
                           },
-                          autovalidate: false,
+                          autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
                             padding: const EdgeInsets.all(30.0),
                             child: Column(
